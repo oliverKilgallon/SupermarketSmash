@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: c58ade069b5f8d94ca7d75f7a91c7066
+ScriptedImporter:
+  fileIDToRecycleName:
+    11400000: <root>
+    11400002: Player/Move
+    11400004: Player/Look
+    11400006: Player/Fire
+    11400008: UI/Navigate
+    11400010: UI/Submit
+    11400012: UI/Cancel
+    11400014: UI/Point
+    11400016: UI/Click
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: e2fdc6edf8744b38b702a2a5ee3541b2, type: 3}
+  generateWrapperCode: 0
+  wrapperCodePath: 
+  wrapperClassName: 
+  wrapperCodeNamespace: 
+  generateActionEvents: 0
+  generateInterfaces: 0
+  actionGuids: []
+  actionMapGuids: []
