@@ -15,6 +15,9 @@ public class setUpSplitScreen : MonoBehaviour
 
     private void Awake()
     {
+        //Player list UI position arrays
+        //Each vector corresponds to one list
+
         ListPosP2 = new Vector2[]
         {
             new Vector2( 0, 415 ),
