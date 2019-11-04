@@ -45,7 +45,8 @@ public class ItemSpawn : MonoBehaviour
     {
         float randLength;
         float randAngle;
-       
+        Vector3 oldLocation;
+        oldLocation = spawnLocation;
         randAngle = Random.Range(0, 360);
         randLength = Random.Range(0, sphereArray[point].transform.lossyScale.x / 2);
         var q = Quaternion.AngleAxis(randAngle, Vector3.up);
@@ -65,7 +66,7 @@ public class ItemSpawn : MonoBehaviour
             {
                 Debug.DrawRay(new Vector3(spawnLocation.x, spawnLocation.y + 10, spawnLocation.z), Vector3.down * hit.distance, Color.red, 5.0f);
                 Debug.Log("Did Hit");
-                SpawnRandom(spawnLocation, point);
+                SpawnRandom(oldLocation, point);
             }
             else
             {
