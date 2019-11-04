@@ -1,20 +1,42 @@
 fileFormatVersion: 2
-guid: b18c60d05a477dc4887d53f241af7945
+guid: aa1647d4db8586d44bfe0aeea286e3d2
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: 'Material #25'
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Cereal box
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: 'Material #25'
-    second: {fileID: 2100000, guid: 1a010d8b4cc4aca4dbc0eb3baab1b85f, type: 2}
+    100000: Tin can
+    100002: //RootNode
+    100004: Tin can001
+    100006: Tin can002
+    100008: Tin can003
+    100010: Tin can004
+    100012: Tin can005
+    400000: Tin can
+    400002: //RootNode
+    400004: Tin can001
+    400006: Tin can002
+    400008: Tin can003
+    400010: Tin can004
+    400012: Tin can005
+    2100000: No Name
+    2300000: Tin can
+    2300002: Tin can001
+    2300004: Tin can002
+    2300006: Tin can003
+    2300008: Tin can004
+    2300010: Tin can005
+    3300000: Tin can
+    3300002: Tin can001
+    3300004: Tin can002
+    3300006: Tin can003
+    3300008: Tin can004
+    3300010: Tin can005
+    4300000: Tin can
+    4300002: Tin can001
+    4300004: Tin can002
+    4300006: Tin can003
+    4300008: Tin can004
+    4300010: Tin can005
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
