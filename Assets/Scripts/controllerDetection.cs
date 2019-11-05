@@ -9,15 +9,14 @@ public class controllerDetection : MonoBehaviour
 
     public int NoOfPlayers;
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         Debug.Log("Controllers: " + Input.GetJoystickNames().Length);
     }
-
-    // Update is called once per frame
     void Update()
     {
+
         int i = 0;
         foreach (GameObject pp in playerPanelGameobjects)
         {
