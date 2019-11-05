@@ -13,6 +13,10 @@ public class controllerDetection : MonoBehaviour
     void Start()
     {
         Debug.Log("Controllers: "+Input.GetJoystickNames().Length);
+
+
+        
+
     }
 
     // Update is called once per frame
@@ -24,12 +28,11 @@ public class controllerDetection : MonoBehaviour
             if (i < Input.GetJoystickNames().Length)
             {
                 pp.SetActive(true);
-                NoOfPlayers++;
                 i++;
             }
             else { break; }
         }
-        NoOfPlayers = 0;
+        NoOfPlayers = Input.GetJoystickNames().Length;
         i = 0;
     }
 
