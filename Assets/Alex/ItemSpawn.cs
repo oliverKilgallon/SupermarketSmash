@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class ItemSpawn : MonoBehaviour
 {
+    public List<string> localItems = new List<string>();
     public GameObject[] pointArray;
     public GameObject[] sphereArray;
     public GameObject spawnable;
