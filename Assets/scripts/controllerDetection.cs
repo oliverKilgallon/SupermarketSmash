@@ -12,11 +12,7 @@ public class controllerDetection : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Controllers: "+Input.GetJoystickNames().Length);
-
-
-        
-
+        Debug.Log("Controllers: " + Input.GetJoystickNames().Length);
     }
 
     // Update is called once per frame
@@ -42,6 +38,11 @@ public class controllerDetection : MonoBehaviour
 
         SceneManager.LoadScene("TomIngameUI");
     }
+    public void back()
+    {
+        PlayerPrefs.SetInt("NoOfPlayers", 0);
 
+        SceneManager.LoadScene("mainMenu");
+    }
 
 }
