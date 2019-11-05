@@ -1,49 +1,44 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class controllerDetection : MonoBehaviour
 {
     public GameObject[] playerPanelGameobjects;
-    //playerPanel[] playerPanels = new playerPanel[4];
+
+    public int NoOfPlayers;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.Log("Controllers: "+Input.GetJoystickNames().Length);
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-       
-        for (int i = 0; i < 4; i++)
+        int i = 0;
+        foreach (GameObject pp in playerPanelGameobjects)
         {
-            if (Input.GetButtonDown("joy" + i + "start"))
+            if (i < Input.GetJoystickNames().Length)
             {
-                Debug.Log("joy" + i + "start");
-                playerPanel temp = firstAvailable();
-                temp.controllerConnected = true;
-                temp.panel.enabled = true;
+                pp.SetActive(true);
+                NoOfPlayers++;
+                i++;
             }
+            else { break; }
         }
+        NoOfPlayers = 0;
+        i = 0;
     }
 
-    playerPanel firstAvailable()
+    public void Continue()
     {
-        playerPanel firstAv = null;
+        PlayerPrefs.SetInt("NoOfPlayers", NoOfPlayers);
 
-        for(int i = 0;i<4;i++)
-        {
-            Debug.Log(i);
-            playerPanel pp = playerPanelGameobjects[i].GetComponent<playerPanel>();
-
-            if (!pp.controllerConnected)
-            {
-                firstAv = pp;
-            }
-        }
-
-        return firstAv;
+        SceneManager.LoadScene("TomIngameUI");
     }
+
+
 }

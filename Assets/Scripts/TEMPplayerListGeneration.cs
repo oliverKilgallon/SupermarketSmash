@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class playerListGeneration : MonoBehaviour
+public class TEMPplayerListGeneration : MonoBehaviour
 {
     public float listLength;
     public ArrayList items = new ArrayList();
