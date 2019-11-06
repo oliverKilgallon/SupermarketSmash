@@ -4,34 +4,27 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target;
-    public Vector3 offsetPos = new Vector3(0, 4, -5);
+    public Transform targetFollow;
+    public Vector3 offsetPos = new Vector3(0, 2, -4);
     public float smoothTime = 0.3f;
-
     private Vector3 velocity = Vector3.zero;
-    private Vector3 targetPosition;
-    private float yVelocity = 0.0f;
+    private Vector3 targetFollowPosition;
+    private float yRotVelocity = 0.0f;
     private float distance = 5.0f;
-    
-    
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        float yAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, target.eulerAngles.y, ref yVelocity, smoothTime);
 
-        targetPosition = target.TransformPoint(offsetPos);
+        //float yAngleRelativeToPlayer = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetFollow.eulerAngles.y, ref yRotVelocity, smoothTime);
 
-        targetPosition += Quaternion.Euler(0, yAngle, 0) * new Vector3(0, 0, -distance);
+        targetFollowPosition = targetFollow.position + (targetFollow.rotation * offsetPos);
 
-        transform.LookAt(target);
+        //targetFollowPosition += Quaternion.Euler(0, yAngleRelativeToPlayer, 0) * new Vector3(0, 0, -distance);
 
-        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+        transform.position = Vector3.SmoothDamp(transform.position, targetFollowPosition, ref velocity, smoothTime);
+
+        
+        transform.LookAt(targetFollow, targetFollow.up);
     }
 }
