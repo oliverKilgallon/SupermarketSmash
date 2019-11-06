@@ -27,14 +27,20 @@ public class MoveMultiplayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("joy"+playerNumber+"Acc")) { ctrlA = true; }if (Input.GetKeyUp("joy"+playerNumber+"Acc")) { ctrlA = false; }
+        //if (Input.GetKeyDown("joy"+playerNumber+"Acc")) { ctrlA = true; }if (Input.GetKeyUp("joy"+playerNumber+"Acc")) { ctrlA = false; }
+        if (Input.GetKeyDown("joystick " + playerNumber + " button 0")) { ctrlA = true; }
+        if (Input.GetKeyUp("joystick " + playerNumber + " button 0")) { ctrlA = false; }
         if (Input.GetKeyDown("q")) { qPress = true; }if (Input.GetKeyUp("q")) { qPress = false; }
         if (Input.GetKeyDown("w")) { wPress = true; }if (Input.GetKeyUp("w")) { wPress = false; }
         if (Input.GetKeyDown("e")) { ePress = true; }if (Input.GetKeyUp("e")) { ePress = false; }
         // if (Input.GetAxis("Vertical"))
-        
+
+        //Debug.Log("Player number: " + playerNumber + "'s x axis: " + Input.GetAxisRaw("joy" + playerNumber + "x"));
+
+        //Check if x axis of the left joystick of this player isn't zero then calculate Angle by multiplying the turnSpeed into the input
         if (Input.GetAxis("joy" + playerNumber + "x") != 0)
-        { Angle = new Vector3(0, Input.GetAxis("joy" + playerNumber + "x") * turnSpeed, 0); }
+        {
+            Angle = new Vector3(0, Input.GetAxis("joy" + playerNumber + "x") * turnSpeed, 0); }
         else
         { Angle = new Vector3(0, 0, 0); }
         
@@ -44,7 +50,6 @@ public class MoveMultiplayer : MonoBehaviour
     }
     void FixedUpdate()
     {
-         
        
         if (ctrlA||wPress) { body.AddForce(transform.forward * thrust); }
 
