@@ -14,14 +14,14 @@ public class Gameplayloop : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        Debug.Log("test2");
+       // Debug.Log("test2");
         int counter = 0;
         string line;
         System.IO.StreamReader file =
            new System.IO.StreamReader("Assets/Alex/ItemStorage.txt");
         while ((line = file.ReadLine()) != null)
         {
-            Debug.Log(line);
+           // Debug.Log(line);
             allItems.Add(line);
             counter++;
         }

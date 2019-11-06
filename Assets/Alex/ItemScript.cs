@@ -5,6 +5,10 @@ using UnityEngine;
 public class ItemScript : MonoBehaviour
 {
     public string product;
+    public Mesh itemMesh;
+    public Material itemMat; 
+   
+        
     public bool inWall;
    
     // Use this for initialization

@@ -5,13 +5,17 @@ using UnityEngine.AI;
 
 public class ItemSpawn : MonoBehaviour
 {
+    public Mesh[] productMesh;
+    public Material[] productMat;
     public GameObject[] pointArray;
     public GameObject[] sphereArray;
     public GameObject spawnable;
+    public List<string> allItems;
 
     public bool spawntest;
-   
-   
+    public Dictionary<string,Mesh> itemhashMesh = new Dictionary<string,Mesh>();
+    public Dictionary<string,Material> itemhashMat = new Dictionary<string,Material>();
+    public Material test;
 
     public float onMeshThreshold;
     int stoppedCount;
@@ -19,16 +23,26 @@ public class ItemSpawn : MonoBehaviour
     public List<GameObject> items = new List<GameObject>();
     int itemArrayCount;
 
+
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("test1");
+        allItems = this.gameObject.GetComponent<Gameplayloop>().allItems;
+        int i = 0;
+        foreach(string item in allItems)
+        {
+            itemhashMesh.Add(item, productMesh[i]);
+            itemhashMat.Add(item, productMat[i]);
+            i++;
+        }
+        //pMeshHash.Add("Cereal", test);
+       // Debug.Log("test1");
         itemArrayCount = 0;
         stoppedCount = 0;
         
         foreach (string item in this.gameObject.GetComponent<Gameplayloop>().allPlayersItems)
         {
-            Debug.Log(item);
+            //Debug.Log(item);
             int pointCount = 0;
             foreach (GameObject point in pointArray)
             {
@@ -89,7 +103,7 @@ public class ItemSpawn : MonoBehaviour
             if (hit.collider.tag == "wall")
             {
                 Debug.DrawRay(new Vector3(spawnLocation.x, spawnLocation.y + 10, spawnLocation.z), Vector3.down * hit.distance, Color.red, 5.0f);
-                Debug.Log("Did Hit");
+               // Debug.Log("Did Hit");
                 SpawnRandom(oldLocation, point,item);
             }
             else
@@ -98,6 +112,9 @@ public class ItemSpawn : MonoBehaviour
                 GameObject thisProduct;
                 thisProduct = (GameObject)Instantiate(spawnable, spawnLocation, Quaternion.Euler(new Vector3(0, randAngle, 0)));
                 thisProduct.gameObject.GetComponent<ItemScript>().product = item;
+                thisProduct.gameObject.GetComponent<ItemScript>().itemMat = itemhashMat[item];
+                thisProduct.gameObject.GetComponent<ItemScript>().itemMesh = itemhashMesh[item];
+
             }
         }
         else
