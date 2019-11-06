@@ -8,7 +8,7 @@ public class CameraFollow : MonoBehaviour
     public Vector3 cameraOffsetPos = new Vector3(0, 2, -4);
     public float smoothDampingTime = 0.3f;
 
-    private Vector3 velocity = Vector3.zero;
+    private Vector3 cameraVelocity = Vector3.zero;
     private Vector3 targetFollowPosition;
 
     // Update is called once per frame
@@ -21,7 +21,7 @@ public class CameraFollow : MonoBehaviour
             Vector3.SmoothDamp(
                 transform.position, 
                 targetFollowPosition, 
-                ref velocity, 
+                ref cameraVelocity, 
                 smoothDampingTime);
 
         transform.LookAt(targetFollowTransform, targetFollowTransform.up);
