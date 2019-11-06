@@ -8,6 +8,7 @@ public class setUpSplitScreen : MonoBehaviour
     public int numberOfPlayers;
     public GameObject[] cams;
     public GameObject[] lists;
+    public GameObject[] players;
 
     public Vector2[] ListPosP2;
     public Vector2[] ListPosP3;
@@ -17,7 +18,10 @@ public class setUpSplitScreen : MonoBehaviour
     {
         //numberOfPlayers = PlayerPrefs.GetInt("NoOfPlayers");
 
-
+        for (int i = 0; i < numberOfPlayers; i++)
+        {
+            players[i].SetActive(true);
+        }
         //Player list UI position arrays
         //Each vector corresponds to one list
 
