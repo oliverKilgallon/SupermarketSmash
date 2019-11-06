@@ -5,12 +5,11 @@ using UnityEngine.AI;
 
 public class ItemSpawn : MonoBehaviour
 {
-    public List<string> localItems = new List<string>();
     public GameObject[] pointArray;
     public GameObject[] sphereArray;
     public GameObject spawnable;
-   
-    
+
+    public bool spawntest;
    
    
 
@@ -23,8 +22,32 @@ public class ItemSpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("test1");
         itemArrayCount = 0;
         stoppedCount = 0;
+        
+        foreach (string item in this.gameObject.GetComponent<Gameplayloop>().allPlayersItems)
+        {
+            Debug.Log(item);
+            int pointCount = 0;
+            foreach (GameObject point in pointArray)
+            {
+               // Debug.Log(item);
+                int count = 0;
+                foreach (string pointitem in point.gameObject.GetComponent<PointList>().acceptedItems)
+                {
+                    if (item == point.gameObject.GetComponent<PointList>().acceptedItems[count])
+                    {
+                        SpawnRandom(new Vector3(point.transform.position.x,2,point.transform.position.z), pointCount, item);
+
+
+                    }
+                    count++;
+                }
+                pointCount++;
+            }
+        }
+       
     }
 
     // Update is called once per frame
@@ -33,16 +56,16 @@ public class ItemSpawn : MonoBehaviour
         int randPoint;
         Vector3 randLocation;
         for(int i = 0;i<10 ;i++ )
-        if (Input.GetKeyDown("o")) {
+        if (Input.GetKeyDown("o")&&spawntest) {
             randPoint = Random.Range(0,pointArray.Length);
             randLocation = new Vector3(pointArray[randPoint].transform.position.x,2, pointArray[randPoint].transform.position.z);
-                SpawnRandom(randLocation,randPoint);
+                SpawnRandom(randLocation,randPoint,"test");
                 //Instantiate(spawnable, randLocation, Quaternion.Euler(new Vector3(0, randAngle, 0)));
                
         }
         
     }
-    public void SpawnRandom(Vector3 spawnLocation,int point)
+    public void SpawnRandom(Vector3 spawnLocation,int point,string item)
     {
         float randLength;
         float randAngle;
@@ -67,13 +90,14 @@ public class ItemSpawn : MonoBehaviour
             {
                 Debug.DrawRay(new Vector3(spawnLocation.x, spawnLocation.y + 10, spawnLocation.z), Vector3.down * hit.distance, Color.red, 5.0f);
                 Debug.Log("Did Hit");
-                SpawnRandom(oldLocation, point);
+                SpawnRandom(oldLocation, point,item);
             }
             else
             {
                 Debug.DrawRay(new Vector3(spawnLocation.x, spawnLocation.y + 10, spawnLocation.z), Vector3.down * hit.distance, Color.white, 5.0f);
                 GameObject thisProduct;
                 thisProduct = (GameObject)Instantiate(spawnable, spawnLocation, Quaternion.Euler(new Vector3(0, randAngle, 0)));
+                thisProduct.gameObject.GetComponent<ItemScript>().product = item;
             }
         }
         else

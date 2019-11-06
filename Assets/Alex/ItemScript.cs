@@ -10,6 +10,7 @@ public class ItemScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+      //  product = "EMPTY";
         inWall = false;
        // product = Random.Range(0, 15);
     }

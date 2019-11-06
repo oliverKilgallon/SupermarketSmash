@@ -5,14 +5,16 @@ using UnityEngine;
 public class Gameplayloop : MonoBehaviour
 {
     public List<string> allItems = new List<string>();
+    public List<string> allPlayersItems = new List<string>();
     public GameObject[] players;
     public int listLength;
     public int sharedListLength;
     public int noOfPlayers;
     public bool setListMode;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        Debug.Log("test2");
         int counter = 0;
         string line;
         System.IO.StreamReader file =
@@ -41,6 +43,13 @@ public class Gameplayloop : MonoBehaviour
                 if (donePlayers < noOfPlayers)
                 {
                     player.GetComponent<Playerscript>().localItems = playerList;
+                    if (donePlayers < noOfPlayers/2)//if using the same list for everyone, we need half the items 
+                    {
+                        foreach (string item in playerList)
+                        {
+                            allPlayersItems.Add(item);
+                        }
+                    }
                     donePlayers++;
                 }
             }
@@ -67,8 +76,16 @@ public class Gameplayloop : MonoBehaviour
                     {
                         //Debug.Log("test");
                         thisPlayerList.Add(allItems[Random.Range(0, allItems.Count)]);
+                        
 
                     }
+                    
+                    foreach (string item in thisPlayerList)
+                    {
+                        allPlayersItems.Add(item);
+                    }
+                    
+
                     donePlayers++;
                 }
             }
