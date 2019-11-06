@@ -3,28 +3,29 @@ using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
-    Vector3 origPos;
-    float elapsed;
+    Vector3 origCamPos;
+    float elapsedTime;
     float xDisp;
     float yDisp;
 
-    public IEnumerator Shake(float dur, float magnitude)
+    public IEnumerator Shake(float shakeDur, float shakeMagnitude)
     {
-        origPos = transform.localPosition;
-        elapsed = 0.0f;
+        origCamPos = transform.localPosition;
+        elapsedTime = 0.0f;
 
-        while (elapsed < dur)
+        while (elapsedTime < shakeDur)
         {
-            xDisp += Random.Range(-1f, 1f) * magnitude;
-            yDisp += Random.Range(-1f, 1f) * magnitude;
+            xDisp += Random.Range(-1f, 1f) * shakeMagnitude;
+            yDisp += Random.Range(-1f, 1f) * shakeMagnitude;
 
-            transform.localPosition = new Vector3(xDisp, yDisp, origPos.z);
-            elapsed += Time.deltaTime;
-
+            Debug.Log(transform.localPosition);
+            transform.localPosition = new Vector3(xDisp, yDisp, origCamPos.z);
+            elapsedTime += Time.deltaTime;
+            Debug.Log("New camera pos: " + transform.localPosition);
             yield return null;
         }
 
-        transform.localPosition = origPos;
+        transform.localPosition = origCamPos;
         
     }
 }
