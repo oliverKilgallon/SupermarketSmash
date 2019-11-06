@@ -1,4 +1,5 @@
 ﻿using UnityEngine.SceneManagement;
+using System.Collections;
 using UnityEngine;
 
 public class ShakeTriggerTest : MonoBehaviour
@@ -18,15 +19,15 @@ public class ShakeTriggerTest : MonoBehaviour
         }
     }
     */
-
-    void Update()
+    void FixedUpdate()
     {
         /**Current input check is for testing, 
          * will be changed to appropriate function call as appropriate in the future
          */
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            StartCoroutine(cameraShake.Shake(duration, magnitude));
-        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        
     }
 }
