@@ -1,0 +1,369 @@
+fileFormatVersion: 2
+guid: 558cd44a07b679f4a8068e41c20a9d5d
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Tin can
+    100002: //RootNode
+    100004: Tin can001
+    100006: Tin can002
+    100008: Tin can003
+    100010: Tin can004
+    100012: Tin can005
+    100014: Tin can006
+    100016: Tin can007
+    100018: Tin can008
+    100020: Tin can009
+    100022: Tin can010
+    100024: Tin can011
+    100026: Tin can012
+    100028: Tin can013
+    100030: Tin can014
+    100032: Tin can015
+    100034: Tin can016
+    100036: Tin can017
+    100038: Tin can018
+    100040: Tin can019
+    100042: Tin can020
+    100044: Tin can021
+    100046: Tin can022
+    100048: Tin can023
+    100050: Tin can024
+    100052: Tin can025
+    100054: Tin can026
+    100056: Tin can027
+    100058: Tin can028
+    100060: Tin can029
+    100062: Tin can030
+    100064: Tin can031
+    100066: Tin can032
+    100068: Tin can033
+    100070: Tin can034
+    100072: Tin can035
+    100074: Tin can036
+    100076: Tin can037
+    100078: Tin can038
+    100080: Tin can039
+    100082: Tin can040
+    100084: Tin can041
+    100086: Tin can042
+    100088: Tin can043
+    100090: Tin can044
+    100092: Tin can045
+    100094: Tin can046
+    100096: Tin can047
+    100098: Tin can048
+    100100: Tin can049
+    100102: Tin can050
+    100104: Tin can051
+    100106: Tin can052
+    100108: Tin can053
+    100110: Tin can054
+    400000: Tin can
+    400002: //RootNode
+    400004: Tin can001
+    400006: Tin can002
+    400008: Tin can003
+    400010: Tin can004
+    400012: Tin can005
+    400014: Tin can006
+    400016: Tin can007
+    400018: Tin can008
+    400020: Tin can009
+    400022: Tin can010
+    400024: Tin can011
+    400026: Tin can012
+    400028: Tin can013
+    400030: Tin can014
+    400032: Tin can015
+    400034: Tin can016
+    400036: Tin can017
+    400038: Tin can018
+    400040: Tin can019
+    400042: Tin can020
+    400044: Tin can021
+    400046: Tin can022
+    400048: Tin can023
+    400050: Tin can024
+    400052: Tin can025
+    400054: Tin can026
+    400056: Tin can027
+    400058: Tin can028
+    400060: Tin can029
+    400062: Tin can030
+    400064: Tin can031
+    400066: Tin can032
+    400068: Tin can033
+    400070: Tin can034
+    400072: Tin can035
+    400074: Tin can036
+    400076: Tin can037
+    400078: Tin can038
+    400080: Tin can039
+    400082: Tin can040
+    400084: Tin can041
+    400086: Tin can042
+    400088: Tin can043
+    400090: Tin can044
+    400092: Tin can045
+    400094: Tin can046
+    400096: Tin can047
+    400098: Tin can048
+    400100: Tin can049
+    400102: Tin can050
+    400104: Tin can051
+    400106: Tin can052
+    400108: Tin can053
+    400110: Tin can054
+    2100000: No Name
+    2300000: Tin can
+    2300002: Tin can001
+    2300004: Tin can002
+    2300006: Tin can003
+    2300008: Tin can004
+    2300010: Tin can005
+    2300012: Tin can006
+    2300014: Tin can007
+    2300016: Tin can008
+    2300018: Tin can009
+    2300020: Tin can010
+    2300022: Tin can011
+    2300024: Tin can012
+    2300026: Tin can013
+    2300028: Tin can014
+    2300030: Tin can015
+    2300032: Tin can016
+    2300034: Tin can017
+    2300036: Tin can018
+    2300038: Tin can019
+    2300040: Tin can020
+    2300042: Tin can021
+    2300044: Tin can022
+    2300046: Tin can023
+    2300048: Tin can024
+    2300050: Tin can025
+    2300052: Tin can026
+    2300054: Tin can027
+    2300056: Tin can028
+    2300058: Tin can029
+    2300060: Tin can030
+    2300062: Tin can031
+    2300064: Tin can032
+    2300066: Tin can033
+    2300068: Tin can034
+    2300070: Tin can035
+    2300072: Tin can036
+    2300074: Tin can037
+    2300076: Tin can038
+    2300078: Tin can039
+    2300080: Tin can040
+    2300082: Tin can041
+    2300084: Tin can042
+    2300086: Tin can043
+    2300088: Tin can044
+    2300090: Tin can045
+    2300092: Tin can046
+    2300094: Tin can047
+    2300096: Tin can048
+    2300098: Tin can049
+    2300100: Tin can050
+    2300102: Tin can051
+    2300104: Tin can052
+    2300106: Tin can053
+    2300108: Tin can054
+    3300000: Tin can
+    3300002: Tin can001
+    3300004: Tin can002
+    3300006: Tin can003
+    3300008: Tin can004
+    3300010: Tin can005
+    3300012: Tin can006
+    3300014: Tin can007
+    3300016: Tin can008
+    3300018: Tin can009
+    3300020: Tin can010
+    3300022: Tin can011
+    3300024: Tin can012
+    3300026: Tin can013
+    3300028: Tin can014
+    3300030: Tin can015
+    3300032: Tin can016
+    3300034: Tin can017
+    3300036: Tin can018
+    3300038: Tin can019
+    3300040: Tin can020
+    3300042: Tin can021
+    3300044: Tin can022
+    3300046: Tin can023
+    3300048: Tin can024
+    3300050: Tin can025
+    3300052: Tin can026
+    3300054: Tin can027
+    3300056: Tin can028
+    3300058: Tin can029
+    3300060: Tin can030
+    3300062: Tin can031
+    3300064: Tin can032
+    3300066: Tin can033
+    3300068: Tin can034
+    3300070: Tin can035
+    3300072: Tin can036
+    3300074: Tin can037
+    3300076: Tin can038
+    3300078: Tin can039
+    3300080: Tin can040
+    3300082: Tin can041
+    3300084: Tin can042
+    3300086: Tin can043
+    3300088: Tin can044
+    3300090: Tin can045
+    3300092: Tin can046
+    3300094: Tin can047
+    3300096: Tin can048
+    3300098: Tin can049
+    3300100: Tin can050
+    3300102: Tin can051
+    3300104: Tin can052
+    3300106: Tin can053
+    3300108: Tin can054
+    4300000: Tin can
+    4300002: Tin can001
+    4300004: Tin can002
+    4300006: Tin can003
+    4300008: Tin can004
+    4300010: Tin can005
+    4300012: Tin can006
+    4300014: Tin can007
+    4300016: Tin can008
+    4300018: Tin can009
+    4300020: Tin can010
+    4300022: Tin can011
+    4300024: Tin can012
+    4300026: Tin can013
+    4300028: Tin can014
+    4300030: Tin can015
+    4300032: Tin can016
+    4300034: Tin can017
+    4300036: Tin can018
+    4300038: Tin can019
+    4300040: Tin can020
+    4300042: Tin can021
+    4300044: Tin can022
+    4300046: Tin can023
+    4300048: Tin can024
+    4300050: Tin can025
+    4300052: Tin can026
+    4300054: Tin can027
+    4300056: Tin can028
+    4300058: Tin can029
+    4300060: Tin can030
+    4300062: Tin can031
+    4300064: Tin can032
+    4300066: Tin can033
+    4300068: Tin can034
+    4300070: Tin can035
+    4300072: Tin can036
+    4300074: Tin can037
+    4300076: Tin can038
+    4300078: Tin can039
+    4300080: Tin can040
+    4300082: Tin can041
+    4300084: Tin can042
+    4300086: Tin can043
+    4300088: Tin can044
+    4300090: Tin can045
+    4300092: Tin can046
+    4300094: Tin can047
+    4300096: Tin can048
+    4300098: Tin can049
+    4300100: Tin can050
+    4300102: Tin can051
+    4300104: Tin can052
+    4300106: Tin can053
+    4300108: Tin can054
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
