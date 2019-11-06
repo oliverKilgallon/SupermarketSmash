@@ -15,7 +15,7 @@ public class setUpSplitScreen : MonoBehaviour
 
     private void Awake()
     {
-        numberOfPlayers = PlayerPrefs.GetInt("NoOfPlayers");
+        //numberOfPlayers = PlayerPrefs.GetInt("NoOfPlayers");
 
 
         //Player list UI position arrays
