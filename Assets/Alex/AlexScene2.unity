@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1663,14 +1663,14 @@ MonoBehaviour:
   - {fileID: 4300000, guid: 37f6e432723ef5340ac3435e8654f32f, type: 3}
   - {fileID: 4300000, guid: 37f6e432723ef5340ac3435e8654f32f, type: 3}
   productMat:
-  - {fileID: 2100000, guid: 19123c4695614bc44bdebe6eec5b5f8f, type: 2}
-  - {fileID: 2100000, guid: 19123c4695614bc44bdebe6eec5b5f8f, type: 2}
+  - {fileID: 2100000, guid: 0bca7128ae208e74c84539a2891e64d9, type: 2}
+  - {fileID: 2100000, guid: 0bca7128ae208e74c84539a2891e64d9, type: 2}
   - {fileID: 2100000, guid: 1a010d8b4cc4aca4dbc0eb3baab1b85f, type: 2}
-  - {fileID: 2100000, guid: 19123c4695614bc44bdebe6eec5b5f8f, type: 2}
-  - {fileID: 2100000, guid: 19123c4695614bc44bdebe6eec5b5f8f, type: 2}
-  - {fileID: 2100000, guid: 19123c4695614bc44bdebe6eec5b5f8f, type: 2}
-  - {fileID: 2100000, guid: 19123c4695614bc44bdebe6eec5b5f8f, type: 2}
-  - {fileID: 2100000, guid: 19123c4695614bc44bdebe6eec5b5f8f, type: 2}
+  - {fileID: 2100000, guid: 0bca7128ae208e74c84539a2891e64d9, type: 2}
+  - {fileID: 2100000, guid: 0bca7128ae208e74c84539a2891e64d9, type: 2}
+  - {fileID: 2100000, guid: 0bca7128ae208e74c84539a2891e64d9, type: 2}
+  - {fileID: 2100000, guid: 0bca7128ae208e74c84539a2891e64d9, type: 2}
+  - {fileID: 2100000, guid: 0bca7128ae208e74c84539a2891e64d9, type: 2}
   pointArray:
   - {fileID: 571048141}
   - {fileID: 390656696}
