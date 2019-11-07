@@ -18,7 +18,7 @@ public class Gameplayloop : MonoBehaviour
         int counter = 0;
         string line;
         System.IO.StreamReader file =
-           new System.IO.StreamReader("Assets/Alex/ItemStorage.txt");
+           new System.IO.StreamReader("Assets/ItemStorage.txt");
         while ((line = file.ReadLine()) != null)
         {
            // Debug.Log(line);
