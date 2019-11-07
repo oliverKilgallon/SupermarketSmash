@@ -172,8 +172,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraShake: {fileID: 5796032444445982080}
   shakeThreshold: 10
-  shakeDuration: 0
-  shakeMagnitude: 0.01
+  shakeDuration: 0.2
+  shakeMagnitude: 0.005
 --- !u!1 &5718054485573707813
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,9 +218,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ac2304c340f78428d7cefac744f5f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayStart: {fileID: 3754156209466318588}
   cameraObj: {fileID: 3754156209466318588}
-  rayDistance: 10
+  cameraRayDistance: 5
+  leftRightRayDistance: 1.5
 --- !u!1 &5796032444445982087
 GameObject:
   m_ObjectHideFlags: 0
