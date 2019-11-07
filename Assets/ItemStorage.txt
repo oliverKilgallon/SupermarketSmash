@@ -1,0 +1,8 @@
+Milk
+Bread
+Cereal
+Apple
+Fish
+Chicken
+Pizza
+Cheese

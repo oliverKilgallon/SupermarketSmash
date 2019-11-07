@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15af170c07e9ff346b9c212fc6c761b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetFollow: {fileID: 5796032444680276593}
-  offsetPos: {x: 0, y: 2, z: -4}
-  smoothTime: 0.35
+  targetFollowTransform: {fileID: 5796032444680276593}
+  cameraOffsetPos: {x: 0, y: 2, z: -4}
+  smoothDampingTime: 0.3
 --- !u!1 &5234723538573846323
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,7 +171,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraShake: {fileID: 5796032444445982080}
-  duration: 0.15
+  shakeThreshold: 10
+  shakeDuration: 0
   shakeMagnitude: 0.01
 --- !u!1 &5796032444445982087
 GameObject:

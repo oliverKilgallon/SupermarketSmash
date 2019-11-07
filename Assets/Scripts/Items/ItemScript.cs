@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class ItemScript : MonoBehaviour
 {
-    public int product;
+    public string product;
+    public Mesh itemMesh;
+    public Material itemMat; 
+   
+        
     public bool inWall;
    
     // Use this for initialization
     void Start()
     {
+      //  product = "EMPTY";
         inWall = false;
-        product = Random.Range(0, 15);
+       // product = Random.Range(0, 15);
     }
 
     // Update is called once per frame
