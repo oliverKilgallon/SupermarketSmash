@@ -74,4 +74,15 @@ public class MoveMultiplayer : MonoBehaviour
         }
         */
     }
+    private void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "item")
+        {
+            //string product = col.gameObject.GetComponent<ItemScript>().product;
+            //control.gameObject.GetComponent<ItemSpawn>().;
+            // Debug.Log("product "+ product);
+            Destroy(col.gameObject);
+
+        }
+    }
 }
