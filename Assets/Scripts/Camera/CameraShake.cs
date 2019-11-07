@@ -17,11 +17,9 @@ public class CameraShake : MonoBehaviour
         {
             xDisp += Random.Range(-1f, 1f) * shakeMagnitude;
             yDisp += Random.Range(-1f, 1f) * shakeMagnitude;
-
-            Debug.Log(transform.localPosition);
+            
             transform.localPosition = new Vector3(xDisp, yDisp, origCamPos.z);
             elapsedTime += Time.deltaTime;
-            Debug.Log("New camera pos: " + transform.localPosition);
             yield return null;
         }
 
