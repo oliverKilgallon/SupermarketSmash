@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class impulse : MonoBehaviour
 {
+
+    public GameObject[] cereal;
+    public GameObject explosionPoint;
+    public float explosionForce;
+
+    private IEnumerator freeze;
+    public float waitTime;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,14 +22,38 @@ public class impulse : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        { // if left button pressed...
-            Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
-            {
-                hit.transform.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(10, 10, 10), ForceMode.Impulse);
-            }
-        }
+        GetComponent<Rigidbody>().AddForce(new Vector3(-10, 0, 0), ForceMode.Acceleration);
+
+
+
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+        //GetComponent<Rigidbody>().isKinematic = true;
+        foreach (GameObject cb in cereal)
+        {
+            Debug.Log("BOOM");
+            cb.GetComponent<Rigidbody>().AddExplosionForce(Random.Range(explosionForce-30, explosionForce+30), explosionPoint.transform.position, 200);
+        }
+        freeze = freezeObjects(waitTime);
+        StartCoroutine(freeze);
+    }
+
+    IEnumerator freezeObjects(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+
+        foreach (GameObject cb in cereal)
+        {
+            cb.GetComponent<Rigidbody>().isKinematic = true;
+        }
+        GetComponent<Rigidbody>().isKinematic = true;
+    }
+
+
+
+
+
 }

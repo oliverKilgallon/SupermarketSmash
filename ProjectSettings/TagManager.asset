@@ -6,6 +6,9 @@ TagManager:
   tags:
   - item
   - wall
+  - playGame
+  - options
+  - exitGame
   layers:
   - Default
   - TransparentFX
