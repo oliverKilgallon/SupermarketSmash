@@ -27,23 +27,23 @@ public class setUpSplitScreen : MonoBehaviour
 
         ListPosP2 = new Vector2[]
         {
-            new Vector2( 0, 415 ),
-            new Vector2( 0, -415 ),
+            new Vector2( 0, 175 ),
+            new Vector2( 0, -175 ),
         };
 
         ListPosP3 = new Vector2[]
         {
-            new Vector2( -400, 415 ),
-            new Vector2( 400, 415 ),
-            new Vector2( 0, -415 ),
+            new Vector2( -200, 175 ),
+            new Vector2( 200, 175 ),
+            new Vector2( 0, -175 ),
         };
 
         ListPosP4 = new Vector2[]
         {
-            new Vector2( -400, 415 ),
-            new Vector2( 400, 415 ),
-            new Vector2( -400, -415 ),
-            new Vector2( 400, -415 ),
+            new Vector2( -200, 175 ),
+            new Vector2( 200, 175 ),
+            new Vector2( -200, -175 ),
+            new Vector2( 200, -175 ),
         };
 
         switch (numberOfPlayers)

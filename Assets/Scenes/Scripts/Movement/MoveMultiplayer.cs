@@ -17,11 +17,12 @@ public class MoveMultiplayer : MonoBehaviour
     
     public Vector3 Angle;
     public GameObject control;
+    Playerscript ps;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        ps = GetComponent<Playerscript>();
     }
 
     // Update is called once per frame
@@ -78,6 +79,15 @@ public class MoveMultiplayer : MonoBehaviour
     {
         if (col.gameObject.tag == "item")
         {
+            foreach(string item in ps.localItems)
+            {
+                if (item == col.gameObject.GetComponent<ItemScript>().product)
+                {
+                    ps.localItems.Remove(item);
+                    break;
+                }
+            }
+
             //string product = col.gameObject.GetComponent<ItemScript>().product;
             //control.gameObject.GetComponent<ItemSpawn>().;
             // Debug.Log("product "+ product);

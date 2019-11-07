@@ -7,6 +7,7 @@ public class Gameplayloop : MonoBehaviour
     public List<string> allItems = new List<string>();
     public List<string> allPlayersItems = new List<string>();
     public GameObject[] players;
+    public GameObject splitscreen;
     public int listLength;
     public int sharedListLength;
     public int noOfPlayers;
@@ -14,6 +15,7 @@ public class Gameplayloop : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        noOfPlayers = splitscreen.gameObject.GetComponent<setUpSplitScreen>().numberOfPlayers;
        // Debug.Log("test2");
         int counter = 0;
         string line;
