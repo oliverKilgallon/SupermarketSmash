@@ -54,13 +54,13 @@ public class Move : MonoBehaviour
         
       
     }
-    private void OnTriggerEnter(Collider col)
+    private void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.tag == "item")
         {
-            string product = col.gameObject.GetComponent<ItemScript>().product;
+            //string product = col.gameObject.GetComponent<ItemScript>().product;
             //control.gameObject.GetComponent<ItemSpawn>().;
-            Debug.Log("product "+ product);
+           // Debug.Log("product "+ product);
             Destroy(col.gameObject);
             
         }
