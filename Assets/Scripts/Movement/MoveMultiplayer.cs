@@ -83,6 +83,7 @@ public class MoveMultiplayer : MonoBehaviour
 
                         ps.listText[ps.localItems.IndexOf(item)].text = "";
                         ps.localItems[ps.localItems.IndexOf(item)] = "";
+                        ps.currentHeld.Add(item);
                         Destroy(col.gameObject);
                         break;
 

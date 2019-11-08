@@ -8,6 +8,8 @@ public class Playerscript : MonoBehaviour
     public List<string> localItems = new List<string>();
     public Text[] listText = new Text[8];
 
+    public List<string> currentHeld = new List<string>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,4 +42,25 @@ public class Playerscript : MonoBehaviour
             Debug.Log("your winner"); 
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.tag == "Player")
+        {
+            if (currentHeld.Count > 0)
+            {
+                int index = Random.Range(0, currentHeld.Count - 1);
+
+                for (int i = 0; i < localItems.Count; i++)
+                {
+                    
+                }
+
+                currentHeld.RemoveAt(index);
+
+            }
+        }
+    }
+
+
 }
