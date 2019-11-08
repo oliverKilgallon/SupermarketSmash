@@ -17,6 +17,13 @@ public class setUpSplitScreen : MonoBehaviour
     private void Awake()
     {
         //numberOfPlayers = PlayerPrefs.GetInt("NoOfPlayers");
+<<<<<<< HEAD
+=======
+        for (int i=0;i<numberOfPlayers ;i++ )
+        {
+            players[i].SetActive(true);
+        }
+>>>>>>> 7337f2ad0ca627277fdcf6020c128fd0fdf745c0
 
         for (int i = 0; i < numberOfPlayers; i++)
         {
@@ -27,23 +34,23 @@ public class setUpSplitScreen : MonoBehaviour
 
         ListPosP2 = new Vector2[]
         {
-            new Vector2( 0, 415 ),
-            new Vector2( 0, -415 ),
+            new Vector2( 0, 205 ),
+            new Vector2( 0, -205 ),
         };
 
         ListPosP3 = new Vector2[]
         {
-            new Vector2( -400, 415 ),
-            new Vector2( 400, 415 ),
-            new Vector2( 0, -415 ),
+            new Vector2( -300, 205 ),
+            new Vector2( 300, 205 ),
+            new Vector2( 0, -205 ),
         };
 
         ListPosP4 = new Vector2[]
         {
-            new Vector2( -400, 415 ),
-            new Vector2( 400, 415 ),
-            new Vector2( -400, -415 ),
-            new Vector2( 400, -415 ),
+            new Vector2( -300, 205 ),
+            new Vector2( 300, 205 ),
+            new Vector2( -300, -205 ),
+            new Vector2( 300, -205 ),
         };
 
         switch (numberOfPlayers)

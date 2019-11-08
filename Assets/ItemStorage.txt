@@ -1,8 +1,8 @@
 Milk
-Bread
+EnergyDrink
 Cereal
-Apple
-Fish
-Chicken
 Pizza
-Cheese
+TinCan
+Pineapple
+Bread
+Watermelon

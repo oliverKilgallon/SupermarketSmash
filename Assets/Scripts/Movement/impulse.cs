@@ -53,9 +53,4 @@ public class impulse : MonoBehaviour
         }
         GetComponent<Rigidbody>().isKinematic = true;
     }
-
-
-
-
-
 }

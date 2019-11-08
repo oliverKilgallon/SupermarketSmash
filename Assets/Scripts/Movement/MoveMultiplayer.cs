@@ -17,13 +17,18 @@ public class MoveMultiplayer : MonoBehaviour
     
     public Vector3 Angle;
     public GameObject control;
+    Playerscript ps;
 
     Playerscript ps;
 
     // Start is called before the first frame update
     void Start()
     {
+<<<<<<< HEAD
        ps = GetComponent<Playerscript>();
+=======
+        ps = GetComponent<Playerscript>();
+>>>>>>> 7337f2ad0ca627277fdcf6020c128fd0fdf745c0
     }
 
     // Update is called once per frame
@@ -60,7 +65,7 @@ public class MoveMultiplayer : MonoBehaviour
         Quaternion deltaRotation = Quaternion.Euler(Angle * Time.deltaTime);
         
         body.MoveRotation(body.rotation * deltaRotation);
-        
+        //body.AddRelativeTorque((body.rotation * deltaRotation).eulerAngles);
       
     }
     private void OnCollisionEnter(Collision col)
@@ -78,5 +83,40 @@ public class MoveMultiplayer : MonoBehaviour
             Destroy(col.gameObject);
         }
     }
+<<<<<<< HEAD
 
+=======
+    private void OnCollisionEnter(Collision col)
+    {
+
+        if (col.gameObject.tag == "item")
+        {
+            int i = 0;
+            foreach(string item in ps.localItems)
+            {
+                if (ps.localItems[i] != "" && ps.localItems[i] != null)
+                {
+                    Debug.Log(item + " " + col.gameObject.GetComponent<ItemScript>().product);
+                    if (item == col.gameObject.GetComponent<ItemScript>().product)
+                    {
+
+                        ps.listText[ps.localItems.IndexOf(item)].text = "";
+                        ps.localItems[ps.localItems.IndexOf(item)] = "";
+                        Destroy(col.gameObject);
+                        break;
+
+                    }
+                
+                }
+                i++;
+            }
+
+            //string product = col.gameObject.GetComponent<ItemScript>().product;
+            //control.gameObject.GetComponent<ItemSpawn>().;
+            // Debug.Log("product "+ product);
+            
+
+        }
+    }
+>>>>>>> 7337f2ad0ca627277fdcf6020c128fd0fdf745c0
 }

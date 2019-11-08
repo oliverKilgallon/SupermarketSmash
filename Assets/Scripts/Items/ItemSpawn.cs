@@ -96,12 +96,13 @@ public class ItemSpawn : MonoBehaviour
 
         RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(new Vector3(spawnLocation.x, spawnLocation.y + 10, spawnLocation.z), Vector3.down, out hit, Mathf.Infinity))
+        if (Physics.Raycast(new Vector3(spawnLocation.x, spawnLocation.y + 10, spawnLocation.z), Vector3.down, out hit,200))
         {
             
            
-            if (hit.collider.tag == "wall")
+            if (hit.collider.tag != "floor")
             {
+               // Debug.Log("missed");
                 Debug.DrawRay(new Vector3(spawnLocation.x, spawnLocation.y + 10, spawnLocation.z), Vector3.down * hit.distance, Color.red, 5.0f);
                // Debug.Log("Did Hit");
                 SpawnRandom(oldLocation, point,item);
