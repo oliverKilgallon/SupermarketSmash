@@ -19,16 +19,12 @@ public class MoveMultiplayer : MonoBehaviour
     public GameObject control;
     Playerscript ps;
 
-    Playerscript ps;
-
     // Start is called before the first frame update
     void Start()
     {
-<<<<<<< HEAD
+
        ps = GetComponent<Playerscript>();
-=======
-        ps = GetComponent<Playerscript>();
->>>>>>> 7337f2ad0ca627277fdcf6020c128fd0fdf745c0
+
     }
 
     // Update is called once per frame
@@ -68,31 +64,16 @@ public class MoveMultiplayer : MonoBehaviour
         //body.AddRelativeTorque((body.rotation * deltaRotation).eulerAngles);
       
     }
-    private void OnCollisionEnter(Collision col)
-    {
-        if (col.gameObject.tag == "item")
-        {
-            foreach (string item in ps.localItems)
-            {
-                if (item == col.gameObject.GetComponent<ItemScript>().product)
-                {
-                    ps.localItems.Remove(item);
-                    break;
-                }
-            }
-            Destroy(col.gameObject);
-        }
-    }
-<<<<<<< HEAD
 
-=======
+
+
     private void OnCollisionEnter(Collision col)
     {
 
         if (col.gameObject.tag == "item")
         {
             int i = 0;
-            foreach(string item in ps.localItems)
+            foreach (string item in ps.localItems)
             {
                 if (ps.localItems[i] != "" && ps.localItems[i] != null)
                 {
@@ -106,7 +87,7 @@ public class MoveMultiplayer : MonoBehaviour
                         break;
 
                     }
-                
+
                 }
                 i++;
             }
@@ -114,9 +95,8 @@ public class MoveMultiplayer : MonoBehaviour
             //string product = col.gameObject.GetComponent<ItemScript>().product;
             //control.gameObject.GetComponent<ItemSpawn>().;
             // Debug.Log("product "+ product);
-            
+
 
         }
     }
->>>>>>> 7337f2ad0ca627277fdcf6020c128fd0fdf745c0
 }
