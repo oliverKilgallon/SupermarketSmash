@@ -118,8 +118,6 @@ public class ItemSpawn : MonoBehaviour
                 thisProduct.gameObject.GetComponent<MeshFilter>().mesh = thisProduct.gameObject.GetComponent<ItemScript>().itemMesh;
                 thisProduct.gameObject.GetComponent<MeshCollider>().sharedMesh = thisProduct.gameObject.GetComponent<ItemScript>().itemMesh;
                 thisProduct.gameObject.GetComponent<MeshRenderer>().material = thisProduct.gameObject.GetComponent<ItemScript>().itemMat;
-
-
             }
         }
         else

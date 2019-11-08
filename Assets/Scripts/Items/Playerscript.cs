@@ -53,7 +53,11 @@ public class Playerscript : MonoBehaviour
 
                 for (int i = 0; i < localItems.Count; i++)
                 {
-                    
+                    if (string.IsNullOrEmpty(localItems[i]))
+                    {
+                        localItems[i]= currentHeld[index];
+                        break;
+                    }
                 }
 
                 currentHeld.RemoveAt(index);
