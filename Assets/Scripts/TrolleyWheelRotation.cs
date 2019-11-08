@@ -29,9 +29,11 @@ public class TrolleyWheelRotation : MonoBehaviour
         {
             if (trolleyRigidbody.velocity.magnitude > 0)
             {
-                smoothedPositions[i] = Vector3.SmoothDamp(wheelTransforms[i].position, lastWheelPositions[i], ref wheelVelocities[i], 0.3f);
+                smoothedPositions[i] = Vector3.SmoothDamp(lastWheelPositions[i], wheelTransforms[i].position, ref wheelVelocities[i], 0.01f);
                 
                 wheelTransforms[i].LookAt(smoothedPositions[i], Vector3.up);
+
+                wheelTransforms[i].Rotate(new Vector3(0, 180.0f, 0));
             }
 
             lastWheelPositions[i] = smoothedPositions[i];
