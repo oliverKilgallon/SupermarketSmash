@@ -5,11 +5,16 @@ ModelImporter:
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: No Name
+    2100000: 'Material #89'
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Sphere001
-  externalObjects: {}
+    4300000: Pineapple
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #89'
+    second: {fileID: 2100000, guid: cd5057eba9eea5a49b36b1fa1c77f72d, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

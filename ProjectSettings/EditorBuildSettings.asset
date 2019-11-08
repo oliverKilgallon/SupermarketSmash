@@ -5,9 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/TomUI.unity
-    guid: 37eba32b8b176d14cbc3e4451d80cfbd
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/TomIngameUI.unity
     guid: 2b7e0e24223540a44ba2126e57abd7b0

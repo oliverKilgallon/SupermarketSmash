@@ -2,7 +2,7 @@ Milk
 EnergyDrink
 Cereal
 Pizza
-BogRoll
+TinCan
 Pineapple
 Bread
 Watermelon
