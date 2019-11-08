@@ -30,7 +30,8 @@ public class impulse : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        
+        if(collision.transform.gameObject.tag != "floor")
+        {
         //GetComponent<Rigidbody>().isKinematic = true;
         foreach (GameObject cb in cereal)
         {
@@ -39,6 +40,7 @@ public class impulse : MonoBehaviour
         }
         freeze = freezeObjects(waitTime);
         StartCoroutine(freeze);
+        }
     }
 
     IEnumerator freezeObjects(float waitTime)

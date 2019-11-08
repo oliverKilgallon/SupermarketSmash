@@ -9,6 +9,7 @@ TagManager:
   - playGame
   - options
   - exitGame
+  - floor
   layers:
   - Default
   - TransparentFX
