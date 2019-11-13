@@ -5,12 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/TomUI.unity
-    guid: 37eba32b8b176d14cbc3e4451d80cfbd
-  - enabled: 1
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: Assets/Scenes/TomIngameUI.unity
     guid: 2b7e0e24223540a44ba2126e57abd7b0
+  - enabled: 1
+    path: Assets/Scenes/GreyboxV2.unity
+    guid: fb6aa3d8049db1f4db7580698495d212
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 8b7dff7aae3cbbe45a577a4f856c3cf8,
       type: 2}
