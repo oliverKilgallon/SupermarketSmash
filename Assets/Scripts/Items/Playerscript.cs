@@ -10,10 +10,12 @@ public class Playerscript : MonoBehaviour
 
     public List<string> currentHeld = new List<string>();
 
+    ItemSpawn iS;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        iS = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemSpawn>();
     }
 
     // Update is called once per frame
@@ -43,9 +45,9 @@ public class Playerscript : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision col)
     {
-        if (collision.transform.tag == "Player")
+        if (col.transform.tag == "Player")
         {
             if (currentHeld.Count > 0)
             {
@@ -56,6 +58,8 @@ public class Playerscript : MonoBehaviour
                     if (string.IsNullOrEmpty(localItems[i]))
                     {
                         localItems[i]= currentHeld[index];
+                        GameObject dropped = iS.createItem(col.transform.position, Random.Range(0, 360), currentHeld[index]);
+                        dropped.GetComponent<Rigidbody>().AddForce(col.relativeVelocity * 10);
                         break;
                     }
                 }
