@@ -121,10 +121,12 @@ public class ItemSpawn : MonoBehaviour
 
       
     }
-    public GameObject createItem(Vector3 loc, float angle, string item)
+
+
+    public GameObject createItem(Vector3 spawnLoc, float randAngle, string item)
     {
         GameObject thisProduct;
-        thisProduct = (GameObject)Instantiate(spawnable, loc, Quaternion.Euler(new Vector3(0, angle, 0)));
+        thisProduct = (GameObject)Instantiate(spawnable, spawnLoc, Quaternion.Euler(new Vector3(0, randAngle, 0)));
         thisProduct.gameObject.GetComponent<ItemScript>().product = item;
         thisProduct.gameObject.GetComponent<ItemScript>().itemMat = itemhashMat[item];
         thisProduct.gameObject.GetComponent<ItemScript>().itemMesh = itemhashMesh[item];
@@ -133,5 +135,4 @@ public class ItemSpawn : MonoBehaviour
         thisProduct.gameObject.GetComponent<MeshRenderer>().material = thisProduct.gameObject.GetComponent<ItemScript>().itemMat;
         return thisProduct;
     }
-
 }

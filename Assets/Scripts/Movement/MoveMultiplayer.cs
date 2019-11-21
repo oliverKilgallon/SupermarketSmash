@@ -18,12 +18,13 @@ public class MoveMultiplayer : MonoBehaviour
     public Vector3 Angle;
     public GameObject control;
     Playerscript ps;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-
        ps = GetComponent<Playerscript>();
+      
 
     }
 
