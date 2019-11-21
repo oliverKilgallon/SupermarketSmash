@@ -61,7 +61,7 @@ public class Move : MonoBehaviour
             //string product = col.gameObject.GetComponent<ItemScript>().product;
             //control.gameObject.GetComponent<ItemSpawn>().;
            // Debug.Log("product "+ product);
-            Destroy(col.gameObject);
+           // Destroy(col.gameObject);
             
         }
     }
