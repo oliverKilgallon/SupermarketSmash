@@ -147,7 +147,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5234723538573846333}
-  - component: {fileID: 5234723538573846332}
   - component: {fileID: 5234723538573846334}
   - component: {fileID: 5234723538573846335}
   - component: {fileID: 5796032445145852620}
@@ -175,28 +174,6 @@ Transform:
   m_Father: {fileID: 5796032445282665544}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &5234723538573846332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5234723538573846323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dda334599e256d943bff6d9db0b59a0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  body: {fileID: 5234723538573846334}
-  Camera: {fileID: 0}
-  thrust: 200
-  turnSpeed: 150
-  qPress: 0
-  wPress: 0
-  ePress: 0
-  ctrlA: 0
-  Angle: {x: 0, y: 0, z: 0}
-  control: {fileID: 0}
 --- !u!54 &5234723538573846334
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -476,6 +453,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5234723538573846333}
     m_Modifications:
+    - target: {fileID: 100000, guid: 44c1a9d86d57ad14cb890eb4be1191ad, type: 3}
+      propertyPath: m_Name
+      value: Shopping trolly 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 44c1a9d86d57ad14cb890eb4be1191ad, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -531,10 +512,6 @@ PrefabInstance:
     - target: {fileID: 400002, guid: 44c1a9d86d57ad14cb890eb4be1191ad, type: 3}
       propertyPath: m_LocalScale.z
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 44c1a9d86d57ad14cb890eb4be1191ad, type: 3}
-      propertyPath: m_Name
-      value: Shopping trolly 1
       objectReference: {fileID: 0}
     - target: {fileID: 2300016, guid: 44c1a9d86d57ad14cb890eb4be1191ad, type: 3}
       propertyPath: m_Materials.Array.data[0]
