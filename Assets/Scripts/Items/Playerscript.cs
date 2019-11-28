@@ -11,8 +11,6 @@ public class Playerscript : MonoBehaviour
     public List<string> currentHeld = new List<string>();
     ItemSpawn iS;
 
-    ItemSpawn iS;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -61,14 +59,15 @@ public class Playerscript : MonoBehaviour
                     if (string.IsNullOrEmpty(localItems[i]))
                     {
                         localItems[i]= currentHeld[index];
-                        GameObject dropped = iS.createItem(col.transform.position, Random.Range(0, 360), currentHeld[index]);
+                        GameObject dropped = iS.createItem(new Vector3(0,0,0), Random.Range(0, 360), currentHeld[index]);
                         dropped.GetComponent<Rigidbody>().AddForce(col.relativeVelocity * 10);
+                        currentHeld.RemoveAt(index);
                         break;
                     }
                 }
-                GameObject temp = iS.createItem(transform.position,transform.rotation.y, currentHeld[index]);
-                currentHeld.RemoveAt(index);
-                temp.GetComponent<Rigidbody>().AddForce(collision.relativeVelocity);
+                //GameObject temp = iS.createItem(transform.position,transform.rotation.y, currentHeld[index]);
+                
+                //temp.GetComponent<Rigidbody>().AddForce(col.relativeVelocity);
                
 
             }

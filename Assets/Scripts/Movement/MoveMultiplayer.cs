@@ -61,9 +61,9 @@ public class MoveMultiplayer : MonoBehaviour
          
         Quaternion deltaRotation = Quaternion.Euler(Angle * Time.deltaTime);
         
-        body.MoveRotation(body.rotation * deltaRotation);
-        //body.AddRelativeTorque((body.rotation * deltaRotation).eulerAngles);
-      
+        //body.MoveRotation(body.rotation * deltaRotation);
+        //body.AddTorque(transform.up * turnSpeed * ((body.rotation * deltaRotation).eulerAngles));
+            body.AddTorque(transform.up * turnSpeed * Input.GetAxis("joy" + playerNumber + "x"));
     }
 
 
