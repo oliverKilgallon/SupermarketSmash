@@ -116,6 +116,12 @@ public class Gameplayloop : MonoBehaviour
             {
                 door.SetActive(false);
                 winArea.SetActive(true);
+                break;
+            }
+            else
+            {
+                door.SetActive(true);
+                winArea.SetActive(false);
             }
         }
     }

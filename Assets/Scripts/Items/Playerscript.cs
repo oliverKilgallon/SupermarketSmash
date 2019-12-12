@@ -43,6 +43,10 @@ public class Playerscript : MonoBehaviour
         {
             allItemsCollected = true;
         }
+        else
+        {
+            allItemsCollected = false;
+        }
     }
 
     private void OnCollisionEnter(Collision col)
