@@ -7,6 +7,7 @@ public class Move : MonoBehaviour
     public Rigidbody body;
     public GameObject Camera; 
     public float thrust;
+    public float torque;
     public float turnSpeed;
     public bool qPress;
     public bool wPress;
@@ -15,6 +16,9 @@ public class Move : MonoBehaviour
     
     public Vector3 Angle;
     public GameObject control;
+
+    private float turn;
+    private Quaternion deltaRotation;
 
     // Start is called before the first frame update
     void Start()
@@ -35,25 +39,31 @@ public class Move : MonoBehaviour
         { Angle = new Vector3(0, Input.GetAxis("Horizontal") * turnSpeed, 0); }
         else
         { Angle = new Vector3(0, 0, 0); }
-        
+
         // body.AddForceAtPosition(transform.rotation.y * turnSpeed,body.gameObject.transform.position);
 
         // body.AddForce(transform.forward * Input.GetAxis("Thrust")); 
+        turn = Input.GetAxis("Horizontal");
     }
     void FixedUpdate()
     {
          
        
         if (ctrlA||wPress) { body.AddForce(transform.forward * thrust); }
-
-
-         
-        Quaternion deltaRotation = Quaternion.Euler(Angle * Time.deltaTime);
         
-        body.MoveRotation(body.rotation * deltaRotation);
+        //turn = Mathf.Clamp(turn, 0.5f, 1.0f);
+        //Mathf.Clamp(body.angularVelocity.y, torque / 2.0f, torque);
+        
+        body.AddTorque(transform.up * torque * turn);
+        //Debug.Log("Turn: " + transform.up * torque * turn);
+
+        deltaRotation = Quaternion.Euler(Angle * Time.deltaTime);
+        
+        //body.MoveRotation(body.rotation * deltaRotation);
         
       
     }
+
     private void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.tag == "item")

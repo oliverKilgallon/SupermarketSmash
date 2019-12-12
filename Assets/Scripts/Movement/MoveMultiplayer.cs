@@ -9,6 +9,7 @@ public class MoveMultiplayer : MonoBehaviour
     public Rigidbody body;
     public GameObject Camera; 
     public float thrust;
+    public float torque;
     public float turnSpeed;
     public bool qPress;
     public bool wPress;
@@ -53,11 +54,13 @@ public class MoveMultiplayer : MonoBehaviour
        
         if (ctrlA||wPress) { body.AddForce(transform.forward * thrust); }
 
+        float turn = Input.GetAxis("joy" + playerNumber + "x");
 
-         
-        Quaternion deltaRotation = Quaternion.Euler(Angle * Time.deltaTime);
+        body.AddTorque(transform.up * torque * turn);
+
+        //Quaternion deltaRotation = Quaternion.Euler(Angle * Time.deltaTime);
         
-        body.MoveRotation(body.rotation * deltaRotation);
+        //body.MoveRotation(body.rotation * deltaRotation);
         
       
     }
