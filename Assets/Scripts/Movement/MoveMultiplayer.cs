@@ -18,7 +18,7 @@ public class MoveMultiplayer : MonoBehaviour
     public Vector3 Angle;
     public GameObject control;
     Playerscript ps;
-    public List<GameObject> basketList = new List<GameObject>();
+    public List<string> basketList = new List<string>();
 
     // Start is called before the first frame update
     void Start()
@@ -53,7 +53,7 @@ public class MoveMultiplayer : MonoBehaviour
     void FixedUpdate()
     {
        
-        if (ctrlA) { body.AddForce(transform.forward * thrust); }
+        if (ctrlA||wPress) { body.AddForce(transform.forward * thrust); }
 
 
          
@@ -89,7 +89,7 @@ public class MoveMultiplayer : MonoBehaviour
                     Debug.Log(item + " " + col.gameObject.GetComponent<ItemScript>().product);
                     if (item == col.gameObject.GetComponent<ItemScript>().product)
                     {
-
+                        basketList.Add(item);
                         ps.listText[ps.localItems.IndexOf(item)].text = "";
                         ps.localItems[ps.localItems.IndexOf(item)] = "";
                         Destroy(col.gameObject);

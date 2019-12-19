@@ -18,10 +18,10 @@ public class ItemSpawn : MonoBehaviour
     public Material test;
 
     public float onMeshThreshold;
-    int stoppedCount;
+    //int stoppedCount;
     // public GameObject[] items;
     public List<GameObject> items = new List<GameObject>();
-    int itemArrayCount;
+    //int itemArrayCount;
 
 
     // Start is called before the first frame update
@@ -37,8 +37,8 @@ public class ItemSpawn : MonoBehaviour
         }
         //pMeshHash.Add("Cereal", test);
        // Debug.Log("test1");
-        itemArrayCount = 0;
-        stoppedCount = 0;
+        //itemArrayCount = 0;
+        //stoppedCount = 0;
         
         foreach (string item in this.gameObject.GetComponent<Gameplayloop>().allPlayersItems)
         {
