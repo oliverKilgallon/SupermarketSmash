@@ -35,7 +35,7 @@ public class controllerDetection : MonoBehaviour
     {
         PlayerPrefs.SetInt("NoOfPlayers", NoOfPlayers);
 
-        SceneManager.LoadScene("TomIngameUI");
+        SceneManager.LoadScene("playerCollision");
     }
     public void back()
     {
