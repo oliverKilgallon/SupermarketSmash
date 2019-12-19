@@ -22488,6 +22488,12 @@ PrefabInstance:
       propertyPath: rayDistance
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5234723538573846335, guid: 7b2aa9c50c7d975469109f4a91d018c3,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 3617e00b3100e084394b5218e55a46f9,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 7b2aa9c50c7d975469109f4a91d018c3, type: 3}
