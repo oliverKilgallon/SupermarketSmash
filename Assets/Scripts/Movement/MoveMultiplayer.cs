@@ -71,8 +71,7 @@ public class MoveMultiplayer : MonoBehaviour
 
 
     private void OnCollisionEnter(Collision col)
-    {
-
+    { 
         if (col.gameObject.tag == "item")
         {
             int i = 0;

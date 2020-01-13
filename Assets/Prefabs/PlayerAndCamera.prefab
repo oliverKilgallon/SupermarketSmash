@@ -61,7 +61,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5796032444445982083}
-  m_Father: {fileID: 5089961464245690109}
+  m_Father: {fileID: 5796032445282665544}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3914056833836093510
@@ -873,14 +873,6 @@ Transform:
   m_Children:
   - {fileID: 5234723538093119963}
   - {fileID: 5796032444680276593}
-  - {fileID: 6022012765866189632}
-  - {fileID: 3257217033626061066}
-  - {fileID: 1743840234047906114}
-  - {fileID: 3390676609479626068}
-  - {fileID: 8242145568179342138}
-  - {fileID: 36861078695011492}
-  - {fileID: 4646224632785196111}
-  - {fileID: 1284356077011823693}
   m_Father: {fileID: 5796032445282665544}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -967,27 +959,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fixedMode: 0
   basketItems:
-  - {fileID: 6022012765866426208}
-  - {fileID: 3257217033626293546}
-  - {fileID: 1743840234047683938}
-  - {fileID: 3390676609479856500}
-  - {fileID: 8242145568179377946}
-  - {fileID: 36861078694590596}
-  - {fileID: 4646224632785094767}
-  - {fileID: 1284356077011398765}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   basketBools: 0000000000000000
   basketPoints:
-  - {fileID: 793489806341204172}
-  - {fileID: 8087266475415333440}
-  - {fileID: 6917909648145415764}
-  - {fileID: 8104140427407068986}
-  - {fileID: 3176174201903255274}
-  - {fileID: 3868486674133236731}
-  - {fileID: 3446259066047702016}
-  - {fileID: 74250121822595717}
-  - {fileID: 6760410790332874398}
-  - {fileID: 3930148791117817855}
-  - {fileID: 6702058181622356161}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   basket: []
 --- !u!1 &5796032444445982087
 GameObject:
@@ -1073,7 +1065,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5796032444445982087}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!135 &5796032444445982081
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1174,7 +1166,6 @@ Transform:
   m_Children:
   - {fileID: 3754156209466318588}
   - {fileID: 5234723538573846333}
-  - {fileID: 7368311009131194195}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
