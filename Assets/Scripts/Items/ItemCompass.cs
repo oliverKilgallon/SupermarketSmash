@@ -1,62 +1,115 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class ItemCompass : MonoBehaviour
 {
+    //To access all items in the scene
+    public GameObject productManager;
+
+    //To access the player's item list
+    public Playerscript playerScript;
+
+    public int minDetectionRadius = 20;
+
+    //How long the item checker should wait between checks (in seconds)
+    public int checkFrequency = 5;
 
     //List that will contain all shopping items, later will check collected status
-    public Transform[] ItemTransformList;
+    private List<Transform> ItemTransformList;
     
     //Nearest item transform among all the items in the item list
     private Transform nearestItemTransform;
 
     //Default transform to use in the event that the item list is empty or finished
-    private Transform defLookTransform;
+    private Transform defaultTransform;
 
-    //Relative distance between the nearest item and the flag
-    private Vector3 relativePos;
+    //Relative distance between the nearest item and the flag in 2 dimensions
+    private Vector2 relativePosVec2;
+
+    //The position of the nearest item
+    private Vector3 relativeItemPos;
 
     //The rotation that will be applied to the flag
     private Quaternion rotation;
 
     private void Start()
     {
+        productManager = GameObject.Find("ProductManager");
+
         //Init default transform to point straight forward
-        defLookTransform = transform;
+        defaultTransform = transform;
+
+        nearestItemTransform = defaultTransform;
+
+        ItemTransformList = new List<Transform>();
+
+        //Populate list
+        foreach (Transform child in productManager.transform)
+        {
+            ItemTransformList.Add(child);
+        }
     }
 
     void Update()
     {
-        /**Set init nearest transform to first item in list if the list has at least 1 item
-         * else set init transform to default
-         */
-        if (ItemTransformList.Length > 0)
+        //If there are items in the scene, find the nearest one, else use the default transform
+        if (ItemTransformList.Count <= 0)
         {
-            nearestItemTransform = ItemTransformList[0];
+            nearestItemTransform = defaultTransform;
         }
 
-        else
+        StartCoroutine(FindNearestObject());
+        //Set rotation to look at nearest transform, zeroing out y rotation along the way
+        LookAtNearestItem();
+    }
+
+    IEnumerator FindNearestObject()
+    {
+        /**
+         * Clear the transform list and re-populate to make sure collected items aren't 
+         * still being checked if some are collected
+        */
+        ItemTransformList.Clear();
+        foreach (Transform child in productManager.transform)
         {
-            nearestItemTransform = defLookTransform;
+            ItemTransformList.Add(child);
         }
 
-        //Iterate through itemlist then set nearest transform to the smallest distance among the items
-        for (int i = 0; i < ItemTransformList.Length; i++)
+        foreach (Transform child in productManager.transform)
         {
-            if (ItemTransformList[i].position.magnitude < nearestItemTransform.position.magnitude)
+            relativePosVec2 = new Vector2(child.position.x - transform.position.x, child.position.z - transform.position.z);
+
+            //Only look at the item if it is inside the detection radius
+            if (relativePosVec2.magnitude < minDetectionRadius)
             {
-                nearestItemTransform = ItemTransformList[i];
+                foreach (string playerItem in playerScript.localItems)
+                {
+                    //Make sure the item is actually on the player's shopping list currently
+                    if (child.GetComponent<ItemScript>().product.Equals(playerItem))
+                    {
+                            nearestItemTransform = child;
+                       
+                    }
+                }
             }
         }
 
-    //Set rotation to look at nearest transform, zeroing out y rotation along the way
-    transform.LookAt(nearestItemTransform, Vector3.up);
-    
-    relativePos = nearestItemTransform.position - transform.position;
-    
-    relativePos.y = 0f;
-    
-    rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+        yield return new WaitForSeconds(5);
+    }
 
-    transform.rotation = rotation;
+    private void LookAtNearestItem()
+    {
+        transform.LookAt(nearestItemTransform, Vector3.up);
+
+        /*
+        relativeItemPos = nearestItemTransform.position - transform.position;
+
+        //relativeItemPos.y = 0f;
+
+        rotation = Quaternion.LookRotation(relativeItemPos, Vector3.up);
+
+        transform.rotation = rotation;
+        */
     }
 }

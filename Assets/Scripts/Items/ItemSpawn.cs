@@ -10,6 +10,7 @@ public class ItemSpawn : MonoBehaviour
     public GameObject[] pointArray;
     public GameObject[] sphereArray;
     public GameObject spawnable;
+    public GameObject ProductParent;
     public List<string> allItems;
 
     public bool spawntest;
@@ -133,6 +134,8 @@ public class ItemSpawn : MonoBehaviour
         thisProduct.gameObject.GetComponent<MeshFilter>().mesh = thisProduct.gameObject.GetComponent<ItemScript>().itemMesh;
         thisProduct.gameObject.GetComponent<MeshCollider>().sharedMesh = thisProduct.gameObject.GetComponent<ItemScript>().itemMesh;
         thisProduct.gameObject.GetComponent<MeshRenderer>().material = thisProduct.gameObject.GetComponent<ItemScript>().itemMat;
+
+        thisProduct.transform.parent = ProductParent.transform;
         return thisProduct;
     }
 }
