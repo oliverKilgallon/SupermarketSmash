@@ -57,8 +57,8 @@ public class MoveMultiplayer : MonoBehaviour
        
         if (ctrlA||wPress) { body.AddForce(transform.forward * thrust); }
 
+        
 
-         
         Quaternion deltaRotation = Quaternion.Euler(Angle * Time.deltaTime);
         
         body.MoveRotation(body.rotation * deltaRotation);
