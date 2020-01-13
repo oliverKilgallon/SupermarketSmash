@@ -9,12 +9,18 @@ public class projectiles : MonoBehaviour
     public GameObject PointerBase;
     public float pointSpeed;
     public float adjust;
+    public float spinlock;
+    public GameObject[] thrownPoints;
+    public Vector3[] arc;
+    public int currentCurvePoint = 0;
+    public GameObject throwable;
     
-    int playerNumber;
+    public int playerNumber;
     // Start is called before the first frame update
     void Start()
     {
         playerNumber = GetComponent<MoveMultiplayer>().playerNumber;
+        arc = new Vector3[16];
         
     }
 
@@ -23,6 +29,7 @@ public class projectiles : MonoBehaviour
     {
         if (Input.GetButtonDown("joy" + playerNumber + "Throw"))
         {
+           
             projectileMode = true;
             Pointer.GetComponent<MeshRenderer>().enabled = true;
             Pointer.transform.RotateAround(PointerBase.transform.position,Vector3.up, -adjust);
@@ -31,15 +38,46 @@ public class projectiles : MonoBehaviour
         }
         if (Input.GetButtonUp("joy" + playerNumber + "Throw"))
         {
+                    
+                for(int i = 1;i<17 ; i++)
+                {
+                    arc[i - 1] = thrownPoints[i].transform.position;
+                    
+   
+                }
+            GameObject thisThrow;
+            thisThrow = (GameObject)Instantiate(throwable, thrownPoints[currentCurvePoint].transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+            
+            
+                thisThrow.GetComponent<Throw>().localArc =  arc;
+                
+            
+            
+            
             projectileMode = false;
             Pointer.GetComponent<MeshRenderer>().enabled = false;
-           // Pointer.transform.rotation = pointerTransform;
+            
+            // Pointer.transform.rotation = pointerTransform;
         }
         if (projectileMode)
         {
-           
-            Pointer.transform.RotateAround(PointerBase.transform.position, Vector3.up, Input.GetAxis("joy" + playerNumber + "x") * pointSpeed);
-            adjust += Input.GetAxis("joy" + playerNumber + "x") * pointSpeed;
+           if ((adjust < spinlock)&&(adjust > (spinlock*-1)))
+           {
+                Pointer.transform.RotateAround(PointerBase.transform.position, Vector3.up, Input.GetAxis("joy" + playerNumber + "x") * pointSpeed);
+                adjust += Input.GetAxis("joy" + playerNumber + "x") * pointSpeed;
+           }
+
+           if ((adjust >= spinlock)&&(Input.GetAxis("joy" + playerNumber + "x")<0))
+           {
+                Pointer.transform.RotateAround(PointerBase.transform.position, Vector3.up, Input.GetAxis("joy" + playerNumber + "x") * pointSpeed);
+                adjust += Input.GetAxis("joy" + playerNumber + "x") * pointSpeed;
+            }
+            if ((adjust <= (spinlock*-1)) && (Input.GetAxis("joy" + playerNumber + "x") > 0))
+            {
+                Pointer.transform.RotateAround(PointerBase.transform.position, Vector3.up, Input.GetAxis("joy" + playerNumber + "x") * pointSpeed);
+                adjust += Input.GetAxis("joy" + playerNumber + "x") * pointSpeed;
+            }
+
         }
      
         
