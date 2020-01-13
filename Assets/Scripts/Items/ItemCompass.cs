@@ -78,18 +78,20 @@ public class ItemCompass : MonoBehaviour
 
         foreach (Transform child in productManager.transform)
         {
-            relativePosVec2 = new Vector2(child.position.x - transform.position.x, child.position.z - transform.position.z);
+            float distance = Mathf.Infinity;
 
-            //Only look at the item if it is inside the detection radius
-            if (relativePosVec2.magnitude < minDetectionRadius)
+            relativeItemPos = child.transform.position - transform.position;
+
+            //Only look at the item if it is inside the detection radius and is the closest item among those
+            if ((relativeItemPos.sqrMagnitude < minDetectionRadius) && (relativeItemPos.sqrMagnitude < distance))
             {
                 foreach (string playerItem in playerScript.localItems)
                 {
                     //Make sure the item is actually on the player's shopping list currently
                     if (child.GetComponent<ItemScript>().product.Equals(playerItem))
                     {
-                            nearestItemTransform = child;
-                       
+                        nearestItemTransform = child;
+                        distance = relativeItemPos.sqrMagnitude;
                     }
                 }
             }
@@ -100,8 +102,15 @@ public class ItemCompass : MonoBehaviour
 
     private void LookAtNearestItem()
     {
-        transform.LookAt(nearestItemTransform, Vector3.up);
+        //Vector3 lookTransform = new Vector3(nearestItemTransform.position.x, Vector3.Angle(nearestItemTransform.position, transform.position) , nearestItemTransform.position.z);
+        //transform.LookAt(nearestItemTransform, Vector3.up);
 
+        transform.rotation = Quaternion.LookRotation(nearestItemTransform.position - transform.position, Vector3.up);
+
+        Vector3 transformEuler = transform.rotation.eulerAngles;
+        transformEuler = new Vector3(0, transformEuler.y, 0);
+
+        transform.rotation = Quaternion.Euler(transformEuler);
         /*
         relativeItemPos = nearestItemTransform.position - transform.position;
 
