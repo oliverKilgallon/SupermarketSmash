@@ -17,11 +17,10 @@ public class setUpSplitScreen : MonoBehaviour
     private void Awake()
     {
         //numberOfPlayers = PlayerPrefs.GetInt("NoOfPlayers");
-        for (int i=0;i<numberOfPlayers ;i++ )
+        for (int i = 0; i < numberOfPlayers; i++)
         {
             players[i].SetActive(true);
         }
-
         //Player list UI position arrays
         //Each vector corresponds to one list
 

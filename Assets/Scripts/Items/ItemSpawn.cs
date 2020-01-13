@@ -110,16 +110,7 @@ public class ItemSpawn : MonoBehaviour
             else
             {
                 Debug.DrawRay(new Vector3(spawnLocation.x, spawnLocation.y + 10, spawnLocation.z), Vector3.down * hit.distance, Color.white, 5.0f);
-                GameObject thisProduct;
-                thisProduct = (GameObject)Instantiate(spawnable, spawnLocation, Quaternion.Euler(new Vector3(0, randAngle, 0)));
-                thisProduct.gameObject.GetComponent<ItemScript>().product = item;
-                thisProduct.gameObject.GetComponent<ItemScript>().itemMat = itemhashMat[item];
-                thisProduct.gameObject.GetComponent<ItemScript>().itemMesh = itemhashMesh[item];
-                thisProduct.gameObject.GetComponent<MeshFilter>().mesh = thisProduct.gameObject.GetComponent<ItemScript>().itemMesh;
-                thisProduct.gameObject.GetComponent<MeshCollider>().sharedMesh = thisProduct.gameObject.GetComponent<ItemScript>().itemMesh;
-                thisProduct.gameObject.GetComponent<MeshRenderer>().material = thisProduct.gameObject.GetComponent<ItemScript>().itemMat;
-
-
+                createItem(spawnLocation, randAngle, item);
             }
         }
         else
@@ -130,6 +121,18 @@ public class ItemSpawn : MonoBehaviour
 
       
     }
-  
-   
+
+
+    public GameObject createItem(Vector3 spawnLoc, float randAngle, string item)
+    {
+        GameObject thisProduct;
+        thisProduct = (GameObject)Instantiate(spawnable, spawnLoc, Quaternion.Euler(new Vector3(0, randAngle, 0)));
+        thisProduct.gameObject.GetComponent<ItemScript>().product = item;
+        thisProduct.gameObject.GetComponent<ItemScript>().itemMat = itemhashMat[item];
+        thisProduct.gameObject.GetComponent<ItemScript>().itemMesh = itemhashMesh[item];
+        thisProduct.gameObject.GetComponent<MeshFilter>().mesh = thisProduct.gameObject.GetComponent<ItemScript>().itemMesh;
+        thisProduct.gameObject.GetComponent<MeshCollider>().sharedMesh = thisProduct.gameObject.GetComponent<ItemScript>().itemMesh;
+        thisProduct.gameObject.GetComponent<MeshRenderer>().material = thisProduct.gameObject.GetComponent<ItemScript>().itemMat;
+        return thisProduct;
+    }
 }

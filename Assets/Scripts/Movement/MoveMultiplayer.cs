@@ -18,12 +18,16 @@ public class MoveMultiplayer : MonoBehaviour
     public Vector3 Angle;
     public GameObject control;
     Playerscript ps;
+
     public List<string> basketList = new List<string>();
+
 
     // Start is called before the first frame update
     void Start()
     {
-        ps = GetComponent<Playerscript>();
+       ps = GetComponent<Playerscript>();
+      
+
     }
 
     // Update is called once per frame
@@ -55,34 +59,24 @@ public class MoveMultiplayer : MonoBehaviour
        
         if (ctrlA||wPress) { body.AddForce(transform.forward * thrust); }
 
+        
 
-         
         Quaternion deltaRotation = Quaternion.Euler(Angle * Time.deltaTime);
         
         body.MoveRotation(body.rotation * deltaRotation);
-        //body.AddRelativeTorque((body.rotation * deltaRotation).eulerAngles);
-      
+        //body.AddTorque(transform.up * turnSpeed * ((body.rotation * deltaRotation).eulerAngles));
+            //body.AddTorque(transform.up * turnSpeed * Input.GetAxis("joy" + playerNumber + "x"));
     }
-    private void OnTriggerEnter(Collider col)
-    {
-        /*
-        if (col.gameObject.tag == "item")
-        {
-            int product = col.gameObject.GetComponent<ItemScript>().product;
-            
-            Debug.Log(" Recieved product "+ product);
-            Destroy(col.gameObject);
-            
-        }
-        */
-    }
+
+
+
     private void OnCollisionEnter(Collision col)
     {
 
         if (col.gameObject.tag == "item")
         {
             int i = 0;
-            foreach(string item in ps.localItems)
+            foreach (string item in ps.localItems)
             {
                 if (ps.localItems[i] != "" && ps.localItems[i] != null)
                 {
@@ -92,11 +86,12 @@ public class MoveMultiplayer : MonoBehaviour
                         basketList.Add(item);
                         ps.listText[ps.localItems.IndexOf(item)].text = "";
                         ps.localItems[ps.localItems.IndexOf(item)] = "";
+                        ps.currentHeld.Add(item);
                         Destroy(col.gameObject);
                         break;
 
                     }
-                
+
                 }
                 i++;
             }
@@ -104,7 +99,7 @@ public class MoveMultiplayer : MonoBehaviour
             //string product = col.gameObject.GetComponent<ItemScript>().product;
             //control.gameObject.GetComponent<ItemSpawn>().;
             // Debug.Log("product "+ product);
-            
+
 
         }
     }

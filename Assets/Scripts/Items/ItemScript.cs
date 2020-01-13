@@ -31,7 +31,6 @@ public class ItemScript : MonoBehaviour
         {
             inWall = true;
         }
-
     }
     /*void OnTriggerStay(Collider collision)
     {

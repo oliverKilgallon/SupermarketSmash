@@ -12,9 +12,16 @@ public class Gameplayloop : MonoBehaviour
     public int sharedListLength;
     public int noOfPlayers;
     public bool setListMode;
+
+    public GameObject door;
+    public GameObject winArea;
+
     // Start is called before the first frame update
     void Awake()
     {
+        door.SetActive(true);
+        winArea.SetActive(false);
+
         noOfPlayers = splitscreen.gameObject.GetComponent<setUpSplitScreen>().numberOfPlayers;
        // Debug.Log("test2");
         int counter = 0;
@@ -98,6 +105,27 @@ public class Gameplayloop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        endGame();
     }
+
+    void endGame()
+    {
+        foreach (GameObject player in players)
+        {
+            if (player.GetComponent<Playerscript>().allItemsCollected)
+            {
+                door.SetActive(false);
+                winArea.SetActive(true);
+                break;
+            }
+            else
+            {
+                door.SetActive(true);
+                winArea.SetActive(false);
+            }
+        }
+    }
+
+
+
 }
