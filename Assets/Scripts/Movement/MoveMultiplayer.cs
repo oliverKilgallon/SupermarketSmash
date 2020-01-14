@@ -49,9 +49,9 @@ public class MoveMultiplayer : MonoBehaviour
         {
             Angle.y += (playerJoyX * turnSpeed) * (Time.deltaTime * 2);
 
-            Mathf.Clamp(Angle.y, -maxTurnSpeed, maxTurnSpeed);
+            //Angle.y = Mathf.Clamp(Angle.y, -maxTurnSpeed, maxTurnSpeed);
 
-            if (debug) Debug.Log(Angle);
+            if (debug) Debug.Log(Angle.y);
         }
         else
         {
@@ -60,9 +60,7 @@ public class MoveMultiplayer : MonoBehaviour
         }
 
         animator.SetFloat("TurnValue", playerJoyX * turnSpeed);
-
-        if (debug)
-            Debug.Log(playerJoyX * turnSpeed);
+        
         // body.AddForceAtPosition(transform.rotation.y * turnSpeed,body.gameObject.transform.position);
 
         // body.AddForce(transform.forward * Input.GetAxis("Thrust")); 
