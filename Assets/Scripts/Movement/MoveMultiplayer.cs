@@ -5,29 +5,31 @@ using UnityEngine;
 public class MoveMultiplayer : MonoBehaviour
 {
     public int playerNumber;
+    public bool debug;
+
+    [HideInInspector]
+    public GameObject control;
 
     public Rigidbody body;
-    public GameObject Camera; 
+    public Animator animator;
     public float thrust;
     public float turnSpeed;
-    public bool qPress;
-    public bool wPress;
-    public bool ePress;
-    public bool ctrlA;
+    public float maxTurnSpeed = 150;
+
+    private bool qPress;
+    private bool wPress;
+    private bool ePress;
+    private bool ctrlA;
+    private Vector3 Angle;
     
-    public Vector3 Angle;
-    public GameObject control;
     Playerscript ps;
 
     public List<string> basketList = new List<string>();
 
-
     // Start is called before the first frame update
     void Start()
     {
-       ps = GetComponent<Playerscript>();
-      
-
+        ps = GetComponent<Playerscript>();
     }
 
     // Update is called once per frame
@@ -39,33 +41,46 @@ public class MoveMultiplayer : MonoBehaviour
         if (Input.GetKeyDown("q")) { qPress = true; }if (Input.GetKeyUp("q")) { qPress = false; }
         if (Input.GetKeyDown("w")) { wPress = true; }if (Input.GetKeyUp("w")) { wPress = false; }
         if (Input.GetKeyDown("e")) { ePress = true; }if (Input.GetKeyUp("e")) { ePress = false; }
-        // if (Input.GetAxis("Vertical"))
 
         //Debug.Log("Player number: " + playerNumber + "'s x axis: " + Input.GetAxisRaw("joy" + playerNumber + "x"));
-
+        float playerJoyX = Input.GetAxis("joy" + playerNumber + "x");
         //Check if x axis of the left joystick of this player isn't zero then calculate Angle by multiplying the turnSpeed into the input
-        if (Input.GetAxis("joy" + playerNumber + "x") != 0)
+        if (playerJoyX != 0)
         {
-            Angle = new Vector3(0, Input.GetAxis("joy" + playerNumber + "x") * turnSpeed, 0); }
+            Angle.y += (playerJoyX * turnSpeed) * (Time.deltaTime * 2);
+
+            Mathf.Clamp(Angle.y, -maxTurnSpeed, maxTurnSpeed);
+
+            if (debug) Debug.Log(Angle);
+        }
         else
-        { Angle = new Vector3(0, 0, 0); }
-        
+        {
+            //Angle = new Vector3(0, 0, 0);
+            Angle = Vector3.Lerp(Angle, Vector3.zero, turnSpeed * Time.deltaTime);
+        }
+
+        animator.SetFloat("TurnValue", playerJoyX * turnSpeed);
+
+        if (debug)
+            Debug.Log(playerJoyX * turnSpeed);
         // body.AddForceAtPosition(transform.rotation.y * turnSpeed,body.gameObject.transform.position);
 
         // body.AddForce(transform.forward * Input.GetAxis("Thrust")); 
     }
     void FixedUpdate()
     {
-       
-        if (ctrlA||wPress) { body.AddForce(transform.forward * thrust); }
-
+        Vector3 force = transform.forward * thrust;
+        bool moveForward = ctrlA || wPress;
+        Vector3 rotationAngle = Angle * Time.deltaTime;
         
+        if (moveForward) { body.AddForce(force); }
+        animator.SetFloat("ForwardSpeed", body.velocity.magnitude);
+        //if(debug)
+            //Debug.Log(playerNumber + ": " + body.velocity.z);
 
-        Quaternion deltaRotation = Quaternion.Euler(Angle * Time.deltaTime);
+        Quaternion deltaRotation = Quaternion.Euler(rotationAngle);
         
         body.MoveRotation(body.rotation * deltaRotation);
-        //body.AddTorque(transform.up * turnSpeed * ((body.rotation * deltaRotation).eulerAngles));
-            //body.AddTorque(transform.up * turnSpeed * Input.GetAxis("joy" + playerNumber + "x"));
     }
 
 
