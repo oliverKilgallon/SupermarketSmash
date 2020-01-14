@@ -17,8 +17,9 @@ public class MoveMultiplayer : MonoBehaviour
     public Rigidbody body;
     public Animator animator;
 
-    public float thrust;
-    public float turnSpeed;
+    public float thrust = 200;
+    public float turnSpeed = 150;
+    public float noSmoothTurnSpeed = 300;
     public float smoothTime = 0.001f;
     public float smoothedMaxTurnSpeed = 150;
     public float noSmoothMaxTurnSpeed = 500;
@@ -38,6 +39,7 @@ public class MoveMultiplayer : MonoBehaviour
     void Start()
     {
         ps = GetComponent<Playerscript>();
+        body.interpolation = RigidbodyInterpolation.Interpolate;
     }
 
     // Update is called once per frame
