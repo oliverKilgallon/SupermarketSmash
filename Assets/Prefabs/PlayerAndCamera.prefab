@@ -23,14 +23,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 45864438767371008}
-  m_LocalRotation: {x: 0.000000008799314, y: 0.9978514, z: -0.06551881, w: -1.4210855e-14}
+  m_LocalRotation: {x: -0.0000000012914395, y: 0.9989615, z: -0.04556214, w: 5.1613817e-11}
   m_LocalPosition: {x: -0, y: 0.61, z: 0.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4427226045859143204}
   m_Father: {fileID: 5234723538573846333}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 7.5130005, y: 179.99998, z: 0}
+  m_LocalEulerAnglesHint: {x: 5.223, y: 180.00002, z: 0}
 --- !u!1 &97504715671488935
 GameObject:
   m_ObjectHideFlags: 0
@@ -1294,6 +1294,7 @@ MonoBehaviour:
   currentCurvePoint: 0
   throwable: {fileID: 1762353451717998125, guid: f2dcd25a518e6f04293eb0d736212d57,
     type: 3}
+  currentWeapon: flour
   playerNumber: 0
 --- !u!1 &5397045372747138782
 GameObject:
@@ -1794,10 +1795,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3919509490135309680}
     m_Modifications:
-    - target: {fileID: 100000, guid: 4ec7e03f0c71e404c9919df9914d1b14, type: 3}
-      propertyPath: m_Name
-      value: Projectile Pointer
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4ec7e03f0c71e404c9919df9914d1b14, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1849,6 +1846,10 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 4ec7e03f0c71e404c9919df9914d1b14, type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4ec7e03f0c71e404c9919df9914d1b14, type: 3}
+      propertyPath: m_Name
+      value: Projectile Pointer
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 4ec7e03f0c71e404c9919df9914d1b14, type: 3}
       propertyPath: m_Materials.Array.data[0]

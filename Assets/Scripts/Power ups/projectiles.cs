@@ -14,19 +14,26 @@ public class projectiles : MonoBehaviour
     public Vector3[] arc;
     public int currentCurvePoint = 0;
     public GameObject throwable;
-    
+    public string currentWeapon;
+
+    public GameObject floor;
+    public float floorY;
+
     public int playerNumber;
     // Start is called before the first frame update
     void Start()
     {
         playerNumber = GetComponent<MoveMultiplayer>().playerNumber;
         arc = new Vector3[16];
+        floorY = floor.gameObject.transform.position.y;
         
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.A)) { currentWeapon = "flour"; }
+        if (Input.GetKeyDown(KeyCode.S)) { currentWeapon = "jam"; }
         if (Input.GetButtonDown("joy" + playerNumber + "Throw"))
         {
            
@@ -42,7 +49,7 @@ public class projectiles : MonoBehaviour
                 for(int i = 1;i<17 ; i++)
                 {
                     arc[i - 1] = thrownPoints[i].transform.position;
-                    
+                //Debug.Log(i);
    
                 }
             GameObject thisThrow;
@@ -50,10 +57,14 @@ public class projectiles : MonoBehaviour
             
             
                 thisThrow.GetComponent<Throw>().localArc =  arc;
-                
-            
-            
-            
+            thisThrow.GetComponent<Throw>().weapon = currentWeapon;
+            thisThrow.GetComponent<Throw>().floorY = floorY;
+
+
+
+
+
+
             projectileMode = false;
             Pointer.GetComponent<MeshRenderer>().enabled = false;
             
