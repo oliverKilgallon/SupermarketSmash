@@ -47,6 +47,7 @@ MonoBehaviour:
   localArc: []
   arcStep: 0
   step: 4
+  itemChild: {fileID: 4170616169107700864}
 --- !u!1 &4170616169107700864
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,7 +59,8 @@ GameObject:
   - component: {fileID: 902294818689505287}
   - component: {fileID: 6301458248972811958}
   - component: {fileID: 3467133663879898198}
-  - component: {fileID: 6184873713203093213}
+  - component: {fileID: 3544673347286276214}
+  - component: {fileID: 958140738399690694}
   m_Layer: 0
   m_Name: ThrownItem
   m_TagString: Untagged
@@ -75,7 +77,7 @@ Transform:
   m_GameObject: {fileID: 4170616169107700864}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.40966, y: 0.86004025, z: 0.40966}
+  m_LocalScale: {x: 1.8695, y: 1.8695, z: 1.8695}
   m_Children: []
   m_Father: {fileID: 6190755745952976731}
   m_RootOrder: 0
@@ -87,7 +89,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4170616169107700864}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 57025074576965d42a714eb467f6d931, type: 3}
 --- !u!23 &3467133663879898198
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -105,7 +107,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ff617b759517f9049ae8102851c3ecf2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -125,8 +127,24 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &6184873713203093213
-BoxCollider:
+--- !u!54 &3544673347286276214
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4170616169107700864}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &958140738399690694
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -135,6 +153,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.09508074
+  m_Height: 0.25238842
+  m_Direction: 1
+  m_Center: {x: 0.0012481108, y: 0.12745792, z: 0.0016978795}
