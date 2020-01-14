@@ -19,6 +19,7 @@ public class MoveMultiplayer : MonoBehaviour
 
     public float thrust = 200;
     public float turnSpeed = 150;
+    public float instantTurnSpeed = 150;
     public float noSmoothTurnSpeed = 300;
     public float smoothTime = 0.001f;
     public float smoothedMaxTurnSpeed = 150;
@@ -63,7 +64,7 @@ public class MoveMultiplayer : MonoBehaviour
                     Angle = Vector3.SmoothDamp(Angle, Angle + new Vector3(0, (playerJoyX * turnSpeed), 0), ref angularVel, smoothTime, smoothedMaxTurnSpeed);
                     break;
                 case MovementType.Instant:
-                    Angle = new Vector3(0, playerJoyX * turnSpeed, 0);
+                    Angle = new Vector3(0, playerJoyX * instantTurnSpeed, 0);
                     break;
                 case MovementType.NoSmoothIncremental:
                     if(Mathf.Abs(Angle.y + (playerJoyX * turnSpeed * (Time.deltaTime * 2))) < noSmoothMaxTurnSpeed)
