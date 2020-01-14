@@ -10,17 +10,25 @@ public class MoveMultiplayer : MonoBehaviour
     [HideInInspector]
     public GameObject control;
 
+    //Movement profiles
+    public enum MovementType {SmoothedIncremental, NoSmoothIncremental, Instant }
+    public MovementType movementType;
+
     public Rigidbody body;
     public Animator animator;
+
     public float thrust;
     public float turnSpeed;
-    public float maxTurnSpeed = 150;
+    public float smoothTime = 0.001f;
+    public float smoothedMaxTurnSpeed = 150;
+    public float noSmoothMaxTurnSpeed = 500;
 
     private bool qPress;
     private bool wPress;
     private bool ePress;
     private bool ctrlA;
     private Vector3 Angle;
+    private Vector3 angularVel = Vector3.zero;
     
     Playerscript ps;
 
@@ -47,11 +55,23 @@ public class MoveMultiplayer : MonoBehaviour
         //Check if x axis of the left joystick of this player isn't zero then calculate Angle by multiplying the turnSpeed into the input
         if (playerJoyX != 0)
         {
-            Angle.y += (playerJoyX * turnSpeed) * (Time.deltaTime * 2);
+            switch (movementType)
+            {
+                case MovementType.SmoothedIncremental:
+                    Angle = Vector3.SmoothDamp(Angle, Angle + new Vector3(0, (playerJoyX * turnSpeed), 0), ref angularVel, smoothTime, smoothedMaxTurnSpeed);
+                    break;
+                case MovementType.Instant:
+                    Angle = new Vector3(0, playerJoyX * turnSpeed, 0);
+                    break;
+                case MovementType.NoSmoothIncremental:
+                    if(Mathf.Abs(Angle.y + (playerJoyX * turnSpeed * (Time.deltaTime * 2))) < noSmoothMaxTurnSpeed)
+                        Angle += new Vector3(0, (playerJoyX * turnSpeed) * ( Time.deltaTime * 2), 0);
+                    break;
+            }
+            //Angle = Vector3.SmoothDamp(Angle, Angle + new Vector3(0, (playerJoyX * turnSpeed), 0), ref angularVel, smoothTime, maxTurnSpeed) ;
 
             //Angle.y = Mathf.Clamp(Angle.y, -maxTurnSpeed, maxTurnSpeed);
-
-            if (debug) Debug.Log(Angle.y);
+            
         }
         else
         {
@@ -59,7 +79,7 @@ public class MoveMultiplayer : MonoBehaviour
             Angle = Vector3.Lerp(Angle, Vector3.zero, turnSpeed * Time.deltaTime);
         }
 
-        animator.SetFloat("TurnValue", playerJoyX * turnSpeed);
+        animator.SetFloat("TurnValue", Angle.y);
         
         // body.AddForceAtPosition(transform.rotation.y * turnSpeed,body.gameObject.transform.position);
 
@@ -73,8 +93,6 @@ public class MoveMultiplayer : MonoBehaviour
         
         if (moveForward) { body.AddForce(force); }
         animator.SetFloat("ForwardSpeed", body.velocity.magnitude);
-        //if(debug)
-            //Debug.Log(playerNumber + ": " + body.velocity.z);
 
         Quaternion deltaRotation = Quaternion.Euler(rotationAngle);
         
@@ -93,7 +111,7 @@ public class MoveMultiplayer : MonoBehaviour
             {
                 if (ps.localItems[i] != "" && ps.localItems[i] != null)
                 {
-                    Debug.Log(item + " " + col.gameObject.GetComponent<ItemScript>().product);
+                    //Debug.Log(item + " " + col.gameObject.GetComponent<ItemScript>().product);
                     if (item == col.gameObject.GetComponent<ItemScript>().product)
                     {
                         basketList.Add(item);
