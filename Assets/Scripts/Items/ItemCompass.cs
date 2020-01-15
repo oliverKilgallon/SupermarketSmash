@@ -10,7 +10,8 @@ public class ItemCompass : MonoBehaviour
     //To access the player's item list
     public Playerscript playerScript;
 
-    public int minDetectionRadius = 20;
+    public int maxDetectionRadius = 20;
+    public int minDetectionRadius = 5;
 
     //How long the item checker should wait between checks (in seconds)
     public int checkFrequency = 5;
@@ -33,6 +34,11 @@ public class ItemCompass : MonoBehaviour
     //The rotation that will be applied to the flag
     private Quaternion rotation;
 
+    private bool transformListHasItems;
+    private bool noTransformTarget;
+    private float distance = Mathf.Infinity;
+    private Vector3 transformToEuler;
+
     private void Start()
     {
         productManager = GameObject.Find("ProductManager");
@@ -54,36 +60,58 @@ public class ItemCompass : MonoBehaviour
     void Update()
     {
         //If there are items in the scene, find the nearest one, else use the default transform
-        if (ItemTransformList.Count <= 0)
+        transformListHasItems = ItemTransformList.Count > 0;
+        if (!transformListHasItems)
         {
             nearestItemTransform = defaultTransform;
         }
 
         StartCoroutine(FindNearestObject());
+
         //Set rotation to look at nearest transform, zeroing out y rotation along the way
         LookAtNearestItem();
     }
 
     IEnumerator FindNearestObject()
     {
+        noTransformTarget = nearestItemTransform != defaultTransform && nearestItemTransform == null;
+
         /**
          * Clear the transform list and re-populate to make sure collected items aren't 
          * still being checked if some are collected
         */
-        ItemTransformList.Clear();
-        foreach (Transform child in productManager.transform)
+        if (transformListHasItems)
         {
-            ItemTransformList.Add(child);
+            ItemTransformList.Clear();
+            foreach (Transform child in productManager.transform)
+            {
+                ItemTransformList.Add(child);
+            }
         }
 
         foreach (Transform child in productManager.transform)
         {
-            float distance = Mathf.Infinity;
+            distance = Mathf.Infinity;
 
             relativeItemPos = child.transform.position - transform.position;
 
-            //Only look at the item if it is inside the detection radius and is the closest item among those
-            if ((relativeItemPos.sqrMagnitude < minDetectionRadius) && (relativeItemPos.sqrMagnitude < distance))
+            //Only look at the item if it is the closest inside the detection radius
+            if ((relativeItemPos.sqrMagnitude < maxDetectionRadius) 
+                && (relativeItemPos.sqrMagnitude < distance) 
+                && noTransformTarget)
+            {
+                foreach (string playerItem in playerScript.localItems)
+                {
+                    //Make sure the item is actually on the player's shopping list currently
+                    if (child.GetComponent<ItemScript>().product.Equals(playerItem))
+                    {
+                        nearestItemTransform = child;
+                        distance = relativeItemPos.sqrMagnitude;
+                    }
+                }
+            }
+            else if((relativeItemPos.sqrMagnitude < minDetectionRadius) 
+                && (relativeItemPos.sqrMagnitude < distance))
             {
                 foreach (string playerItem in playerScript.localItems)
                 {
@@ -102,23 +130,16 @@ public class ItemCompass : MonoBehaviour
 
     private void LookAtNearestItem()
     {
-        //Vector3 lookTransform = new Vector3(nearestItemTransform.position.x, Vector3.Angle(nearestItemTransform.position, transform.position) , nearestItemTransform.position.z);
-        //transform.LookAt(nearestItemTransform, Vector3.up);
+        if ((nearestItemTransform.position - transform.position).sqrMagnitude > 0)
+        {
+            transform.rotation = Quaternion.LookRotation(
+                nearestItemTransform.position - transform.position, 
+                Vector3.up);
+        }
 
-        transform.rotation = Quaternion.LookRotation(nearestItemTransform.position - transform.position, Vector3.up);
+        transformToEuler = transform.rotation.eulerAngles;
+        transformToEuler = new Vector3(0, transformToEuler.y, 0);
 
-        Vector3 transformEuler = transform.rotation.eulerAngles;
-        transformEuler = new Vector3(0, transformEuler.y, 0);
-
-        transform.rotation = Quaternion.Euler(transformEuler);
-        /*
-        relativeItemPos = nearestItemTransform.position - transform.position;
-
-        //relativeItemPos.y = 0f;
-
-        rotation = Quaternion.LookRotation(relativeItemPos, Vector3.up);
-
-        transform.rotation = rotation;
-        */
+        transform.rotation = Quaternion.Euler(transformToEuler);
     }
 }
