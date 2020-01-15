@@ -10,7 +10,6 @@ public class powerupSlot : MonoBehaviour
 
     private void Start()
     {
-        slot.texture = null;
         current = null;
     }
 
@@ -28,9 +27,9 @@ public class powerupSlot : MonoBehaviour
 
     public void removeItem()
     {
+        this.current = null;
+        this.slot.texture = null;
         Debug.Log("removing item");
-        current = null;
-        slot.texture = null;
     }
 
 

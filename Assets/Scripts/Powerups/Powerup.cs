@@ -10,6 +10,7 @@ public abstract class Powerup : MonoBehaviour
     public float effectDuration;
     public bool throwable;
     public powerUpManager manager;
+    
 
     private void Start()
     {

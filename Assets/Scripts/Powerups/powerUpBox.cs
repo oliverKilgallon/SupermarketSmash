@@ -9,12 +9,14 @@ public class powerUpBox : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Powerup randomItem = Powerups[Random.Range(0, Powerups.Length - 1)].GetComponent<Powerup>();
-            if (collision.gameObject.GetComponentInParent<powerupSlot>().current == null)
+            Powerup randomItem = Powerups[Random.Range(0, Powerups.Length)].GetComponent<Powerup>();
+            Debug.Log(randomItem.GetComponent<Powerup>());
+            if (!GameObject.Find("PowerUpManager").GetComponent<powerUpManager>().CR_running)
             {
                 collision.gameObject.GetComponentInParent<powerupSlot>().updateCurrentItem(randomItem);
+                Destroy(gameObject);
             }
-            Destroy(gameObject);
+            
         }
         
     }
