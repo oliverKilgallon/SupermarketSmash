@@ -5,29 +5,39 @@ using UnityEngine;
 public class MoveMultiplayer : MonoBehaviour
 {
     public int playerNumber;
+    public bool debug;
+
+    [HideInInspector]
+    public GameObject control;
+
+    //Movement profiles
+    public enum MovementType {SmoothedIncremental, NoSmoothIncremental, Instant }
+    public MovementType movementType;
 
     public Rigidbody body;
-    public GameObject Camera; 
+    public Animator animator;
+
     public float thrust;
     public float turnSpeed;
-    public bool qPress;
-    public bool wPress;
-    public bool ePress;
-    public bool ctrlA;
+    public float smoothTime = 0.001f;
+    public float smoothedMaxTurnSpeed = 150;
+    public float noSmoothMaxTurnSpeed = 500;
+
+    private bool qPress;
+    private bool wPress;
+    private bool ePress;
+    private bool ctrlA;
+    private Vector3 Angle;
+    private Vector3 angularVel = Vector3.zero;
     
-    public Vector3 Angle;
-    public GameObject control;
     Playerscript ps;
 
     public List<string> basketList = new List<string>();
 
-
     // Start is called before the first frame update
     void Start()
     {
-       ps = GetComponent<Playerscript>();
-      
-
+        ps = GetComponent<Playerscript>();
     }
 
     // Update is called once per frame
@@ -39,16 +49,37 @@ public class MoveMultiplayer : MonoBehaviour
         if (Input.GetKeyDown("q")) { qPress = true; }if (Input.GetKeyUp("q")) { qPress = false; }
         if (Input.GetKeyDown("w")) { wPress = true; }if (Input.GetKeyUp("w")) { wPress = false; }
         if (Input.GetKeyDown("e")) { ePress = true; }if (Input.GetKeyUp("e")) { ePress = false; }
-        // if (Input.GetAxis("Vertical"))
 
         //Debug.Log("Player number: " + playerNumber + "'s x axis: " + Input.GetAxisRaw("joy" + playerNumber + "x"));
-
+        float playerJoyX = Input.GetAxis("joy" + playerNumber + "x");
         //Check if x axis of the left joystick of this player isn't zero then calculate Angle by multiplying the turnSpeed into the input
-        if (Input.GetAxis("joy" + playerNumber + "x") != 0)
+        if (playerJoyX != 0)
         {
-            Angle = new Vector3(0, Input.GetAxis("joy" + playerNumber + "x") * turnSpeed, 0); }
+            switch (movementType)
+            {
+                case MovementType.SmoothedIncremental:
+                    Angle = Vector3.SmoothDamp(Angle, Angle + new Vector3(0, (playerJoyX * turnSpeed), 0), ref angularVel, smoothTime, smoothedMaxTurnSpeed);
+                    break;
+                case MovementType.Instant:
+                    Angle = new Vector3(0, playerJoyX * turnSpeed, 0);
+                    break;
+                case MovementType.NoSmoothIncremental:
+                    if(Mathf.Abs(Angle.y + (playerJoyX * turnSpeed * (Time.deltaTime * 2))) < noSmoothMaxTurnSpeed)
+                        Angle += new Vector3(0, (playerJoyX * turnSpeed) * ( Time.deltaTime * 2), 0);
+                    break;
+            }
+            //Angle = Vector3.SmoothDamp(Angle, Angle + new Vector3(0, (playerJoyX * turnSpeed), 0), ref angularVel, smoothTime, maxTurnSpeed) ;
+
+            //Angle.y = Mathf.Clamp(Angle.y, -maxTurnSpeed, maxTurnSpeed);
+            
+        }
         else
-        { Angle = new Vector3(0, 0, 0); }
+        {
+            //Angle = new Vector3(0, 0, 0);
+            Angle = Vector3.Lerp(Angle, Vector3.zero, turnSpeed * Time.deltaTime);
+        }
+
+        animator.SetFloat("TurnValue", Angle.y);
         
         // body.AddForceAtPosition(transform.rotation.y * turnSpeed,body.gameObject.transform.position);
 
@@ -56,16 +87,16 @@ public class MoveMultiplayer : MonoBehaviour
     }
     void FixedUpdate()
     {
-       
-        if (ctrlA||wPress) { body.AddForce(transform.forward * thrust); }
-
+        Vector3 force = transform.forward * thrust;
+        bool moveForward = ctrlA || wPress;
+        Vector3 rotationAngle = Angle * Time.deltaTime;
         
+        if (moveForward) { body.AddForce(force); }
+        animator.SetFloat("ForwardSpeed", body.velocity.magnitude);
 
-        Quaternion deltaRotation = Quaternion.Euler(Angle * Time.deltaTime);
+        Quaternion deltaRotation = Quaternion.Euler(rotationAngle);
         
         body.MoveRotation(body.rotation * deltaRotation);
-        //body.AddTorque(transform.up * turnSpeed * ((body.rotation * deltaRotation).eulerAngles));
-            //body.AddTorque(transform.up * turnSpeed * Input.GetAxis("joy" + playerNumber + "x"));
     }
 
 
@@ -80,7 +111,7 @@ public class MoveMultiplayer : MonoBehaviour
             {
                 if (ps.localItems[i] != "" && ps.localItems[i] != null)
                 {
-                    Debug.Log(item + " " + col.gameObject.GetComponent<ItemScript>().product);
+                    //Debug.Log(item + " " + col.gameObject.GetComponent<ItemScript>().product);
                     if (item == col.gameObject.GetComponent<ItemScript>().product)
                     {
                         basketList.Add(item);

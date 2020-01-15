@@ -1,0 +1,251 @@
+fileFormatVersion: 2
+guid: f36235da98baa62418e4b07a60afb9f7
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: CATRigHub002
+    100002: CATRigHub003
+    100004: CATRigHub004
+    100006: CATRigLArm1
+    100008: CATRigLArm2
+    100010: CATRigLArmCollarbone
+    100012: CATRigLArmIKTarget
+    100014: CATRigLArmPalm
+    100016: CATRigLLeg1
+    100018: CATRigLLeg2
+    100020: CATRigLLegAnkle
+    100022: CATRigLLegPlatform
+    100024: CATRigPalmBone001
+    100026: CATRigPalmBone001 1
+    100028: CATRigPalmBone001Bone001
+    100030: CATRigPalmBone001Bone001 1
+    100032: CATRigPalmBone002
+    100034: CATRigPalmBone002 1
+    100036: CATRigRArm1
+    100038: CATRigRArm2
+    100040: CATRigRArmCollarbone
+    100042: CATRigRArmIKTarget
+    100044: CATRigRArmPalm
+    100046: CATRigRLeg1
+    100048: CATRigRLeg2
+    100050: CATRigRLegAnkle
+    100052: CATRigRLegPlatform
+    100054: CATRigSpine1
+    100056: CATRigSpine1 1
+    100058: CATRigSpine2
+    100060: CATRigSpine2 1
+    100062: CATRigSpine3
+    100064: CATRigSpine4
+    100066: CATRigSpine5
+    100068: Character001
+    100070: Group34658
+    100072: Plane001
+    100074: Shopping trolly
+    100076: Shopping trolly 1
+    100078: Shopping trolly 2
+    100080: Shopping trolly 3
+    100082: Shopping trolly 4
+    100084: Shopping trolly 5
+    100086: Shopping trolly 6
+    100088: Shopping trolly 7
+    100090: Shopping trolly 8
+    100092: Shopping trolly 9
+    100094: //RootNode
+    400000: CATRigHub002
+    400002: CATRigHub003
+    400004: CATRigHub004
+    400006: CATRigLArm1
+    400008: CATRigLArm2
+    400010: CATRigLArmCollarbone
+    400012: CATRigLArmIKTarget
+    400014: CATRigLArmPalm
+    400016: CATRigLLeg1
+    400018: CATRigLLeg2
+    400020: CATRigLLegAnkle
+    400022: CATRigLLegPlatform
+    400024: CATRigPalmBone001
+    400026: CATRigPalmBone001 1
+    400028: CATRigPalmBone001Bone001
+    400030: CATRigPalmBone001Bone001 1
+    400032: CATRigPalmBone002
+    400034: CATRigPalmBone002 1
+    400036: CATRigRArm1
+    400038: CATRigRArm2
+    400040: CATRigRArmCollarbone
+    400042: CATRigRArmIKTarget
+    400044: CATRigRArmPalm
+    400046: CATRigRLeg1
+    400048: CATRigRLeg2
+    400050: CATRigRLegAnkle
+    400052: CATRigRLegPlatform
+    400054: CATRigSpine1
+    400056: CATRigSpine1 1
+    400058: CATRigSpine2
+    400060: CATRigSpine2 1
+    400062: CATRigSpine3
+    400064: CATRigSpine4
+    400066: CATRigSpine5
+    400068: Character001
+    400070: Group34658
+    400072: Plane001
+    400074: Shopping trolly
+    400076: Shopping trolly 1
+    400078: Shopping trolly 2
+    400080: Shopping trolly 3
+    400082: Shopping trolly 4
+    400084: Shopping trolly 5
+    400086: Shopping trolly 6
+    400088: Shopping trolly 7
+    400090: Shopping trolly 8
+    400092: Shopping trolly 9
+    400094: //RootNode
+    2100000: default
+    2100002: No Name
+    2300000: Plane001
+    2300002: Shopping trolly 1
+    2300004: Shopping trolly 2
+    2300006: Shopping trolly 3
+    2300008: Shopping trolly 4
+    2300010: Shopping trolly 5
+    2300012: Shopping trolly 6
+    2300014: Shopping trolly 7
+    2300016: Shopping trolly 8
+    2300018: Shopping trolly 9
+    3300000: Plane001
+    3300002: Shopping trolly 1
+    3300004: Shopping trolly 2
+    3300006: Shopping trolly 3
+    3300008: Shopping trolly 4
+    3300010: Shopping trolly 5
+    3300012: Shopping trolly 6
+    3300014: Shopping trolly 7
+    3300016: Shopping trolly 8
+    3300018: Shopping trolly 9
+    4300000: Group34658
+    4300002: Shopping trolly
+    4300004: Shopping trolly
+    4300006: Shopping trolly
+    4300008: Shopping trolly
+    4300010: Shopping trolly
+    4300012: Shopping trolly
+    4300014: Shopping trolly
+    4300016: Shopping trolly
+    4300018: Shopping trolly
+    4300020: Plane001
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Group34658
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 22
+      lastFrame: 54
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.0254
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
