@@ -25,6 +25,12 @@ public class MoveMultiplayer : MonoBehaviour
     public float smoothedMaxTurnSpeed = 150;
     public float noSmoothMaxTurnSpeed = 500;
 
+    //Attempting standard torque values
+    private float AccelValPerFrame;
+    private float AccelAmount;
+    public float AccelInputMult = 150f;
+    public AnimationCurve angularDrag;
+
     private bool qPress;
     private bool wPress;
     private bool ePress;
@@ -56,33 +62,33 @@ public class MoveMultiplayer : MonoBehaviour
         //Debug.Log("Player number: " + playerNumber + "'s x axis: " + Input.GetAxisRaw("joy" + playerNumber + "x"));
         float playerJoyX = Input.GetAxis("joy" + playerNumber + "x");
         //Check if x axis of the left joystick of this player isn't zero then calculate Angle by multiplying the turnSpeed into the input
-        if (playerJoyX != 0)
-        {
-            switch (movementType)
-            {
-                case MovementType.SmoothedIncremental:
-                    Angle = Vector3.SmoothDamp(Angle, Angle + new Vector3(0, (playerJoyX * turnSpeed), 0), ref angularVel, smoothTime, smoothedMaxTurnSpeed);
-                    break;
-                case MovementType.Instant:
-                    Angle = new Vector3(0, playerJoyX * instantTurnSpeed, 0);
-                    break;
-                case MovementType.NoSmoothIncremental:
-                    if(Mathf.Abs(Angle.y + (playerJoyX * turnSpeed * (Time.deltaTime * 2))) < noSmoothMaxTurnSpeed)
-                        Angle += new Vector3(0, (playerJoyX * turnSpeed) * ( Time.deltaTime * 2), 0);
-                    break;
-            }
-            //Angle = Vector3.SmoothDamp(Angle, Angle + new Vector3(0, (playerJoyX * turnSpeed), 0), ref angularVel, smoothTime, maxTurnSpeed) ;
 
-            //Angle.y = Mathf.Clamp(Angle.y, -maxTurnSpeed, maxTurnSpeed);
-            
-        }
-        else
+        //Old Turn methods in switch statement
         {
-            //Angle = new Vector3(0, 0, 0);
-            Angle = Vector3.Lerp(Angle, Vector3.zero, turnSpeed * Time.deltaTime);
+            /*
+                switch (movementType)
+                {
+                    case MovementType.SmoothedIncremental:
+                        Angle = Vector3.SmoothDamp(Angle, Angle + new Vector3(0, (playerJoyX * turnSpeed), 0), ref angularVel, smoothTime, smoothedMaxTurnSpeed);
+                        break;
+                    case MovementType.Instant:
+                        Angle = new Vector3(0, playerJoyX * instantTurnSpeed, 0);
+                        break;
+                    case MovementType.NoSmoothIncremental:
+                        if(Mathf.Abs(Angle.y + (playerJoyX * turnSpeed * (Time.deltaTime * 2))) < noSmoothMaxTurnSpeed)
+                            Angle += new Vector3(0, (playerJoyX * turnSpeed) * ( Time.deltaTime * 2), 0);
+                        break;
+                }
+                //Angle = Vector3.SmoothDamp(Angle, Angle + new Vector3(0, (playerJoyX * turnSpeed), 0), ref angularVel, smoothTime, maxTurnSpeed) ;
+
+                //Angle.y = Mathf.Clamp(Angle.y, -maxTurnSpeed, maxTurnSpeed);
+
+                //Angle = new Vector3(0, 0, 0);
+                Angle = Vector3.Lerp(Angle, Vector3.zero, turnSpeed * Time.deltaTime);
+            */
         }
 
-        animator.SetFloat("TurnValue", Angle.y);
+        AccelAmount = playerJoyX * AccelInputMult;
         
         // body.AddForceAtPosition(transform.rotation.y * turnSpeed,body.gameObject.transform.position);
 
@@ -92,14 +98,26 @@ public class MoveMultiplayer : MonoBehaviour
     {
         Vector3 force = transform.forward * thrust;
         bool moveForward = ctrlA || wPress;
-        Vector3 rotationAngle = Angle * Time.deltaTime;
         
         if (moveForward) { body.AddForce(force); }
-        animator.SetFloat("ForwardSpeed", body.velocity.magnitude);
 
+        
+
+        /*
+        Vector3 rotationAngle = Angle * Time.deltaTime;
         Quaternion deltaRotation = Quaternion.Euler(rotationAngle);
         
         body.MoveRotation(body.rotation * deltaRotation);
+        */
+        AccelValPerFrame = AccelAmount * Time.fixedDeltaTime;
+
+        Debug.Log(angularDrag.Evaluate(AccelValPerFrame));
+        body.angularDrag = angularDrag.Evaluate(body.angularVelocity.sqrMagnitude);
+
+        body.AddTorque(new Vector3(0, AccelValPerFrame, 0), ForceMode.Acceleration);
+
+        animator.SetFloat("ForwardSpeed", body.velocity.magnitude);
+        animator.SetFloat("TurnValue", AccelValPerFrame);
     }
 
 
