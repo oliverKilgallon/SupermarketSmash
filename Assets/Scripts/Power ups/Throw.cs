@@ -19,7 +19,7 @@ public class Throw : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //localArc = new Vector3[16];
         emit = false;
         rand = new Vector3(Random.Range(2, 5), Random.Range(2, 5), Random.Range(2, 5));
     }
@@ -39,7 +39,10 @@ public class Throw : MonoBehaviour
             {
                 arcStep++;
             }
-            if(arcStep == 14) { itemChild.GetComponent<Rigidbody>().useGravity = true; }
+            if (itemChild)
+            {
+                if (arcStep == 14) { itemChild.GetComponent<Rigidbody>().useGravity = true; }
+            }
         }
         else
         {
@@ -64,10 +67,21 @@ public class Throw : MonoBehaviour
             {
                 jam.gameObject.transform.SetPositionAndRotation(new Vector3(jam.gameObject.transform.position.x, floorY + 0.001f, jam.gameObject.transform.position.z), Quaternion.Euler(new Vector3(90, 0, 0)));
                 jam.GetComponent<MeshRenderer>().enabled = true;
+                jam.GetComponent<BoxCollider>().enabled = true;
+                
 
                 emit = true;
  
 
+            }
+        }
+        if((jam.transform.lossyScale.x<= 3)&& (jam.transform.lossyScale.z <= 3))
+        {
+            
+            if (emit)
+            {
+                jam.transform.localScale += new Vector3(0.12f, 0.12f, 0);
+               // jam.transform.lossyScale.Scale(new Vector3(2, 0, 2));
             }
         }
     }

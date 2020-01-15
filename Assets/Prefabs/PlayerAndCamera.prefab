@@ -1201,6 +1201,9 @@ MonoBehaviour:
   ctrlA: 0
   Angle: {x: 0, y: 0, z: 0}
   control: {fileID: 0}
+  jammy: 0
+  speedSticky: 1.5
+  speedStop: 2
   basketList: []
 --- !u!114 &5796032445145852619
 MonoBehaviour:
@@ -1294,7 +1297,12 @@ MonoBehaviour:
   currentCurvePoint: 0
   throwable: {fileID: 1762353451717998125, guid: f2dcd25a518e6f04293eb0d736212d57,
     type: 3}
-  currentWeapon: flour
+  currentWeapon: jam
+  timer: 0
+  ThrowCountdown: 3
+  floor: {fileID: 0}
+  floorY: 0
+  currentlyUsable: 0
   playerNumber: 0
 --- !u!1 &5397045372747138782
 GameObject:
@@ -1795,6 +1803,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3919509490135309680}
     m_Modifications:
+    - target: {fileID: 100000, guid: 4ec7e03f0c71e404c9919df9914d1b14, type: 3}
+      propertyPath: m_Name
+      value: Projectile Pointer
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4ec7e03f0c71e404c9919df9914d1b14, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1846,10 +1858,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 4ec7e03f0c71e404c9919df9914d1b14, type: 3}
       propertyPath: m_LocalScale.z
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 4ec7e03f0c71e404c9919df9914d1b14, type: 3}
-      propertyPath: m_Name
-      value: Projectile Pointer
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 4ec7e03f0c71e404c9919df9914d1b14, type: 3}
       propertyPath: m_Materials.Array.data[0]

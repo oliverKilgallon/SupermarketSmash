@@ -19,6 +19,10 @@ public class MoveMultiplayer : MonoBehaviour
     public GameObject control;
     Playerscript ps;
 
+    public bool jammy;
+    public float speedSticky;
+    public float speedStop;
+
     public List<string> basketList = new List<string>();
     //public GameObject Pointer;
 
@@ -26,7 +30,7 @@ public class MoveMultiplayer : MonoBehaviour
     void Start()
     {
        ps = GetComponent<Playerscript>();
-      
+        jammy = false;
 
     }
 
@@ -34,8 +38,8 @@ public class MoveMultiplayer : MonoBehaviour
     void Update()
     {
         //if (Input.GetKeyDown("joy"+playerNumber+"Acc")) { ctrlA = true; }if (Input.GetKeyUp("joy"+playerNumber+"Acc")) { ctrlA = false; }
-        if (Input.GetKeyDown("joystick " + playerNumber + " button 0")) { ctrlA = true; }
-        if (Input.GetKeyUp("joystick " + playerNumber + " button 0")) { ctrlA = false; }
+        if (Input.GetAxis("joy" + playerNumber + "Acc")!=0) { ctrlA = true; }
+        if (Input.GetAxis("joy" + playerNumber + "Acc")==0) { ctrlA = false; }
         if (Input.GetKeyDown("q")) { qPress = true; }if (Input.GetKeyUp("q")) { qPress = false; }
         if (Input.GetKeyDown("w")) { wPress = true; }if (Input.GetKeyUp("w")) { wPress = false; }
         if (Input.GetKeyDown("e")) { ePress = true; }if (Input.GetKeyUp("e")) { ePress = false; }
@@ -57,25 +61,40 @@ public class MoveMultiplayer : MonoBehaviour
     void FixedUpdate()
     {
        
-        if (ctrlA||wPress) { body.AddForce(transform.forward * thrust); }
+        if (ctrlA||wPress)
+        {
+            if (jammy == true)
+            {
+                body.AddForce(((transform.forward * thrust)/speedSticky)* Input.GetAxis("joy" + playerNumber + "Acc"));
+            }
+            else
+            {
+                body.AddForce(transform.forward * thrust * Input.GetAxis("joy" + playerNumber + "Acc"));
+            }
+            
+
+
+
+        }
 
         
 
         Quaternion deltaRotation = Quaternion.Euler(Angle * Time.deltaTime);
         if (this.GetComponent<projectiles>().projectileMode != true)
         {
-            body.MoveRotation(body.rotation * deltaRotation);
+           body.MoveRotation(body.rotation * deltaRotation);
         }
-        
+       // body.MoveRotation(body.rotation * deltaRotation);
+
         //body.AddTorque(transform.up * turnSpeed * ((body.rotation * deltaRotation).eulerAngles));
-            //body.AddTorque(transform.up * turnSpeed * Input.GetAxis("joy" + playerNumber + "x"));
+        //body.AddTorque(transform.up * turnSpeed * Input.GetAxis("joy" + playerNumber + "x"));
     }
 
 
 
     private void OnCollisionEnter(Collision col)
     {
-
+        
         if (col.gameObject.tag == "item")
         {
             int i = 0;
@@ -98,12 +117,24 @@ public class MoveMultiplayer : MonoBehaviour
                 }
                 i++;
             }
-
-            //string product = col.gameObject.GetComponent<ItemScript>().product;
-            //control.gameObject.GetComponent<ItemSpawn>().;
-            // Debug.Log("product "+ product);
-
-
         }
     }
+    private void OnTriggerEnter(Collider col)
+    {
+       
+        if (col.gameObject.tag == "jam")
+        {
+           
+            body.velocity = new Vector3(body.velocity.x/speedStop,body.velocity.y/speedStop,body.velocity.z/speedStop);
+            jammy = true;
+        }
+    }
+    private void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.tag == "jam")
+        {
+            jammy = false;
+        }
+    }
+    
 }

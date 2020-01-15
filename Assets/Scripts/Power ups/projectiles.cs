@@ -15,9 +15,13 @@ public class projectiles : MonoBehaviour
     public int currentCurvePoint = 0;
     public GameObject throwable;
     public string currentWeapon;
+    public float timer;
+    public float ThrowCountdown;
 
     public GameObject floor;
     public float floorY;
+    public bool currentlyUsable;
+    public float timeLock;
 
     public int playerNumber;
     // Start is called before the first frame update
@@ -26,27 +30,38 @@ public class projectiles : MonoBehaviour
         playerNumber = GetComponent<MoveMultiplayer>().playerNumber;
         arc = new Vector3[16];
         floorY = floor.gameObject.transform.position.y;
-        
+        currentlyUsable = true;
+        timer = 5;
+        timeLock = 0;
+
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {   if (timer < ThrowCountdown+1)
+        {
+            timer += Time.deltaTime;
+        }
+        
         if (Input.GetKeyDown(KeyCode.A)) { currentWeapon = "flour"; }
         if (Input.GetKeyDown(KeyCode.S)) { currentWeapon = "jam"; }
-        if (Input.GetButtonDown("joy" + playerNumber + "Throw"))
+        if (Input.GetButtonDown("joy" + playerNumber + "Throw")&&timer>ThrowCountdown)
         {
-           
+
+            timeLock = timer;
             projectileMode = true;
             Pointer.GetComponent<MeshRenderer>().enabled = true;
             Pointer.transform.RotateAround(PointerBase.transform.position,Vector3.up, -adjust);
             adjust = 0;
 
         }
-        if (Input.GetButtonUp("joy" + playerNumber + "Throw"))
+       
+
+        if (Input.GetButtonUp("joy" + playerNumber + "Throw")&&timeLock>ThrowCountdown)
         {
-                    
-                for(int i = 1;i<17 ; i++)
+            timeLock = 0;
+            timer = 0;
+            for (int i = 1;i<17 ; i++)
                 {
                     arc[i - 1] = thrownPoints[i].transform.position;
                 //Debug.Log(i);
@@ -56,7 +71,8 @@ public class projectiles : MonoBehaviour
             thisThrow = (GameObject)Instantiate(throwable, thrownPoints[currentCurvePoint].transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
             
             
-                thisThrow.GetComponent<Throw>().localArc =  arc;
+            thisThrow.GetComponent<Throw>().localArc =  arc;
+            //arc.CopyTo(thisThrow.GetComponent<Throw>().localArc, 0);
             thisThrow.GetComponent<Throw>().weapon = currentWeapon;
             thisThrow.GetComponent<Throw>().floorY = floorY;
 
