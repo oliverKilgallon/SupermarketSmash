@@ -29,7 +29,9 @@ public class MoveMultiplayer : MonoBehaviour
     private float AccelValPerFrame;
     private float AccelAmount;
     public float AccelInputMult = 150f;
-    public AnimationCurve angularDrag;
+    public float maxAngDrag = 1.2f;
+    private float evaluatedAngDrag;
+    public AnimationCurve angularDragCurve;
 
     private bool qPress;
     private bool wPress;
@@ -47,6 +49,7 @@ public class MoveMultiplayer : MonoBehaviour
     {
         ps = GetComponent<Playerscript>();
         body.interpolation = RigidbodyInterpolation.Interpolate;
+        body.maxAngularVelocity = 9f;
     }
 
     // Update is called once per frame
@@ -109,10 +112,21 @@ public class MoveMultiplayer : MonoBehaviour
         
         body.MoveRotation(body.rotation * deltaRotation);
         */
+
         AccelValPerFrame = AccelAmount * Time.fixedDeltaTime;
 
-        Debug.Log(angularDrag.Evaluate(AccelValPerFrame));
-        body.angularDrag = angularDrag.Evaluate(body.angularVelocity.magnitude);
+        float valueToScale = AccelAmount;
+        float max = body.maxAngularVelocity;
+        float scaledValue = (body.angularVelocity.magnitude) / body.maxAngularVelocity;
+        Debug.Log("Mag: " + body.angularVelocity.magnitude);
+        //Debug.Log("MaxAngVel: " + body.maxAngularVelocity);
+        //scaledValue = Mathf.Clamp(scaledValue, 0, body.maxAngularVelocity);
+        //scaledValue = Mathf.Clamp(scaledValue, 0.0f, 1.0f);
+        //Debug.Log("Mag / max: " + (Mathf.Round(scaledValue * 1000.0f) / 1000.0f));
+        
+        evaluatedAngDrag = angularDragCurve.Evaluate(scaledValue);
+
+        body.angularDrag = (evaluatedAngDrag * 2.0f) * maxAngDrag;
 
         body.AddTorque(new Vector3(0, AccelValPerFrame, 0), ForceMode.Acceleration);
 
