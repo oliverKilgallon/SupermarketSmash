@@ -550,23 +550,23 @@ InputManager:
     axis: 0
     joyNum: 4
   - serializedVersion: 3
-    m_Name: joy1aim
+    m_Name: joy1aimx
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 3
+    gravity: 1
     dead: 0.1
-    sensitivity: 3
+    sensitivity: 1
     snap: 0
     invert: 0
     type: 2
     axis: 3
     joyNum: 1
   - serializedVersion: 3
-    m_Name: joy2aim
+    m_Name: joy1aimy
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -575,14 +575,30 @@ InputManager:
     altPositiveButton: 
     gravity: 3
     dead: 0.1
-    sensitivity: 3
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 4
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: joy2aimx
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.1
+    sensitivity: 1
     snap: 0
     invert: 0
     type: 2
     axis: 3
     joyNum: 2
   - serializedVersion: 3
-    m_Name: joy3im
+    m_Name: joy2aimy
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -591,14 +607,30 @@ InputManager:
     altPositiveButton: 
     gravity: 3
     dead: 0.1
-    sensitivity: 3
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 3
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: joy3aimx
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.1
+    sensitivity: 1
     snap: 0
     invert: 0
     type: 2
     axis: 3
     joyNum: 3
   - serializedVersion: 3
-    m_Name: joy4aim
+    m_Name: joy3aimy
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -607,9 +639,41 @@ InputManager:
     altPositiveButton: 
     gravity: 3
     dead: 0.1
-    sensitivity: 3
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 4
+    joyNum: 3
+  - serializedVersion: 3
+    m_Name: joy4aimx
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.1
+    sensitivity: 1
     snap: 0
     invert: 0
     type: 2
     axis: 3
+    joyNum: 4
+  - serializedVersion: 3
+    m_Name: joy4aimy
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.1
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 4
     joyNum: 4

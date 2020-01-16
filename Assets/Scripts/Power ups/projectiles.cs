@@ -23,6 +23,15 @@ public class projectiles : MonoBehaviour
     public bool currentlyUsable;
     public float timeLock;
 
+    public Vector3 aimStart;
+    public GameObject aimCursor;
+    public float aimx;
+    public float aimy;
+
+    public float shiftx;
+    public float shifty;
+    public float spin360;
+
     public int playerNumber;
     // Start is called before the first frame update
     void Start()
@@ -33,12 +42,28 @@ public class projectiles : MonoBehaviour
         currentlyUsable = true;
         timer = 5;
         timeLock = 0;
+        aimStart = aimCursor.gameObject.transform.position;
 
     }
 
     // Update is called once per frame
     void Update()
-    {   if (timer < ThrowCountdown+1)
+    {
+        spin360 = (transform.rotation.y / 360);// -(transform.rotation.y% 360);
+        aimx = Input.GetAxis("joy" + playerNumber + "aimx");
+        aimy = Input.GetAxis("joy" + playerNumber + "aimy");
+        Vector3 aim = new Vector3(Input.GetAxis("joy" + playerNumber + "aimx") * -shiftx, aimStart.y, Input.GetAxis("joy" + playerNumber + "aimy") * shifty);
+        
+        Vector3 angles = new Vector3(0, transform.rotation.y, 0);
+        //Vector3 dir = aim - transform.position;
+        // dir = Quaternion.Euler() * dir;
+        aimCursor.gameObject.transform.localPosition = aim;
+        // aimCursor.gameObject.transform.localPosition = Quaternion.Euler(angles) * (aim - transform.position) + transform.position;
+        //aimCursor.gameObject.transform.position = transform.position + aim;
+        // aimCursor.gameObject.transform.position = transform.position +dir;
+
+
+        if (timer < ThrowCountdown+1)
         {
             timer += Time.deltaTime;
         }
@@ -69,7 +94,10 @@ public class projectiles : MonoBehaviour
                 }
             GameObject thisThrow;
             thisThrow = (GameObject)Instantiate(throwable, thrownPoints[currentCurvePoint].transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-            
+
+
+           
+           // 
             
             thisThrow.GetComponent<Throw>().localArc =  arc;
             //arc.CopyTo(thisThrow.GetComponent<Throw>().localArc, 0);

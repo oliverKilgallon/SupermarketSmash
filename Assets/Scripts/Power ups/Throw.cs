@@ -75,7 +75,7 @@ public class Throw : MonoBehaviour
 
             }
         }
-        if((jam.transform.lossyScale.x<= 3)&& (jam.transform.lossyScale.z <= 3))
+        if((jam.transform.lossyScale.x<= 3)&& (jam.transform.lossyScale.z <= 3)&&jam.GetComponent<MeshRenderer>().enabled == true)
         {
             
             if (emit)
