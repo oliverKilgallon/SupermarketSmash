@@ -46,6 +46,7 @@ public class PostProcessing : MonoBehaviour
 
     }
 
+    //[ImageEffectOpaque]
     void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
         switch (shader)

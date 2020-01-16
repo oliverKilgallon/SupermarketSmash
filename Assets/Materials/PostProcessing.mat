@@ -62,8 +62,8 @@ Material:
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
-    - _DepthBias: 2.09
-    - _DepthMult: 2.99
+    - _DepthBias: 4
+    - _DepthMult: 2.49
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
@@ -71,8 +71,8 @@ Material:
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
-    - _NormalBias: 2.88
-    - _NormalMult: 2.93
+    - _NormalBias: 4
+    - _NormalMult: 1.65
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0

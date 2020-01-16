@@ -112,7 +112,7 @@ public class MoveMultiplayer : MonoBehaviour
         AccelValPerFrame = AccelAmount * Time.fixedDeltaTime;
 
         Debug.Log(angularDrag.Evaluate(AccelValPerFrame));
-        body.angularDrag = angularDrag.Evaluate(body.angularVelocity.sqrMagnitude);
+        body.angularDrag = angularDrag.Evaluate(body.angularVelocity.magnitude);
 
         body.AddTorque(new Vector3(0, AccelValPerFrame, 0), ForceMode.Acceleration);
 
