@@ -24,6 +24,19 @@ public class Playerscript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            Debug.Log("here");
+            if (GetComponentInParent<powerupSlot>().current != null)
+            {
+                Debug.Log("here2");
+                IEnumerator coroutine = GetComponentInParent<powerupSlot>().current.execEffect(GetComponentInParent<powerupSlot>().current.effectDuration, GetComponent<MoveMultiplayer>().playerNumber);
+                StartCoroutine(coroutine);
+                GetComponentInParent<powerupSlot>().current = null;
+                GetComponentInParent<powerupSlot>().slot.texture = null;
+            }
+        }
+
         int i = 0;
         int left = 8;
         foreach (Text t in listText)

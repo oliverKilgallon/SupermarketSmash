@@ -13,12 +13,15 @@ public class Gameplayloop : MonoBehaviour
     public int noOfPlayers;
     public bool setListMode;
 
+    public float roundTime;
+
     public GameObject door;
     public GameObject winArea;
 
     // Start is called before the first frame update
     void Awake()
     {
+        roundTime *= 60;
         door.SetActive(true);
         winArea.SetActive(false);
 
@@ -110,18 +113,27 @@ public class Gameplayloop : MonoBehaviour
 
     void endGame()
     {
-        foreach (GameObject player in players)
+        roundTime -= Time.deltaTime;
+        if (roundTime <= 0)
         {
-            if (player.GetComponent<Playerscript>().allItemsCollected)
+            door.SetActive(false);
+            winArea.SetActive(true);
+        }
+        else
+        {
+            foreach (GameObject player in players)
             {
-                door.SetActive(false);
-                winArea.SetActive(true);
-                break;
-            }
-            else
-            {
-                door.SetActive(true);
-                winArea.SetActive(false);
+                if (player.GetComponent<Playerscript>().allItemsCollected)
+                {
+                    door.SetActive(false);
+                    winArea.SetActive(true);
+                    break;
+                }
+                else
+                {
+                    door.SetActive(true);
+                    winArea.SetActive(false);
+                }
             }
         }
     }
