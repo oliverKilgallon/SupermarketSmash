@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Playerscript : MonoBehaviour
 {
+    public int playerNumber;
     public List<string> localItems = new List<string>();
     public Text[] listText = new Text[8];
 
@@ -17,11 +18,24 @@ public class Playerscript : MonoBehaviour
     void Start()
     {
         iS = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemSpawn>();
+        playerNumber = GetComponent<MoveMultiplayer>().playerNumber;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetButtonDown("joy" + playerNumber + "Throw"))
+        {
+            if (GetComponentInParent<powerupSlot>().current != null)
+            {
+                IEnumerator cr = GetComponentInParent<powerupSlot>().current.execEffect(GetComponentInParent<powerupSlot>().current.effectDuration, GetComponent<MoveMultiplayer>().playerNumber);
+                StartCoroutine(cr);
+                GetComponentInParent<powerupSlot>().current = null;
+                GetComponentInParent<powerupSlot>().slot.texture = null;
+            }
+        }
+
+
         int i = 0;
         int left = 8;
         foreach (Text t in listText)

@@ -82,9 +82,9 @@ public class MoveMultiplayer : MonoBehaviour
         Quaternion deltaRotation = Quaternion.Euler(Angle * Time.deltaTime);
         if (this.GetComponent<projectiles>().projectileMode != true)
         {
-           body.MoveRotation(body.rotation * deltaRotation);
+          // body.MoveRotation(body.rotation * deltaRotation);
         }
-       // body.MoveRotation(body.rotation * deltaRotation);
+        body.MoveRotation(body.rotation * deltaRotation);
 
         //body.AddTorque(transform.up * turnSpeed * ((body.rotation * deltaRotation).eulerAngles));
         //body.AddTorque(transform.up * turnSpeed * Input.GetAxis("joy" + playerNumber + "x"));
