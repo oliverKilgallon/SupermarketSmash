@@ -119,6 +119,8 @@ Shader "Unlit/OutlineShader"
 					//Blur this dependant on the distance from the camera
 					float outline = depthDifference + normalDifference;
 
+					float fwidthOutline = fwidth(outline);
+
 
 					float4 sourceColor = tex2D(_MainTex, i.uv);
 					float4 color = lerp(sourceColor, _OutlineColor, outline);

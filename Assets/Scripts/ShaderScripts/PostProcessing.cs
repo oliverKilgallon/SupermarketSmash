@@ -18,7 +18,8 @@ public class PostProcessing : MonoBehaviour
         None,
         DepthWave,
         DepthNormals,
-        Outline
+        Outline,
+        Blur
     }
     public Shaders shader;
 
@@ -39,6 +40,9 @@ public class PostProcessing : MonoBehaviour
                 cam.depthTextureMode = cam.depthTextureMode | DepthTextureMode.DepthNormals;
                 postProcessMaterial.shader = Shader.Find("Unlit/OutlineShader");
                 break;
+            case Shaders.Blur:
+                postProcessMaterial.shader = Shader.Find("Unlit/BlurShader");
+                break;
             default:
                 break;
 
@@ -53,17 +57,26 @@ public class PostProcessing : MonoBehaviour
         {
             case Shaders.DepthWave:
                 postProcessMaterial.SetFloat("_WaveDistance", waveDistance);
+                Graphics.Blit(source, destination, postProcessMaterial);
                 break;
             case Shaders.DepthNormals:
                 Matrix4x4 viewToWorld = cam.cameraToWorldMatrix;
                 postProcessMaterial.SetMatrix("_viewToWorld", viewToWorld);
+                Graphics.Blit(source, destination, postProcessMaterial);
+                break;
+            case Shaders.Blur:
+                RenderTexture tempTex = RenderTexture.GetTemporary(source.width, source.height);
+                Graphics.Blit(source, tempTex, postProcessMaterial, 0);
+                Graphics.Blit(tempTex, destination, postProcessMaterial, 1);
+                RenderTexture.ReleaseTemporary(tempTex);
                 break;
             default:
+                Graphics.Blit(source, destination, postProcessMaterial);
                 break;
         }
 
 
-        Graphics.Blit(source, destination, postProcessMaterial);
+        
     }
 
     private void Update()
