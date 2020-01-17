@@ -39,10 +39,10 @@ public class setUpSplitScreen : MonoBehaviour
 
         ListPosP4 = new Vector2[]
         {
-            new Vector2( -375, 171 ),
-            new Vector2( 375, 171 ),
-            new Vector2( -375, -171 ),
-            new Vector2( 375, -171 ),
+            new Vector2( -300, 171 ),
+            new Vector2( 300, 171 ),
+            new Vector2( -300, -171 ),
+            new Vector2( 300, -171 ),
         };
 
         switch (numberOfPlayers)

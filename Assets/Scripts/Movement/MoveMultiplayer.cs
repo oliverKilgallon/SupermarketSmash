@@ -116,12 +116,12 @@ public class MoveMultiplayer : MonoBehaviour
         body.MoveRotation(body.rotation * deltaRotation);
         */
 
-        AccelValPerFrame = AccelAmount * Time.fixedDeltaTime;
+        AccelValPerFrame = AccelAmount * Time.fixedDeltaTime * 5f;
 
         float valueToScale = AccelAmount;
         float max = body.maxAngularVelocity;
         float scaledValue = (body.angularVelocity.magnitude) / body.maxAngularVelocity;
-        Debug.Log("Mag: " + body.angularVelocity.magnitude);
+        //Debug.Log("Mag: " + body.angularVelocity.magnitude);
         //Debug.Log("MaxAngVel: " + body.maxAngularVelocity);
         //scaledValue = Mathf.Clamp(scaledValue, 0, body.maxAngularVelocity);
         //scaledValue = Mathf.Clamp(scaledValue, 0.0f, 1.0f);
@@ -129,7 +129,7 @@ public class MoveMultiplayer : MonoBehaviour
         
         evaluatedAngDrag = angularDragCurve.Evaluate(scaledValue);
 
-        body.angularDrag = (evaluatedAngDrag * 2.0f) * maxAngDrag;
+        //body.angularDrag = (evaluatedAngDrag * 2.0f) * maxAngDrag;
 
         body.AddTorque(new Vector3(0, AccelValPerFrame, 0), ForceMode.Acceleration);
 
