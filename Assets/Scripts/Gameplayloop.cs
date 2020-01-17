@@ -24,13 +24,12 @@ public class Gameplayloop : MonoBehaviour
         roundTime *= 60;
         door.SetActive(true);
         winArea.SetActive(false);
-
         noOfPlayers = splitscreen.gameObject.GetComponent<setUpSplitScreen>().numberOfPlayers;
        // Debug.Log("test2");
         int counter = 0;
         string line;
         System.IO.StreamReader file =
-           new System.IO.StreamReader("Assets/ItemStorage.txt");
+           new System.IO.StreamReader("Assets/Text Files/ItemStorage.txt");
         while ((line = file.ReadLine()) != null)
         {
            // Debug.Log(line);
