@@ -25,7 +25,7 @@ public class Throw : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (arcStep < 16)
         {
@@ -42,6 +42,7 @@ public class Throw : MonoBehaviour
             if (itemChild)
             {
                 if (arcStep == 14) { itemChild.GetComponent<Rigidbody>().useGravity = true; }
+               
             }
         }
         else
@@ -49,6 +50,7 @@ public class Throw : MonoBehaviour
             if (itemChild)
             {
                 itemChild.GetComponent<Rigidbody>().useGravity = true;
+                itemChild.GetComponent<BoxCollider>().enabled = true;
             }
             
             //Destroy(itemChild);

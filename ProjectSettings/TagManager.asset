@@ -7,6 +7,7 @@ TagManager:
   - item
   - floor
   - jam
+  - checkout
   layers:
   - Default
   - TransparentFX

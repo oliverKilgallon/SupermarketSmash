@@ -150,12 +150,15 @@ public class MoveMultiplayer : MonoBehaviour
                 if (ps.localItems[i] != "" && ps.localItems[i] != null)
                 {
                     //Debug.Log(item + " " + col.gameObject.GetComponent<ItemScript>().product);
-                    if (item == col.gameObject.GetComponent<ItemScript>().product)
+                    if ((item == col.gameObject.GetComponent<ItemScript>().product)&&(ps.heldItem == ""))
                     {
-                        basketList.Add(item);
+                        
+                       // basketList.Add(item);
                         ps.listText[ps.localItems.IndexOf(item)].text = "";
                         ps.localItems[ps.localItems.IndexOf(item)] = "";
                         ps.currentHeld.Add(item);
+                        ps.heldItem = item;
+                       
                         Destroy(col.gameObject);
                         break;
 
@@ -165,14 +168,15 @@ public class MoveMultiplayer : MonoBehaviour
                 i++;
             }
         }
+        
     }
     private void OnTriggerEnter(Collider col)
     {
-       
+        if (col.gameObject.tag == "checkout") { ps.heldItem = ""; Debug.Log("Checkout"); }
         if (col.gameObject.tag == "jam")
         {
            
-            body.velocity = new Vector3(body.velocity.x/speedStop,body.velocity.y/speedStop,body.velocity.z/speedStop);
+           // body.velocity = new Vector3(body.velocity.x/speedStop,body.velocity.y/speedStop,body.velocity.z/speedStop);
             jammy = true;
         }
     }

@@ -11,19 +11,45 @@ public class Playerscript : MonoBehaviour
 
     public List<string> currentHeld = new List<string>();
     ItemSpawn iS;
-
+    public string heldItem;
+    public List<string> nameList;
+    public GameObject Spawn;
+    MeshRenderer spawnMeshR;
+    MeshFilter spawnMeshF;
     public bool allItemsCollected = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        spawnMeshF = Spawn.GetComponent<MeshFilter>();
+        spawnMeshR = Spawn.GetComponent<MeshRenderer>();
+        nameList = GameObject.FindGameObjectWithTag("GameController").GetComponent<Gameplayloop>().allItems;
         iS = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemSpawn>();
         playerNumber = GetComponent<MoveMultiplayer>().playerNumber;
     }
 
     // Update is called once per frame
     void Update()
-    {
+    { int p = 0;
+        if(heldItem == "") { spawnMeshR.enabled = false; }
+        if(heldItem != null && heldItem!= "")
+        {
+            foreach(string name in nameList)
+            {
+          
+                if (name == heldItem)
+                {
+                    //iS.productMat
+                    spawnMeshF.mesh = iS.productMesh[p];
+                    spawnMeshR.material = iS.productMat[p];
+                    spawnMeshR.enabled = true;
+
+
+                }
+                p++;  
+            }
+
+        }
         if (Input.GetButtonDown("joy" + playerNumber + "Throw"))
         {
             if (GetComponentInParent<powerupSlot>().current != null)
