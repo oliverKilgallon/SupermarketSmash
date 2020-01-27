@@ -9,6 +9,8 @@ public class controllerDetection : MonoBehaviour
 
     public int NoOfPlayers;
 
+    public Object nextScene;
+    public Object lastScene;
     
     void Start()
     {
@@ -16,7 +18,6 @@ public class controllerDetection : MonoBehaviour
     }
     void Update()
     {
-
         int i = 0;
         foreach (GameObject pp in playerPanelGameobjects)
         {
@@ -35,13 +36,13 @@ public class controllerDetection : MonoBehaviour
     {
         PlayerPrefs.SetInt("NoOfPlayers", NoOfPlayers);
 
-        SceneManager.LoadScene("playerCollision");
+        SceneManager.LoadScene(nextScene.name);
     }
     public void back()
     {
         PlayerPrefs.SetInt("NoOfPlayers", 0);
 
-        SceneManager.LoadScene("mainMenu");
+        SceneManager.LoadScene(lastScene.name);
     }
 
 }
