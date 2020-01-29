@@ -52,5 +52,4 @@ public class controllerDetection : MonoBehaviour
 
         SceneManager.LoadScene(lastScene.name);
     }
-
 }
