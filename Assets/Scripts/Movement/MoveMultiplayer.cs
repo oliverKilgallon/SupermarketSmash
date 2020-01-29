@@ -13,25 +13,23 @@ public class MoveMultiplayer : MonoBehaviour
     public Rigidbody body;
     public Animator animator;
 
+    //Variables related to turn movement
     public float thrust = 200;
     public float turnSpeed;
     public float maxAngDrag = 1.2f;
     public float minAngDrag = 0.1f;
     public bool useDragCurve = false;
     public AnimationCurve angularDragCurve;
-    //Attempting standard torque values
-    private float torque;
-    private float evaluatedAngDrag;
+    private float turnInput;
 
     private bool qPress;
     private bool wPress;
     private bool ePress;
     private bool ctrlA;
-    private Vector3 Angle;
-    private Vector3 angularVel = Vector3.zero;
     
     Playerscript ps;
 
+    //Variables related to powerups/hazards/items
     public bool jammy;
     public float speedSticky;
     public float speedStop;
@@ -56,7 +54,7 @@ public class MoveMultiplayer : MonoBehaviour
         
         float playerJoyX = Input.GetAxis("joy" + playerNumber + "x");
 
-        torque = Input.GetAxis("Horizontal") * turnSpeed;
+        turnInput = Input.GetAxis("Horizontal");
 
         //AccelAmount = playerJoyX * turnSpeed;
     }
@@ -68,16 +66,33 @@ public class MoveMultiplayer : MonoBehaviour
         
         if (moveForward) { body.AddForce(force); }
         
-        float scaledValue = (body.angularVelocity.magnitude) / body.maxAngularVelocity;
+        float angVelPercent = body.angularVelocity.magnitude / body.maxAngularVelocity;
         
-        evaluatedAngDrag = angularDragCurve.Evaluate(scaledValue);
+        //Scale torque according to how fast we are currently rotating
+        float torqueScale = 1 - angularDragCurve.Evaluate(angVelPercent);
 
-        if (useDragCurve) { body.angularDrag = (evaluatedAngDrag * maxAngDrag) + minAngDrag; }
+        //evaluatedAngDrag = angularDragCurve.Evaluate(angVelPercent);
+        //if (useDragCurve) { body.angularDrag = (evaluatedAngDrag * maxAngDrag) + minAngDrag; }
 
-        body.AddTorque(transform.up * torque);
+        //If input direction is the same as angular velocity, apply decreasing amounts of torque
+        //relative to how fast we are rotating
+        //Else apply full torque in other direction
+        if (useDragCurve && (IsSameSign(turnInput, body.angularVelocity.y)))
+        {
+            body.AddRelativeTorque(transform.up * (turnSpeed * torqueScale) * turnInput);
+        }
+        else if(useDragCurve)
+        {
+            body.AddRelativeTorque(transform.up * turnSpeed * turnInput);
+        }
 
-        animator.SetFloat("ForwardSpeed", body.velocity.magnitude);
-        animator.SetFloat("TurnValue", torque);
+        body.AddTorque(transform.up * turnSpeed);
+
+        //Forward speed is equal to current speed, scaled to be between 0 and 1
+        animator.SetFloat("ForwardSpeed", body.velocity.normalized.magnitude);
+
+        //Turn value should be equal to how fast we are rotating per physics frame
+        animator.SetFloat("TurnValue", body.angularVelocity.magnitude);
     }
 
 
@@ -125,6 +140,11 @@ public class MoveMultiplayer : MonoBehaviour
         {
             jammy = false;
         }
+    }
+
+    private bool IsSameSign(float num1, float num2)
+    {
+        return num1 >= 0 && num2 >= 0 || num1 < 0 && num2 < 0;
     }
     
 }
