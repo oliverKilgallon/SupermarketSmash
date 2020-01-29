@@ -8,6 +8,7 @@ public class playerCustomization : MonoBehaviour
     //GameObject[] players = new GameObject[4];
     public Slider R, G, B;
     public Color modelColor;
+    public GameObject model;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +29,8 @@ public class playerCustomization : MonoBehaviour
         modelColor.g = G.value;
         modelColor.b = B.value;
         modelColor.a = 255;
-        Debug.Log(modelColor);
+        //Debug.Log(modelColor);
         GetComponent<RawImage>().color = modelColor;
+        model.GetComponentInChildren<Renderer>().material.color = modelColor;
     }
 }
