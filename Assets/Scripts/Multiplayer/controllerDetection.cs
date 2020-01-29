@@ -36,9 +36,25 @@ public class controllerDetection : MonoBehaviour
                 i++;
             }
         }
-        NoOfPlayers = Input.GetJoystickNames().Length;
+        NoOfPlayers = getPlayers();
         i = 0;
     }
+
+    int getPlayers()
+    {
+        string[] joysticks = Input.GetJoystickNames();
+
+        for (int i = 0; i < joysticks.Length - 1; i++)
+        {
+            if (joysticks[i] == "") { }
+            else
+            {
+                NoOfPlayers++;
+            }
+        }
+        return NoOfPlayers;
+    }
+
 
     public void Continue()
     {
