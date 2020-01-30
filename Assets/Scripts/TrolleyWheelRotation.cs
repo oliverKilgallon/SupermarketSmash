@@ -51,10 +51,7 @@ public class TrolleyWheelRotation : MonoBehaviour
                 //wheelTransforms[i].LookAt(lastWheelPositions[i], Vector3.up);
 
                 //wheelTransforms[i].Rotate(new Vector3(0, 180.0f, 0));
-                Debug.Log(newRotation);
             }
-            
-            Debug.DrawRay(trolleyRigidbody.transform.position, trolleyRigidbody.velocity, Color.red);
             lastWheelPositions[i] = wheelTransforms[i].position;
             lastTrolleyPos = currTrolleyPos;
         }

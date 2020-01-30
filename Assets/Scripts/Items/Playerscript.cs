@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Playerscript : MonoBehaviour
 {
+    public int playerNumber;
     public List<string> localItems = new List<string>();
     public Text[] listText = new Text[8];
 
@@ -12,31 +13,56 @@ public class Playerscript : MonoBehaviour
     ItemSpawn iS;
 
     public int armour;
+    public string heldItem;
+    public List<string> nameList;
+    public GameObject Spawn;
+    MeshRenderer spawnMeshR;
+    MeshFilter spawnMeshF;
 
     public bool allItemsCollected = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        spawnMeshF = Spawn.GetComponent<MeshFilter>();
+        spawnMeshR = Spawn.GetComponent<MeshRenderer>();
+        nameList = GameObject.FindGameObjectWithTag("GameController").GetComponent<Gameplayloop>().allItems;
         iS = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemSpawn>();
+        playerNumber = GetComponent<MoveMultiplayer>().playerNumber;
     }
 
     // Update is called once per frame
     void Update()
-    {
-        if (Input.GetKey(KeyCode.Space))
+    { int p = 0;
+        if(heldItem == "") { spawnMeshR.enabled = false; }
+        if(heldItem != null && heldItem!= "")
         {
-            Debug.Log("here");
+            foreach(string name in nameList)
+            {
+          
+                if (name == heldItem)
+                {
+                    //iS.productMat
+                    spawnMeshF.mesh = iS.productMesh[p];
+                    spawnMeshR.material = iS.productMat[p];
+                    spawnMeshR.enabled = true;
+
+
+                }
+                p++;  
+            }
+
+        }
+        if (Input.GetButtonDown("joy" + playerNumber + "Throw"))
+        {
             if (GetComponentInParent<powerupSlot>().current != null)
             {
-                Debug.Log("here2");
-                IEnumerator coroutine = GetComponentInParent<powerupSlot>().current.execEffect(GetComponentInParent<powerupSlot>().current.effectDuration, GetComponent<MoveMultiplayer>().playerNumber);
-                StartCoroutine(coroutine);
+                IEnumerator cr = GetComponentInParent<powerupSlot>().current.execEffect(GetComponentInParent<powerupSlot>().current.effectDuration, GetComponent<MoveMultiplayer>().playerNumber);
+                StartCoroutine(cr);
                 GetComponentInParent<powerupSlot>().current = null;
                 GetComponentInParent<powerupSlot>().slot.texture = null;
             }
         }
-
         int i = 0;
         int left = 8;
         foreach (Text t in listText)

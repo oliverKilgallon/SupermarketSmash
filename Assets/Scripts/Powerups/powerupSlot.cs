@@ -18,6 +18,10 @@ public class powerupSlot : MonoBehaviour
     {
         current = newItem;
         slot.texture = newItem.icon.texture;
+        if (newItem.throwable)
+        {
+            StartCoroutine(newItem.execEffect(1, GetComponentInChildren<MoveMultiplayer>().playerNumber)); 
+        }
     }
 
     public void removeItem()
