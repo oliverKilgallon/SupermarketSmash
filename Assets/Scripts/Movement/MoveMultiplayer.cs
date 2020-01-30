@@ -92,10 +92,10 @@ public class MoveMultiplayer : MonoBehaviour
         }
 
         //Forward speed is equal to current speed, scaled to be between 0 and 1
-        animator.SetFloat("ForwardSpeed", body.velocity.normalized.magnitude);
+        animator.SetFloat("ForwardSpeed", body.velocity.normalized.z);
 
         //Turn value should be equal to how fast we are rotating per physics frame
-        animator.SetFloat("TurnValue", body.angularVelocity.magnitude);
+        animator.SetFloat("TurnValue", playerJoyX);
     }
 
 
