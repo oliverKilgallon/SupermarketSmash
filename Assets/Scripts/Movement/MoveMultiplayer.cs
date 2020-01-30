@@ -26,6 +26,7 @@ public class MoveMultiplayer : MonoBehaviour
     private bool wPress;
     private bool ePress;
     private bool ctrlA;
+    private float playerJoyX;
     
     Playerscript ps;
 
@@ -52,7 +53,7 @@ public class MoveMultiplayer : MonoBehaviour
         if (Input.GetKeyDown("w")) { wPress = true; }if (Input.GetKeyUp("w")) { wPress = false; }
         if (Input.GetKeyDown("e")) { ePress = true; }if (Input.GetKeyUp("e")) { ePress = false; }
         
-        float playerJoyX = Input.GetAxis("joy" + playerNumber + "x");
+        playerJoyX = Input.GetAxis("joy" + playerNumber + "x");
 
         turnInput = Input.GetAxis("Horizontal");
 
@@ -77,16 +78,16 @@ public class MoveMultiplayer : MonoBehaviour
         //If input direction is the same as angular velocity, apply decreasing amounts of torque
         //relative to how fast we are rotating
         //Else apply full torque in other direction
-        if (useDragCurve && (IsSameSign(turnInput, body.angularVelocity.y)))
+        if (useDragCurve && (IsSameSign(playerJoyX, body.angularVelocity.y)))
         {
-            body.AddRelativeTorque(transform.up * (turnSpeed * torqueScale) * turnInput);
+            body.AddTorque(transform.up * ((turnSpeed * torqueScale) * playerJoyX));
         }
         else if(useDragCurve)
         {
-            body.AddRelativeTorque(transform.up * turnSpeed * turnInput);
+            body.AddTorque(transform.up * (turnSpeed * playerJoyX));
         }
 
-        body.AddTorque(transform.up * turnSpeed);
+        body.AddTorque(transform.up * turnSpeed * playerJoyX);
 
         //Forward speed is equal to current speed, scaled to be between 0 and 1
         animator.SetFloat("ForwardSpeed", body.velocity.normalized.magnitude);
