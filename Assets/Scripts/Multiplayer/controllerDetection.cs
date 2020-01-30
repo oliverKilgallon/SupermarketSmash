@@ -11,7 +11,7 @@ public class controllerDetection : MonoBehaviour
 
     public Object nextScene;
     public Object lastScene;
-    
+
     void Start()
     {
         Debug.Log("Controllers: " + Input.GetJoystickNames().Length);
@@ -22,29 +22,29 @@ public class controllerDetection : MonoBehaviour
     }
     void Update()
     {
+        Debug.Log(joystickList());
         int i = 0;
+        NoOfPlayers = getPlayers();
         foreach (GameObject pp in playerPanelGameobjects)
         {
             if (i < NoOfPlayers)
             {
-                pp.SetActive(true);
-                i++;
+                pp.SetActive(true);  
             }
             else 
             {
-                pp.SetActive(false);
-                i++;
+                pp.SetActive(false);     
             }
+            i++;
         }
-        NoOfPlayers = getPlayers();
         i = 0;
     }
 
     int getPlayers()
     {
         string[] joysticks = Input.GetJoystickNames();
-
-        for (int i = 0; i < joysticks.Length - 1; i++)
+        NoOfPlayers = 0;
+        for (int i = 0; i < joysticks.Length; i++)
         {
             if (joysticks[i] == "") { }
             else
@@ -54,6 +54,19 @@ public class controllerDetection : MonoBehaviour
         }
         return NoOfPlayers;
     }
+
+    string joystickList()
+    {
+        string list = "";
+
+        foreach (string js in Input.GetJoystickNames())
+        {
+            list += js + ", ";
+        }
+
+        return list;
+    }
+
 
 
     public void Continue()
