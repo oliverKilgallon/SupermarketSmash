@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: PostProcessing
   m_Shader: {fileID: 4800000, guid: e8716ab758890e241951f7d6f93c072a, type: 3}
-  m_ShaderKeywords: GAUSS _SAMPLES_MEDIUM
+  m_ShaderKeywords: GAUSS _SAMPLES_HIGH
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -61,7 +61,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BlurAmount: 0
-    - _BlurSize: 0
+    - _BlurSize: 0.0155
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DepthBias: 3.8
@@ -78,11 +78,11 @@ Material:
     - _NormalMult: 0.06
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Samples: 1
+    - _Samples: 2
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _StandardDeviation: 0.006
+    - _StandardDeviation: 0
     - _UVSec: 0
     - _WaveDistance: 0
     - _WaveTrail: 1
