@@ -1422,7 +1422,7 @@ Transform:
   m_GameObject: {fileID: 5464480306530425792}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 16.185947, y: 0, z: -37.143677}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2634, y: 1.2634, z: 1.2634}
   m_Children:
   - {fileID: 5464480308482104413}
   - {fileID: 5464480308165375596}
@@ -2407,10 +2407,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5464480308165375596}
     m_Modifications:
-    - target: {fileID: 100072, guid: 1c4801a8a7bd1c84da070cb7488c8f1d, type: 3}
-      propertyPath: m_Name
-      value: onion_hair_character
-      objectReference: {fileID: 0}
     - target: {fileID: 400072, guid: 1c4801a8a7bd1c84da070cb7488c8f1d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2454,6 +2450,10 @@ PrefabInstance:
     - target: {fileID: 400072, guid: 1c4801a8a7bd1c84da070cb7488c8f1d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100072, guid: 1c4801a8a7bd1c84da070cb7488c8f1d, type: 3}
+      propertyPath: m_Name
+      value: onion_hair_character
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: 1c4801a8a7bd1c84da070cb7488c8f1d, type: 3}
       propertyPath: m_Controller
