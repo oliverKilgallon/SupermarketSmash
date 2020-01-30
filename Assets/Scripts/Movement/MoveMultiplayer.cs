@@ -82,12 +82,14 @@ public class MoveMultiplayer : MonoBehaviour
         {
             body.AddTorque(transform.up * ((turnSpeed * torqueScale) * playerJoyX));
         }
-        else if(useDragCurve)
+        else if (useDragCurve)
         {
             body.AddTorque(transform.up * (turnSpeed * playerJoyX));
         }
-
-        body.AddTorque(transform.up * turnSpeed * playerJoyX);
+        else
+        {
+            body.AddTorque(transform.up * turnSpeed * playerJoyX);
+        }
 
         //Forward speed is equal to current speed, scaled to be between 0 and 1
         animator.SetFloat("ForwardSpeed", body.velocity.normalized.magnitude);
