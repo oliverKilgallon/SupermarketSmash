@@ -7880,6 +7880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7dd19b3033d34b49868aa8fb9a85f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNumber: 3
   localItems: []
   listText:
   - {fileID: 1130181309}
@@ -7892,6 +7893,9 @@ MonoBehaviour:
   - {fileID: 588392481}
   currentHeld: []
   armour: 0
+  heldItem: 
+  nameList: []
+  Spawn: {fileID: 0}
   allItemsCollected: 0
 --- !u!1 &281826048
 GameObject:
@@ -13749,6 +13753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7dd19b3033d34b49868aa8fb9a85f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNumber: 4
   localItems: []
   listText:
   - {fileID: 917113764}
@@ -13761,6 +13766,9 @@ MonoBehaviour:
   - {fileID: 1392442879}
   currentHeld: []
   armour: 0
+  heldItem: 
+  nameList: []
+  Spawn: {fileID: 0}
   allItemsCollected: 0
 --- !u!65 &765595618
 BoxCollider:
@@ -13793,6 +13801,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7dd19b3033d34b49868aa8fb9a85f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNumber: 2
   localItems: []
   listText:
   - {fileID: 1306426377}
@@ -13805,6 +13814,9 @@ MonoBehaviour:
   - {fileID: 1252733756}
   currentHeld: []
   armour: 0
+  heldItem: 
+  nameList: []
+  Spawn: {fileID: 0}
   allItemsCollected: 0
 --- !u!1 &769269582 stripped
 GameObject:
@@ -14712,6 +14724,7 @@ MonoBehaviour:
   - {fileID: 1278694099}
   spawnable: {fileID: 2315862224862465406, guid: c3da7fd921b6a5e458c6519d1ffa55bf,
     type: 3}
+  ProductParent: {fileID: 0}
   allItems: []
   spawntest: 0
   test: {fileID: 0}
@@ -25064,6 +25077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7dd19b3033d34b49868aa8fb9a85f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNumber: 1
   localItems: []
   listText:
   - {fileID: 1050973709}
@@ -25076,6 +25090,9 @@ MonoBehaviour:
   - {fileID: 1796806510}
   currentHeld: []
   armour: 0
+  heldItem: 
+  nameList: []
+  Spawn: {fileID: 0}
   allItemsCollected: 0
 --- !u!1 &1594644182
 GameObject:

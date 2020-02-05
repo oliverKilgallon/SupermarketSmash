@@ -8,9 +8,20 @@ public class playerModelChanger : MonoBehaviour
     public Color modelColour;
     public GameObject characterModel;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        playerModelExport pme = GameObject.FindGameObjectWithTag("playerModelExport").GetComponent<playerModelExport>();
+        GameObject[] playerModelInfo = pme.playerPanels;
+        GameObject player = playerModelInfo[GetComponentInChildren<MoveMultiplayer>().playerNumber - 1];
+        modelColour = player.GetComponent<playerPanel>().playerColour.color;
+
+        
         GetComponentInChildren<Renderer>().material.color = modelColour;
         characterModel.GetComponent<MeshFilter>().mesh = playerMesh;
     }

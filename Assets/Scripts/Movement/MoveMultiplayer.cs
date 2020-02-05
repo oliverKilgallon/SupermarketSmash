@@ -133,8 +133,8 @@ public class MoveMultiplayer : MonoBehaviour
 
         body.AddTorque(new Vector3(0, AccelValPerFrame, 0), ForceMode.Acceleration);
 
-        animator.SetFloat("ForwardSpeed", body.velocity.magnitude);
-        animator.SetFloat("TurnValue", AccelValPerFrame);
+        //animator.SetFloat("ForwardSpeed", body.velocity.magnitude);
+        //animator.SetFloat("TurnValue", AccelValPerFrame);
     }
 
 

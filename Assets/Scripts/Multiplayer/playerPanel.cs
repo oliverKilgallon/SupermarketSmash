@@ -5,13 +5,21 @@ using UnityEngine;
 
 public class playerPanel : MonoBehaviour
 {
-    public bool controllerConnected;
+    public int playerJoystickNumber;
 
-    public string testName;
-
-    public string ControllerName;
     public string playerName;
     public Material playerColour;
 
-    public RawImage panel;
+    public Text playerNumber;
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+        playerJoystickNumber = -1;
+    }
+    private void Update()
+    {
+        playerNumber.text = "Joystick No. : " + playerJoystickNumber;
+    }
+
 }

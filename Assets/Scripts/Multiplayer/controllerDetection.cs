@@ -29,7 +29,11 @@ public class controllerDetection : MonoBehaviour
         {
             if (i < NoOfPlayers)
             {
-                pp.SetActive(true);  
+                pp.SetActive(true);
+                if (pp.GetComponent<playerPanel>().playerJoystickNumber == -1)
+                {
+                    pp.GetComponent<playerPanel>().playerJoystickNumber = (i + 1);
+                }
             }
             else 
             {
