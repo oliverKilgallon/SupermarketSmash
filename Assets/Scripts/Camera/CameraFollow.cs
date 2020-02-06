@@ -12,7 +12,7 @@ public class CameraFollow : MonoBehaviour
     private Vector3 targetFollowPosition;
 
     // Update is called once per frame
-    void FixedUpdate()
+    void LateUpdate()
     {
         targetFollowPosition = 
             targetFollowTransform.position + (targetFollowTransform.rotation * cameraOffsetPos);
