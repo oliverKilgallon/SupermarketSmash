@@ -16,8 +16,7 @@ public class MoveMultiplayer : MonoBehaviour
     //Variables related to turn movement
     public float thrust = 200;
     public float turnSpeed;
-    public float maxAngDrag = 1.2f;
-    public float minAngDrag = 0.1f;
+    public float reverseTorqueScale = 1.0f;
     public bool useDragCurve = false;
     public AnimationCurve angularDragCurve;
     private float turnInput;
@@ -84,7 +83,7 @@ public class MoveMultiplayer : MonoBehaviour
         }
         else if (useDragCurve)
         {
-            body.AddTorque(transform.up * (turnSpeed * playerJoyX));
+            body.AddTorque(transform.up * (turnSpeed * playerJoyX * reverseTorqueScale));
         }
         else
         {
