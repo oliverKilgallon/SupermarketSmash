@@ -24,8 +24,8 @@ public class Playerscript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawnMeshF = Spawn.GetComponent<MeshFilter>();
-        spawnMeshR = Spawn.GetComponent<MeshRenderer>();
+        //spawnMeshF = Spawn.GetComponent<MeshFilter>();
+        //spawnMeshR = Spawn.GetComponent<MeshRenderer>();
         nameList = GameObject.FindGameObjectWithTag("GameController").GetComponent<Gameplayloop>().allItems;
         iS = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemSpawn>();
         playerNumber = GetComponent<MoveMultiplayer>().playerNumber;

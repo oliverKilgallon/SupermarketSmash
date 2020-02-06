@@ -215,6 +215,7 @@ MonoBehaviour:
   - {fileID: 709729992}
   - {fileID: 1824154355}
   - {fileID: 1944641122}
+  noOfPlayers: 0
 --- !u!4 &237787104
 Transform:
   m_ObjectHideFlags: 0
@@ -1516,6 +1517,7 @@ MonoBehaviour:
   - {fileID: 709729992}
   - {fileID: 1824154355}
   - {fileID: 1944641122}
+  canvas: {fileID: 2032340855}
   NoOfPlayers: 0
   nextScene: {fileID: 102900000, guid: 2f7be6bbbc523954d92d22868677115a, type: 3}
   lastScene: {fileID: 102900000, guid: b8757fe46b6cc2741ae737f6edbb4e9d, type: 3}
@@ -1545,6 +1547,7 @@ GameObject:
   - component: {fileID: 2032340855}
   - component: {fileID: 2032340854}
   - component: {fileID: 2032340853}
+  - component: {fileID: 2032340857}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1637,6 +1640,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2032340857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032340852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd92f25c224bd94a820f4dd0e586770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2038511362
 GameObject:
   m_ObjectHideFlags: 0

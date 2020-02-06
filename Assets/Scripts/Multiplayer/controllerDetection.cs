@@ -7,6 +7,8 @@ public class controllerDetection : MonoBehaviour
 {
     public GameObject[] playerPanelGameobjects;
 
+    public Canvas canvas;
+
     public int NoOfPlayers;
 
     public Object nextScene;
@@ -22,9 +24,19 @@ public class controllerDetection : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(joystickList());
+        //Debug.Log(joystickList());
         int i = 0;
         NoOfPlayers = getPlayers();
+        Debug.Log(NoOfPlayers);
+        if (NoOfPlayers < 2)
+        {
+            PlayerPrefs.SetInt("NumberOfPlayers", 2);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("NumberOfPlayers", NoOfPlayers);
+        }
+        Debug.Log(PlayerPrefs.GetInt("NumberOfPlayers"));
         foreach (GameObject pp in playerPanelGameobjects)
         {
             if (i < NoOfPlayers)
@@ -76,7 +88,7 @@ public class controllerDetection : MonoBehaviour
     public void Continue()
     {
         PlayerPrefs.SetInt("NoOfPlayers", NoOfPlayers);
-
+        canvas.GetComponent<Canvas>().enabled = false;
         SceneManager.LoadScene(nextScene.name);
     }
     public void back()

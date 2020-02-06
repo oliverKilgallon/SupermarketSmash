@@ -8,11 +8,6 @@ public class playerModelChanger : MonoBehaviour
     public Color modelColour;
     public GameObject characterModel;
 
-    private void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
-
     // Start is called before the first frame update
     void Start()
     {
