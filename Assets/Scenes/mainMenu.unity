@@ -293,50 +293,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 100000, guid: 44c1a9d86d57ad14cb890eb4be1191ad, type: 3}
-      propertyPath: m_Name
-      value: Shopping trolly 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 44c1a9d86d57ad14cb890eb4be1191ad, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 100002, guid: 44c1a9d86d57ad14cb890eb4be1191ad, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: 44c1a9d86d57ad14cb890eb4be1191ad, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 100006, guid: 44c1a9d86d57ad14cb890eb4be1191ad, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 100008, guid: 44c1a9d86d57ad14cb890eb4be1191ad, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 100010, guid: 44c1a9d86d57ad14cb890eb4be1191ad, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 100012, guid: 44c1a9d86d57ad14cb890eb4be1191ad, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 100014, guid: 44c1a9d86d57ad14cb890eb4be1191ad, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 100016, guid: 44c1a9d86d57ad14cb890eb4be1191ad, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 100018, guid: 44c1a9d86d57ad14cb890eb4be1191ad, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 44c1a9d86d57ad14cb890eb4be1191ad, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.1
@@ -380,6 +336,50 @@ PrefabInstance:
     - target: {fileID: 400002, guid: 44c1a9d86d57ad14cb890eb4be1191ad, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 44c1a9d86d57ad14cb890eb4be1191ad, type: 3}
+      propertyPath: m_Name
+      value: Shopping trolly 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 44c1a9d86d57ad14cb890eb4be1191ad, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 44c1a9d86d57ad14cb890eb4be1191ad, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 44c1a9d86d57ad14cb890eb4be1191ad, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 44c1a9d86d57ad14cb890eb4be1191ad, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 44c1a9d86d57ad14cb890eb4be1191ad, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 44c1a9d86d57ad14cb890eb4be1191ad, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: 44c1a9d86d57ad14cb890eb4be1191ad, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: 44c1a9d86d57ad14cb890eb4be1191ad, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100016, guid: 44c1a9d86d57ad14cb890eb4be1191ad, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100018, guid: 44c1a9d86d57ad14cb890eb4be1191ad, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44c1a9d86d57ad14cb890eb4be1191ad, type: 3}
@@ -1748,6 +1748,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d4d2c39147400541bb0c0ce1d72a67c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextScene: {fileID: 102900000, guid: 7422baf638db2ed4985be8bf81430508, type: 3}
+  optionsScene: {fileID: 0}
 --- !u!1 &1127560463
 GameObject:
   m_ObjectHideFlags: 0
@@ -2081,10 +2083,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 100000, guid: ff82083fe9f58e341a821aa54aaf7db9, type: 3}
-      propertyPath: m_Name
-      value: Shelf
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ff82083fe9f58e341a821aa54aaf7db9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.413
@@ -2140,6 +2138,10 @@ PrefabInstance:
     - target: {fileID: 400000, guid: ff82083fe9f58e341a821aa54aaf7db9, type: 3}
       propertyPath: m_LocalScale.z
       value: 1.6384
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ff82083fe9f58e341a821aa54aaf7db9, type: 3}
+      propertyPath: m_Name
+      value: Shelf
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff82083fe9f58e341a821aa54aaf7db9, type: 3}

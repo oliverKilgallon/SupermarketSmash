@@ -1774,7 +1774,6 @@ Transform:
   m_Father: {fileID: 5234723538093119963}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
 --- !u!1 &8501316057231103568
 GameObject:
   m_ObjectHideFlags: 0
@@ -1890,5 +1889,4 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4427226045859267748}
   m_PrefabAsset: {fileID: 0}
-=======
->>>>>>> master
+

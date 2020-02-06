@@ -20,8 +20,7 @@ public class powerupSlot : MonoBehaviour
         slot.texture = newItem.icon.texture;
         if (newItem.throwable)
         {
-            StartCoroutine(newItem.execEffect(1, GetComponentInChildren<MoveMultiplayer>().playerNumber));
-           
+            StartCoroutine(newItem.execEffect(1, GetComponentInChildren<MoveMultiplayer>().playerNumber)); 
         }
     }
 

@@ -111,7 +111,8 @@ public class ItemSpawn : MonoBehaviour
             else
             {
                 Debug.DrawRay(new Vector3(spawnLocation.x, spawnLocation.y + 10, spawnLocation.z), Vector3.down * hit.distance, Color.white, 5.0f);
-                createItem(spawnLocation, randAngle, item);
+                GameObject newItem = createItem(spawnLocation, randAngle, item);
+                StartCoroutine(newItem.GetComponent<ItemScript>().enableColliders(newItem, .1f));
             }
         }
         else

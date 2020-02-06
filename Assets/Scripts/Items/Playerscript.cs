@@ -11,11 +11,14 @@ public class Playerscript : MonoBehaviour
 
     public List<string> currentHeld = new List<string>();
     ItemSpawn iS;
+
+    public int armour;
     public string heldItem;
     public List<string> nameList;
     public GameObject Spawn;
     MeshRenderer spawnMeshR;
     MeshFilter spawnMeshF;
+
     public bool allItemsCollected = false;
 
     // Start is called before the first frame update
@@ -60,8 +63,6 @@ public class Playerscript : MonoBehaviour
                 GetComponentInParent<powerupSlot>().slot.texture = null;
             }
         }
-
-
         int i = 0;
         int left = 8;
         foreach (Text t in listText)
@@ -104,20 +105,20 @@ public class Playerscript : MonoBehaviour
                     if (string.IsNullOrEmpty(localItems[i]))
                     {
                         localItems[i] = currentHeld[index];
-                        GameObject dropped = iS.createItem(new Vector3(0,0,0), Random.Range(0, 360), currentHeld[index]);
-                        dropped.GetComponent<Rigidbody>().AddForce(col.relativeVelocity * 10);
+                        GameObject temp = iS.createItem(new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), transform.rotation.y, currentHeld[index]);
+                        StartCoroutine(temp.GetComponent<ItemScript>().enableColliders(temp, .3f));
+                        temp.GetComponent<Rigidbody>().AddForce((new Vector3(1,1,1) + col.relativeVelocity) * 50);
                         currentHeld.RemoveAt(index);
                         break;
                     }
                 }
-                //GameObject temp = iS.createItem(transform.position,transform.rotation.y, currentHeld[index]);
-                
-                //temp.GetComponent<Rigidbody>().AddForce(col.relativeVelocity);
-               
-
             }
         }
     }
+
+    
+
+
 
 
 }
