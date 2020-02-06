@@ -8,6 +8,8 @@ TagManager:
   - floor
   - jam
   - checkout
+  - Trail
+  - PowerUpManager
   layers:
   - Default
   - TransparentFX
