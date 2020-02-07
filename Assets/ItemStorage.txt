@@ -1,8 +1,0 @@
-Milk
-EnergyDrink
-Cereal
-Pizza
-TinCan
-Pineapple
-Bread
-Watermelon
