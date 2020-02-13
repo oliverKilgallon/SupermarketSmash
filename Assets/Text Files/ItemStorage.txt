@@ -3,6 +3,6 @@ EnergyDrink
 Cereal
 Pizza
 TinCan
-Pineapple
+pineapple
 Bread
 Watermelon

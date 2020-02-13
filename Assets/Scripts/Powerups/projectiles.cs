@@ -38,7 +38,7 @@ public class projectiles : MonoBehaviour
     {
         playerNumber = GetComponent<MoveMultiplayer>().playerNumber;
         arc = new Vector3[16];
-        floorY = floor.gameObject.transform.position.y;
+       // floorY = floor.gameObject.transform.position.y;
         currentlyUsable = true;
         timer = 5;
         timeLock = 0;
