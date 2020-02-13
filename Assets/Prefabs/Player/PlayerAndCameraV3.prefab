@@ -1614,7 +1614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 9470f526dbfd5854b9f5867624e027c3, type: 2}
+  sharedProfile: {fileID: 0}
   isGlobal: 1
   blendDistance: 0
   weight: 1
@@ -1785,8 +1785,9 @@ MonoBehaviour:
   - {fileID: 0}
   currentHeld: []
   armour: 0
-  heldItem: 
   nameList: []
+  heldItem: 
+  heldItemList: []
   Spawn: {fileID: 2921921722602584128}
   allItemsCollected: 0
 --- !u!114 &6086380599557957348
@@ -1808,8 +1809,7 @@ MonoBehaviour:
   animator: {fileID: 1117482060278134982}
   thrust: 200
   turnSpeed: 60
-  maxAngDrag: 1.2
-  minAngDrag: 0.1
+  reverseTorqueScale: 1
   useDragCurve: 0
   angularDragCurve:
     serializedVersion: 2
@@ -1836,8 +1836,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   jammy: 0
-  speedSticky: 0
-  speedStop: 0
+  speedSticky: 70
+  speedStop: 20
   basketList: []
 --- !u!114 &757176462373419717
 MonoBehaviour:
@@ -2403,6 +2403,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5464480308165375596}
     m_Modifications:
+    - target: {fileID: 100072, guid: 1c4801a8a7bd1c84da070cb7488c8f1d, type: 3}
+      propertyPath: m_Name
+      value: onion_hair_character
+      objectReference: {fileID: 0}
     - target: {fileID: 400072, guid: 1c4801a8a7bd1c84da070cb7488c8f1d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2447,10 +2451,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 100072, guid: 1c4801a8a7bd1c84da070cb7488c8f1d, type: 3}
-      propertyPath: m_Name
-      value: onion_hair_character
-      objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: 1c4801a8a7bd1c84da070cb7488c8f1d, type: 3}
       propertyPath: m_Controller
       value: 
@@ -2476,6 +2476,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3336296875204718178}
     m_Modifications:
+    - target: {fileID: 100000, guid: 4ec7e03f0c71e404c9919df9914d1b14, type: 3}
+      propertyPath: m_Name
+      value: Projectile Pointer
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4ec7e03f0c71e404c9919df9914d1b14, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2519,10 +2523,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 4ec7e03f0c71e404c9919df9914d1b14, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.000015258789
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 4ec7e03f0c71e404c9919df9914d1b14, type: 3}
-      propertyPath: m_Name
-      value: Projectile Pointer
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 4ec7e03f0c71e404c9919df9914d1b14, type: 3}
       propertyPath: m_Materials.Array.data[0]

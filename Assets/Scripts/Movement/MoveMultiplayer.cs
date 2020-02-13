@@ -62,9 +62,25 @@ public class MoveMultiplayer : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 force = transform.forward * thrust;
+        Vector3 jammyForce = transform.forward * speedSticky;
         bool moveForward = ctrlA || wPress;
+        if (jammy)
+        {
+            if (moveForward)
+            {
+                body.AddForce(jammyForce);
+            }
+        }
+        else
+        {
+            if (moveForward)
+            {
+                body.AddForce(force);
+            }
+        }
         
-        if (moveForward) { body.AddForce(force); }
+
+        
         
         float angVelPercent = body.angularVelocity.magnitude / body.maxAngularVelocity;
         
@@ -148,7 +164,8 @@ public class MoveMultiplayer : MonoBehaviour
         if (col.gameObject.tag == "jam")
         {
            
-           // body.velocity = new Vector3(body.velocity.x/speedStop,body.velocity.y/speedStop,body.velocity.z/speedStop);
+           body.velocity = new Vector3(body.velocity.x/speedStop,body.velocity.y/speedStop,body.velocity.z/speedStop);
+           // body.velocity = new Vector3( speedStop, speedStop, speedStop);
             jammy = true;
         }
     }

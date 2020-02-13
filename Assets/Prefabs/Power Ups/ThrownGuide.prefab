@@ -9548,13 +9548,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4170616169107700864}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.8695, y: 1.8695, z: 1.8695}
   m_Children: []
   m_Father: {fileID: 6190755745952976731}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &6301458248972811958
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -9562,7 +9562,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4170616169107700864}
-  m_Mesh: {fileID: 4300000, guid: 57025074576965d42a714eb467f6d931, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 4b914d82ee20a3648a60246a920df2c6, type: 3}
 --- !u!23 &3467133663879898198
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9580,7 +9580,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ff617b759517f9049ae8102851c3ecf2, type: 2}
+  - {fileID: 2100000, guid: e175b9272c4b1424fa0a8634c20aea87, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9623,8 +9623,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.189992, y: 0.254, z: 0.189992}
-  m_Center: {x: 0, y: 0.127, z: 0}
+  m_Size: {x: 0.14023961, y: 0.122060694, z: 0.21581887}
+  m_Center: {x: 0.0010815876, y: 0.0026118655, z: 0.10701078}
 --- !u!54 &8651516008536561785
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19146,7 +19146,7 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: c262c17dac4df464281bc9c3c244742c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2809d0b0341385941ab26b9dc1e91632, type: 2}
+      objectReference: {fileID: 2100000, guid: 949c23057bc3ebe47a18f944eab806e2, type: 2}
     - target: {fileID: 2300000, guid: c262c17dac4df464281bc9c3c244742c, type: 3}
       propertyPath: m_Enabled
       value: 0
