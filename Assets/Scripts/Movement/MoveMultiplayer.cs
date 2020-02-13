@@ -20,6 +20,8 @@ public class MoveMultiplayer : MonoBehaviour
     public bool useDragCurve = false;
     public AnimationCurve angularDragCurve;
     private float turnInput;
+    private Vector3 rotationPivot;
+    private float rotationDelta;
 
     private bool qPress;
     private bool wPress;
@@ -40,6 +42,7 @@ public class MoveMultiplayer : MonoBehaviour
         ps = GetComponent<Playerscript>();
         body.interpolation = RigidbodyInterpolation.Interpolate;
         jammy = false;
+        rotationPivot = transform.position;
     }
 
     // Update is called once per frame
@@ -77,6 +80,17 @@ public class MoveMultiplayer : MonoBehaviour
         //If input direction is the same as angular velocity, apply decreasing amounts of torque
         //relative to how fast we are rotating
         //Else apply full torque in other direction
+        if (Mathf.Abs(playerJoyX) > 0.1f)
+        {
+            rotationDelta += playerJoyX * 0.1f;
+        }
+        else
+        {
+            rotationDelta = Mathf.Lerp(rotationDelta, 0, 0.1f);
+        }
+        transform.RotateAround(transform.position, transform.up, rotationDelta);
+
+        /*
         if (useDragCurve && (IsSameSign(playerJoyX, body.angularVelocity.y)))
         {
             body.AddTorque(transform.up * ((turnSpeed * torqueScale) * playerJoyX));
@@ -89,7 +103,7 @@ public class MoveMultiplayer : MonoBehaviour
         {
             body.AddTorque(transform.up * turnSpeed * playerJoyX);
         }
-
+        */
         //Forward speed is equal to current speed, scaled to be between 0 and 1
         animator.SetFloat("ForwardSpeed", body.velocity.normalized.z);
 
