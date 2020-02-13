@@ -13,19 +13,25 @@ public class Playerscript : MonoBehaviour
     ItemSpawn iS;
 
     public int armour;
-    public string heldItem;
     public List<string> nameList;
-    public GameObject Spawn;
-    MeshRenderer spawnMeshR;
-    MeshFilter spawnMeshF;
+
+    public string heldItem;//currently held item (For multiple collection, this will stay as the most recent)
+    public List<string> heldItemList;
+
+    public GameObject Spawn;//the object in the trolley to give the mesh and mat of the currently held object
+    MeshRenderer spawnMeshR;//the mesh filter (model) component of /\
+    MeshFilter spawnMeshF;//the mesh renderer (meterial) component of /\/\
 
     public bool allItemsCollected = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        //set Spawn's mesh components
         spawnMeshF = Spawn.GetComponent<MeshFilter>();
         spawnMeshR = Spawn.GetComponent<MeshRenderer>();
+
+    
         nameList = GameObject.FindGameObjectWithTag("GameController").GetComponent<Gameplayloop>().allItems;
         iS = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemSpawn>();
         playerNumber = GetComponent<MoveMultiplayer>().playerNumber;
@@ -33,8 +39,9 @@ public class Playerscript : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    { int p = 0;
-        if(heldItem == "") { spawnMeshR.enabled = false; }
+    {
+        /*int p = 0;
+        if(heldItem == "") { spawnMeshR.enabled = false; }//if we have no product, 
         if(heldItem != null && heldItem!= "")
         {
             foreach(string name in nameList)
@@ -52,7 +59,7 @@ public class Playerscript : MonoBehaviour
                 p++;  
             }
 
-        }
+        }*/
         if (Input.GetButtonDown("joy" + playerNumber + "Throw"))
         {
             if (GetComponentInParent<powerupSlot>().current != null)

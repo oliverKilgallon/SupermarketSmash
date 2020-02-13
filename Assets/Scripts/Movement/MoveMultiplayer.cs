@@ -109,7 +109,7 @@ public class MoveMultiplayer : MonoBehaviour
                 if (ps.localItems[i] != "" && ps.localItems[i] != null)
                 {
                     //Debug.Log(item + " " + col.gameObject.GetComponent<ItemScript>().product);
-                    if ((item == col.gameObject.GetComponent<ItemScript>().product)&&(ps.heldItem == ""))
+                    /*if ((item == col.gameObject.GetComponent<ItemScript>().product)&&(ps.heldItem == ""))
                     {
                         
                        // basketList.Add(item);
@@ -121,8 +121,20 @@ public class MoveMultiplayer : MonoBehaviour
                         Destroy(col.gameObject);
                         break;
 
-                    }
+                    }*/
+                    if ((item == col.gameObject.GetComponent<ItemScript>().product))
+                    {
 
+                        // basketList.Add(item);
+                        ps.listText[ps.localItems.IndexOf(item)].text = "";
+                        ps.localItems[ps.localItems.IndexOf(item)] = "";
+                        ps.currentHeld.Add(item);
+                       // ps.heldItem = item;
+
+                        Destroy(col.gameObject);
+                        break;
+
+                    }
                 }
                 i++;
             }
@@ -131,7 +143,8 @@ public class MoveMultiplayer : MonoBehaviour
     }
     private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "checkout") { ps.heldItem = ""; Debug.Log("Checkout"); }
+      //  if (col.gameObject.tag == "checkout") { ps.heldItem = ""; Debug.Log("Checkout"); }
+      if(col.gameObject.tag == "checkout") { ps.currentHeld = new List<string> (); }
         if (col.gameObject.tag == "jam")
         {
            
