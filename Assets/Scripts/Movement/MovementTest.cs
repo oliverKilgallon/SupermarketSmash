@@ -29,6 +29,7 @@ public class MovementTest : MonoBehaviour
     private bool wPress;
     private bool ePress;
     private bool ctrlA;
+    private bool decelerate;
     private float playerJoyX;
 
     Playerscript ps;
@@ -53,6 +54,8 @@ public class MovementTest : MonoBehaviour
         //if (Input.GetKeyDown("joy"+playerNumber+"Acc")) { ctrlA = true; }if (Input.GetKeyUp("joy"+playerNumber+"Acc")) { ctrlA = false; }
         if (Input.GetAxis("joy" + playerNumber + "Acc") != 0) { ctrlA = true; }
         if (Input.GetAxis("joy" + playerNumber + "Acc") == 0) { ctrlA = false; }
+        if (Input.GetAxis("joy" + playerNumber + "Dec") != 0) { decelerate = true; }
+        if (Input.GetAxis("joy" + playerNumber + "Dec") == 0) { decelerate = false; }
         if (Input.GetKeyDown("q")) { qPress = true; }
         if (Input.GetKeyUp("q")) { qPress = false; }
         if (Input.GetKeyDown("w")) { wPress = true; }
@@ -85,9 +88,14 @@ public class MovementTest : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 thrustForce = transform.forward * baseMoveMagnitude;
+        Vector3 brakeForce = transform.forward * baseMoveMagnitude;
         if (ctrlA || wPress)
         {
             body.AddForce(transform.forward * baseMoveMagnitude, ForceMode.Acceleration);
+        }
+        if (decelerate)
+        {
+            body.AddForce(body.velocity.normalized * -baseMoveMagnitude, ForceMode.Acceleration);
         }
 
         /*
