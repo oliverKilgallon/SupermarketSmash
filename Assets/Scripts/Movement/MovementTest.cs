@@ -5,7 +5,6 @@ using UnityEngine;
 public class MovementTest : MonoBehaviour
 {
     public int playerNumber;
-    public bool debug;
 
     [HideInInspector]
     public GameObject control;
@@ -44,7 +43,7 @@ public class MovementTest : MonoBehaviour
     {
         ps = GetComponent<Playerscript>();
         body = GetComponent<Rigidbody>();
-        body.interpolation = RigidbodyInterpolation.Interpolate;
+        //body.interpolation = RigidbodyInterpolation.Extrapolate;
         jammy = false;
     }
 
@@ -67,6 +66,25 @@ public class MovementTest : MonoBehaviour
 
         turnInput = Input.GetAxis("Horizontal");
 
+        gameObject.transform.Rotate(Vector3.up, angularVelocity);
+
+        //AccelAmount = playerJoyX * turnSpeed;
+    }
+
+    void FixedUpdate()
+    {
+        Vector3 thrustForce = transform.forward * baseMoveMagnitude;
+        Vector3 brakeForce = transform.forward * baseMoveMagnitude;
+
+        if (ctrlA || wPress)
+        {
+            body.AddForce(transform.forward * baseMoveMagnitude, ForceMode.Acceleration);
+        }
+        if (decelerate)
+        {
+            body.AddForce(body.velocity.normalized * -baseMoveMagnitude, ForceMode.Acceleration);
+        }
+
         if (playerJoyX > deadZone && Mathf.Abs(angularVelocity) < angularVelocityMaxMagnitude)
         {
             angularVelocity += baseTurnMagnitude / (totalMass * turnMassNormaliser);
@@ -78,24 +96,6 @@ public class MovementTest : MonoBehaviour
         else
         {
             angularVelocity = Mathf.Lerp(angularVelocity, 0, angularVelocityDecayRate / (totalMass * turnMassNormaliser));
-        }
-
-        gameObject.transform.Rotate(Vector3.up, angularVelocity);
-
-        //AccelAmount = playerJoyX * turnSpeed;
-    }
-
-    void FixedUpdate()
-    {
-        Vector3 thrustForce = transform.forward * baseMoveMagnitude;
-        Vector3 brakeForce = transform.forward * baseMoveMagnitude;
-        if (ctrlA || wPress)
-        {
-            body.AddForce(transform.forward * baseMoveMagnitude, ForceMode.Acceleration);
-        }
-        if (decelerate)
-        {
-            body.AddForce(body.velocity.normalized * -baseMoveMagnitude, ForceMode.Acceleration);
         }
 
         /*
