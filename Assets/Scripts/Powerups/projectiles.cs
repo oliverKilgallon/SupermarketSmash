@@ -36,7 +36,7 @@ public class projectiles : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerNumber = GetComponent<MoveMultiplayer>().playerNumber;
+        playerNumber = GetComponent<MovementTest>().playerNumber;
         arc = new Vector3[16];
        // floorY = floor.gameObject.transform.position.y;
         currentlyUsable = true;

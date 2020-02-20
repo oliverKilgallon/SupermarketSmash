@@ -28,7 +28,7 @@ public class Playerscript : MonoBehaviour
         spawnMeshR = Spawn.GetComponent<MeshRenderer>();
         nameList = GameObject.FindGameObjectWithTag("GameController").GetComponent<Gameplayloop>().allItems;
         iS = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemSpawn>();
-        playerNumber = GetComponent<MoveMultiplayer>().playerNumber;
+        playerNumber = GetComponent<MovementTest>().playerNumber;
     }
 
     // Update is called once per frame
@@ -57,7 +57,7 @@ public class Playerscript : MonoBehaviour
         {
             if (GetComponentInParent<powerupSlot>().current != null)
             {
-                IEnumerator cr = GetComponentInParent<powerupSlot>().current.execEffect(GetComponentInParent<powerupSlot>().current.effectDuration, GetComponent<MoveMultiplayer>().playerNumber);
+                IEnumerator cr = GetComponentInParent<powerupSlot>().current.execEffect(GetComponentInParent<powerupSlot>().current.effectDuration, GetComponent<MovementTest>().playerNumber);
                 StartCoroutine(cr);
                 GetComponentInParent<powerupSlot>().current = null;
                 GetComponentInParent<powerupSlot>().slot.texture = null;

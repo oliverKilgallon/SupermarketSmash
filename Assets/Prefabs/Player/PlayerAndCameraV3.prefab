@@ -1650,7 +1650,6 @@ GameObject:
   - component: {fileID: 5464480308165375569}
   - component: {fileID: 6247483602372328483}
   - component: {fileID: 5419428343325762081}
-  - component: {fileID: 6086380599557957348}
   - component: {fileID: 757176462373419717}
   - component: {fileID: 920720140626067756}
   m_Layer: 0
@@ -1790,55 +1789,6 @@ MonoBehaviour:
   nameList: []
   Spawn: {fileID: 2921921722602584128}
   allItemsCollected: 0
---- !u!114 &6086380599557957348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5464480308165375597}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35a1ac5b3a7f9804db7facb40323c484, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerNumber: 1
-  debug: 0
-  control: {fileID: 0}
-  body: {fileID: 5464480308165375568}
-  animator: {fileID: 1117482060278134982}
-  thrust: 200
-  turnSpeed: 60
-  reverseTorqueScale: 1
-  useDragCurve: 0
-  angularDragCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0.09991455
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1.0000852
-      value: 1.0001466
-      inSlope: 1.9538767
-      outSlope: 1.9538767
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.019392341
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  jammy: 0
-  speedSticky: 0
-  speedStop: 0
-  basketList: []
 --- !u!114 &757176462373419717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1907,17 +1857,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 1
-  debug: 0
   control: {fileID: 0}
   body: {fileID: 5464480308165375568}
   animator: {fileID: 1117482060278134982}
   baseMoveMagnitude: 12
   baseTurnMagnitude: 6
+  turnMassNormaliser: 0.2
   angularVelocity: 0
   angularVelocityDecayRate: 3
   angularVelocityMaxMagnitude: 5
   totalMass: 250
   deadZone: 0.4
+  angularCorrectValue: 2
   jammy: 0
   speedSticky: 0
   speedStop: 0
@@ -1967,8 +1918,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetFollowTransform: {fileID: 5464480308419635783}
+  rb: {fileID: 0}
   cameraOffsetPos: {x: 0, y: 2, z: -4}
   smoothDampingTime: 0.3
+  rotSpeed: 1.2
 --- !u!1 &5464480308419635780
 GameObject:
   m_ObjectHideFlags: 0
