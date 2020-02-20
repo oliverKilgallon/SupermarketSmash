@@ -23,6 +23,8 @@ public class Playerscript : MonoBehaviour
     MeshFilter spawnMeshF;//the mesh renderer (meterial) component of /\/\
 
     public bool allItemsCollected = false;
+    public RawImage[] listIcons = new RawImage[8];
+    public string[] NamesList = {"Milk","Cola","Cereal","Pizza","Beans","Noodles","Bread","Butter"};
 
     // Start is called before the first frame update
     void Start()
@@ -76,12 +78,23 @@ public class Playerscript : MonoBehaviour
         {
             if(localItems[i]== "" || localItems[i] == null)
             {
+                listIcons[i].texture = null;
                 t.text = "";
                 left--;
             }
             else
             {
                 t.text = localItems[i];
+                //listIcons[i].texture = iS.spriteList[i];
+                int j = 0;
+                foreach(Texture texture in iS.spriteList)
+                {
+                    if (localItems[i] == NamesList[j])
+                    {
+                        listIcons[i].texture = texture;
+                    }
+                    j++;
+                }
             }
 
 
