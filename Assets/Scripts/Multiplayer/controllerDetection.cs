@@ -31,6 +31,7 @@ public class controllerDetection : MonoBehaviour
         if (NoOfPlayers < 2)
         {
             PlayerPrefs.SetInt("NumberOfPlayers", 2);
+            NoOfPlayers = 2;
         }
         else
         {

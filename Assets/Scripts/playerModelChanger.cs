@@ -15,8 +15,9 @@ public class playerModelChanger : MonoBehaviour
         GameObject[] playerModelInfo = pme.playerPanels;
         GameObject player = playerModelInfo[GetComponentInChildren<MoveMultiplayer>().playerNumber - 1];
         modelColour = player.GetComponent<playerPanel>().playerColour.color;
+        playerMesh = player.GetComponent<playerPanel>().mesh;
 
-        
+
         GetComponentInChildren<Renderer>().material.color = modelColour;
         characterModel.GetComponent<MeshFilter>().mesh = playerMesh;
     }

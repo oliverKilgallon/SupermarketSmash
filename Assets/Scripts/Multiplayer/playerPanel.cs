@@ -9,6 +9,7 @@ public class playerPanel : MonoBehaviour
 
     public string playerName;
     public Material playerColour;
+    public Mesh mesh;
 
     public Text playerNumber;
 
@@ -20,6 +21,7 @@ public class playerPanel : MonoBehaviour
     private void Update()
     {
         playerNumber.text = "Joystick No. : " + playerJoystickNumber;
+        mesh = GetComponentInChildren<modelPicker>().TEST.GetComponent<MeshFilter>().mesh;
     }
 
 }
