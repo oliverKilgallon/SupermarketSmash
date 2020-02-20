@@ -15,12 +15,13 @@ public class MovementTest : MonoBehaviour
     //Variables related to turn movement
     public float baseMoveMagnitude = 5.0f;
     public float baseTurnMagnitude = 1.0f;
-    readonly float turnMassNormaliser = 0.2f;
+    public float turnMassNormaliser = 0.2f;
     public float angularVelocity;
     public float angularVelocityDecayRate = 1.0f;
     public float angularVelocityMaxMagnitude = 5.0f;
     public float totalMass = 500.0f;
-    public float deadZone = 0.2f;
+    public float deadZone = 0.4f;
+    public float angularCorrectValue = 2.0f;
     float turnInput;
     private float rotationDelta;
 
@@ -62,12 +63,12 @@ public class MovementTest : MonoBehaviour
         if (Input.GetKeyDown("e")) { ePress = true; }
         if (Input.GetKeyUp("e")) { ePress = false; }
 
-        playerJoyX = Input.GetAxis("joy" + playerNumber + "x");
+        playerJoyX = Input.GetAxisRaw("joy" + playerNumber + "x");
 
         turnInput = Input.GetAxis("Horizontal");
 
-        gameObject.transform.Rotate(Vector3.up, angularVelocity);
 
+        gameObject.transform.Rotate(Vector3.up, angularVelocity);
         //AccelAmount = playerJoyX * turnSpeed;
     }
 
@@ -75,6 +76,7 @@ public class MovementTest : MonoBehaviour
     {
         Vector3 thrustForce = transform.forward * baseMoveMagnitude;
         Vector3 brakeForce = transform.forward * baseMoveMagnitude;
+        
 
         if (ctrlA || wPress)
         {
@@ -87,11 +89,25 @@ public class MovementTest : MonoBehaviour
 
         if (playerJoyX > deadZone && Mathf.Abs(angularVelocity) < angularVelocityMaxMagnitude)
         {
-            angularVelocity += baseTurnMagnitude / (totalMass * turnMassNormaliser);
+            if (angularVelocity < 0)
+            {
+                angularVelocity += (baseTurnMagnitude / (totalMass * turnMassNormaliser)) * angularCorrectValue;
+            }
+            else
+            {
+                angularVelocity += (baseTurnMagnitude / (totalMass * turnMassNormaliser));
+            }
         }
         else if (playerJoyX < -deadZone && Mathf.Abs(angularVelocity) < angularVelocityMaxMagnitude)
         {
-            angularVelocity -= baseTurnMagnitude / (totalMass * turnMassNormaliser);
+            if (angularVelocity > 0)
+            {
+                angularVelocity -= (baseTurnMagnitude / (totalMass * turnMassNormaliser)) * angularCorrectValue;
+            }
+            else
+            {
+                angularVelocity -= (baseTurnMagnitude / (totalMass * turnMassNormaliser));
+            }
         }
         else
         {
