@@ -12,13 +12,13 @@ public class MovementTest : MonoBehaviour
     public Animator animator;
 
     //Variables related to turn movement
-    public float baseMoveMagnitude = 5.0f;
-    public float baseTurnMagnitude = 1.0f;
+    public float baseMoveMagnitude = 12.0f;
+    public float baseTurnMagnitude = 2.0f;
     public float turnMassNormaliser = 0.2f;
     public float angularVelocity;
-    public float angularVelocityDecayRate = 1.0f;
-    public float angularVelocityMaxMagnitude = 5.0f;
-    public float totalMass = 500.0f;
+    public float angularVelocityDecayRate = 3.0f;
+    public float angularVelocityMaxMagnitude = 3.0f;
+    public float totalMass = 250.0f;
     public float deadZone = 0.4f;
     public float angularCorrectValue = 2.0f;
     private float rotationDelta;
