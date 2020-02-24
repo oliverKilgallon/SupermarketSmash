@@ -8,7 +8,7 @@ public class CameraFollow : MonoBehaviour
     public Rigidbody rb;
     public Vector3 cameraOffsetPos = new Vector3(0, 2, -4);
     public float smoothDampingTime = 0.2f;
-    public float rotSpeed = 1.2f;
+    public float rotSpeed = 3.0f;
 
     private Vector3 cameraVelocity = Vector3.zero;
     private Vector3 cameraRotVelocity = Vector3.zero;

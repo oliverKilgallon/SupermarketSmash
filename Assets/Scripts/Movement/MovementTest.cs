@@ -13,7 +13,7 @@ public class MovementTest : MonoBehaviour
 
     //Variables related to turn movement
     public float baseMoveMagnitude = 12.0f;
-    public float baseTurnMagnitude = 2.0f;
+    public float baseTurnMagnitude = 1.0f;
     public float turnMassNormaliser = 0.2f;
     public float angularVelocity;
     public float angularVelocityDecayRate = 3.0f;
