@@ -63,11 +63,11 @@ public class MovementTest : MonoBehaviour
     {
         Vector3 thrustForce = transform.forward * baseMoveMagnitude;
         Vector3 brakeForce = transform.forward * baseMoveMagnitude;
+        bool forward = ctrlA || wPress;
         
         if (ctrlA || wPress)
         {
-            body.AddForce(transform.forward * baseMoveMagnitude, ForceMode.Acceleration);
-            if (!SoundManager.instance.IsSoundPlaying("Trolley Movement Rustle")) SoundManager.instance.PlaySound("Trolley Movement Rustle", false);
+            body.AddForce(thrustForce, ForceMode.Acceleration);
         }
 
         if (decelerate)
@@ -108,8 +108,6 @@ public class MovementTest : MonoBehaviour
         //Turn value should be equal to how fast we are rotating per physics frame
         animator.SetFloat("TurnValue", playerJoyX);
     }
-
-
 
     private void OnCollisionEnter(Collision col)
     {
