@@ -172,13 +172,13 @@ public class MovementTest : MonoBehaviour
     }
     private void OnCollisionEnter(Collision col)
     {
-      /*  if (col.gameObject.tag != ("floor")&& col.gameObject.tag != ("item")&& col.gameObject.tag != ("box"))
+        if (col.gameObject.tag != ("floor")&& col.gameObject.tag != ("item")&& col.gameObject.tag != ("box"))
         {
             //float rot = Vector3.Angle(animRotation.transform.position,col.GetContact(0).point);
             Debug.DrawRay(col.GetContact(0).point, col.GetContact(0).normal, Color.black, 5, true);
             var rot = Quaternion.LookRotation(col.GetContact(0).normal);
             Instantiate(impactAnim, col.GetContact(0).point, rot);
-        }*/
+        }
         if (col.gameObject.tag == "item")
         {
             int i = 0;
