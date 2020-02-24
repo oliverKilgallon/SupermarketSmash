@@ -67,6 +67,7 @@ public class MovementTest : MonoBehaviour
         if (ctrlA || wPress)
         {
             body.AddForce(transform.forward * baseMoveMagnitude, ForceMode.Acceleration);
+            if (!SoundManager.instance.IsSoundPlaying("Trolley Movement Rustle")) SoundManager.instance.PlaySound("Trolley Movement Rustle", false);
         }
 
         if (decelerate)
