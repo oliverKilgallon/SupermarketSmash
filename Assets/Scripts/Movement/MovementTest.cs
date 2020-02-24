@@ -67,6 +67,7 @@ public class MovementTest : MonoBehaviour
     {
         Vector3 thrustForce = transform.forward * baseMoveMagnitude;
         Vector3 brakeForce = transform.forward * baseMoveMagnitude;
+        Vector2 bodyVel = new Vector2(body.velocity.x, body.velocity.z);
         bool forward = ctrlA || wPress;
         
         if (ctrlA || wPress)
@@ -108,10 +109,23 @@ public class MovementTest : MonoBehaviour
 
         //gameObject.transform.Rotate(Vector3.up, angularVelocity);
 
+        bodyVel = new Vector2(body.velocity.x, body.velocity.z);
         body.angularVelocity = new Vector3(0, angularVelocity, 0);
-
+        //Vector3 velocityDir = transform.worldToLocalMatrix.MultiplyVector(new Vector3(bodyVel.x, 0, bodyVel.y));
+        float velocityDir = Vector3.Dot(body.velocity, body.transform.forward);
+        Debug.Log(velocityDir);
+        /*
+        float velocityDir = Vector2.Dot(new Vector2(transform.forward.x, transform.forward.z), bodyVel);
+        if (velocityDir > 0)
+        {
+            animator.SetFloat("ForwardSpeed", velocityDir);
+        }
+        else
+        {*/
+            animator.SetFloat("ForwardSpeed", velocityDir);
+        //}
         //Forward speed is equal to current speed, scaled to be between 0 and 1
-        animator.SetFloat("ForwardSpeed", body.velocity.z);
+        
 
         trolleyAnimator.SetFloat("AngularVel", body.angularVelocity.y);
 
