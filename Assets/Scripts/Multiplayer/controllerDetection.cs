@@ -16,7 +16,7 @@ public class controllerDetection : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("Controllers: " + Input.GetJoystickNames().Length);
+        //Debug.Log("Controllers: " + Input.GetJoystickNames().Length);
         foreach (GameObject panel in playerPanelGameobjects)
         {
             panel.SetActive(false);
@@ -27,7 +27,7 @@ public class controllerDetection : MonoBehaviour
         //Debug.Log(joystickList());
         int i = 0;
         NoOfPlayers = getPlayers();
-        Debug.Log(NoOfPlayers);
+        //Debug.Log(NoOfPlayers);
         if (NoOfPlayers < 2)
         {
             PlayerPrefs.SetInt("NumberOfPlayers", 2);
@@ -37,7 +37,7 @@ public class controllerDetection : MonoBehaviour
         {
             PlayerPrefs.SetInt("NumberOfPlayers", NoOfPlayers);
         }
-        Debug.Log(PlayerPrefs.GetInt("NumberOfPlayers"));
+        //Debug.Log(PlayerPrefs.GetInt("NumberOfPlayers"));
         foreach (GameObject pp in playerPanelGameobjects)
         {
             if (i < NoOfPlayers)
