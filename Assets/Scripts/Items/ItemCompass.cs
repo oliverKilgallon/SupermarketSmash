@@ -130,7 +130,8 @@ public class ItemCompass : MonoBehaviour
 
     private void LookAtNearestItem()
     {
-        if ((nearestItemTransform.position - transform.position).sqrMagnitude > 0)
+        bool isItemTransformNull = nearestItemTransform == null;
+        if (!isItemTransformNull && (nearestItemTransform.position - transform.position).sqrMagnitude > 0)
         {
             transform.rotation = Quaternion.LookRotation(
                 nearestItemTransform.position - transform.position, 

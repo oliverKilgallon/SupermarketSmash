@@ -1923,7 +1923,7 @@ MonoBehaviour:
   angularCorrectValue: 2
   jammy: 0
   speedSticky: 0
-  speedStop: 0
+  speedStop: 8
   basketList: []
   impactAnim: {fileID: 3145126877030937050, guid: 6540f88c136d94444a109c55d9b98627,
     type: 3}
