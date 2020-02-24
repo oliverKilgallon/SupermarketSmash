@@ -29,8 +29,8 @@ public class CameraFollow : MonoBehaviour
 
         Quaternion targetRot = Quaternion.Euler(transform.eulerAngles.x, rb.rotation.eulerAngles.y, transform.eulerAngles.z);
 
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, rotSpeed * Time.deltaTime);
+        //transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, rotSpeed * Time.deltaTime);
 
-        //transform.LookAt(targetFollowTransform, targetFollowTransform.up);
+        transform.LookAt(targetFollowTransform, targetFollowTransform.up);
     }
 }

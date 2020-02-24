@@ -11,6 +11,7 @@ public class Throw : MonoBehaviour
     Vector3 rand;
     bool emit;
     public GameObject[] Emiters;
+    public GameObject[] JamEmiters;
     public string weapon;
     public GameObject jam;
     public float floorY;
@@ -67,7 +68,11 @@ public class Throw : MonoBehaviour
             }
             if (emit == false && weapon == "jam")
             {
-                jam.gameObject.transform.SetPositionAndRotation(new Vector3(jam.gameObject.transform.position.x, floorY + 0.001f, jam.gameObject.transform.position.z), Quaternion.Euler(new Vector3(90, 0, 0)));
+                foreach (GameObject emit in JamEmiters)
+                {
+                    emit.GetComponent<ParticleSystem>().Play();
+                }
+                jam.gameObject.transform.SetPositionAndRotation(new Vector3(jam.gameObject.transform.position.x, floorY + 0.001f, jam.gameObject.transform.position.z), Quaternion.Euler(new Vector3(-90, 0, 0)));
                 jam.GetComponent<MeshRenderer>().enabled = true;
                 jam.GetComponent<BoxCollider>().enabled = true;
                 
@@ -77,12 +82,12 @@ public class Throw : MonoBehaviour
 
             }
         }
-        if((jam.transform.lossyScale.x<= 3)&& (jam.transform.lossyScale.z <= 3)&&jam.GetComponent<MeshRenderer>().enabled == true)
+        if((jam.transform.lossyScale.x<= 2)&& (jam.transform.lossyScale.z <= 2)&&jam.GetComponent<MeshRenderer>().enabled == true)
         {
             
             if (emit)
             {
-                jam.transform.localScale += new Vector3(0.12f, 0.12f, 0);
+                jam.transform.localScale += new Vector3(0.07f, 0.07f, 0);
                // jam.transform.lossyScale.Scale(new Vector3(2, 0, 2));
             }
         }

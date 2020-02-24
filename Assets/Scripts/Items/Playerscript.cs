@@ -114,25 +114,30 @@ public class Playerscript : MonoBehaviour
     {
         if (col.transform.tag == "Player")
         {
-            if (currentHeld.Count > 0)
+            if (GetComponent<Rigidbody>().velocity.magnitude > col.gameObject.GetComponent<Rigidbody>().velocity.magnitude)
             {
-                int index = Random.Range(0, currentHeld.Count - 1);
-                string droppedItem = currentHeld[index];
 
-
-                for (int i = 0; i < localItems.Count; i++)
+                if (currentHeld.Count > 0)
                 {
-                    if (string.IsNullOrEmpty(localItems[i]))
+                    int index = Random.Range(0, currentHeld.Count - 1);
+                    string droppedItem = currentHeld[index];
+
+
+                    for (int i = 0; i < localItems.Count; i++)
                     {
-                        localItems[i] = currentHeld[index];
-                        GameObject temp = iS.createItem(new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), transform.rotation.y, currentHeld[index]);
-                        StartCoroutine(temp.GetComponent<ItemScript>().enableColliders(temp, .3f));
-                        temp.GetComponent<Rigidbody>().AddForce((new Vector3(1,1,1) + col.relativeVelocity) * 50);
-                        currentHeld.RemoveAt(index);
-                        break;
+                        if (string.IsNullOrEmpty(localItems[i]))
+                        {
+                            localItems[i] = currentHeld[index];
+                            GameObject temp = iS.createItem(new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), transform.rotation.y, currentHeld[index]);
+                            StartCoroutine(temp.GetComponent<ItemScript>().enableColliders(temp, .3f));
+                            temp.GetComponent<Rigidbody>().AddForce((new Vector3(1, 1, 1) + col.relativeVelocity) * 50);
+                            currentHeld.RemoveAt(index);
+                            break;
+                        }
                     }
                 }
             }
+            else { }
         }
     }
 

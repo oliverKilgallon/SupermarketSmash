@@ -15,7 +15,7 @@ public class LifeSpan : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer >= 10) {
+        if (timer >= 20) {
             gameObject.transform.localScale += new Vector3(-0.01f, 0,-0.01f);
             if ((gameObject.transform.localScale.x <= 0) && (gameObject.transform.localScale.z <= 0)) { Destroy(this.gameObject); }
         }

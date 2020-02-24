@@ -35,6 +35,8 @@ public class MovementTest : MonoBehaviour
     public float speedSticky;
     public float speedStop;
     public List<string> basketList = new List<string>();
+    public GameObject impactAnim;
+    public GameObject animRotation;
 
     void Start()
     {
@@ -67,7 +69,7 @@ public class MovementTest : MonoBehaviour
         if (ctrlA || wPress)
         {
             body.AddForce(transform.forward * baseMoveMagnitude, ForceMode.Acceleration);
-            if (!SoundManager.instance.IsSoundPlaying("Trolley Movement Rustle")) SoundManager.instance.PlaySound("Trolley Movement Rustle", false);
+            //if (!SoundManager.instance.IsSoundPlaying("Trolley Movement Rustle")) SoundManager.instance.PlaySound("Trolley Movement Rustle", false);
         }
 
         if (decelerate)
@@ -111,7 +113,7 @@ public class MovementTest : MonoBehaviour
 
 
 
-    private void OnCollisionEnter(Collision col)
+    /*private void OnCollisionEnter(Collision col)
     {
         if (!col.gameObject.CompareTag("item"))
         {
@@ -156,11 +158,83 @@ public class MovementTest : MonoBehaviour
         {
             jammy = false;
         }
-    }
+    }*/
 
     private bool IsSameSign(float num1, float num2)
     {
         return num1 >= 0 && num2 >= 0 || num1 < 0 && num2 < 0;
     }
+    private void OnCollisionEnter(Collision col)
+    {
+      /*  if (col.gameObject.tag != ("floor")&& col.gameObject.tag != ("item")&& col.gameObject.tag != ("box"))
+        {
+            //float rot = Vector3.Angle(animRotation.transform.position,col.GetContact(0).point);
+            Debug.DrawRay(col.GetContact(0).point, col.GetContact(0).normal, Color.black, 5, true);
+            var rot = Quaternion.LookRotation(col.GetContact(0).normal);
+            Instantiate(impactAnim, col.GetContact(0).point, rot);
+        }*/
+        if (col.gameObject.tag == "item")
+        {
+            int i = 0;
+            foreach (string item in ps.localItems)
+            {
+                if (ps.localItems[i] != "" && ps.localItems[i] != null)
+                {
+                    //Debug.Log(item + " " + col.gameObject.GetComponent<ItemScript>().product);
+                    /*if ((item == col.gameObject.GetComponent<ItemScript>().product)&&(ps.heldItem == ""))
+                    {
+                        
+                       // basketList.Add(item);
+                        ps.listText[ps.localItems.IndexOf(item)].text = "";
+                        ps.localItems[ps.localItems.IndexOf(item)] = "";
+                        ps.currentHeld.Add(item);
+                        ps.heldItem = item;
+                       
+                        Destroy(col.gameObject);
+                        break;
+
+                    }*/
+                    if ((item == col.gameObject.GetComponent<ItemScript>().product))
+                    {
+
+                        // basketList.Add(item);
+                        ps.listText[ps.localItems.IndexOf(item)].text = "";
+                        ps.localItems[ps.localItems.IndexOf(item)] = "";
+                        ps.currentHeld.Add(item);
+                        // ps.heldItem = item;
+
+                        Destroy(col.gameObject);
+                        break;
+
+                    }
+                }
+                i++;
+            }
+        }
+
+    }
+    private void OnTriggerEnter(Collider col)
+    {
+        //  if (col.gameObject.tag == "checkout") { ps.heldItem = ""; Debug.Log("Checkout"); }
+        if (col.gameObject.tag == "checkout") { ps.currentHeld = new List<string>(); }
+        if (col.gameObject.tag == "jam")
+        {
+            
+            body.velocity = new Vector3(body.velocity.x / speedStop, body.velocity.y / speedStop, body.velocity.z / speedStop);
+            // body.velocity = new Vector3( speedStop, speedStop, speedStop);
+            jammy = true;
+        }
+    }
+    private void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.tag == "jam")
+        {
+            jammy = false;
+        }
+    }
+
+   
 
 }
+
+
