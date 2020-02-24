@@ -1681,6 +1681,7 @@ GameObject:
   - component: {fileID: 5419428343325762081}
   - component: {fileID: 757176462373419717}
   - component: {fileID: 920720140626067756}
+  - component: {fileID: 7712072815750772737}
   m_Layer: 0
   m_Name: PlayerModel
   m_TagString: Player
@@ -1909,10 +1910,10 @@ MonoBehaviour:
   control: {fileID: 0}
   body: {fileID: 5464480308165375568}
   animator: {fileID: 1117482060278134982}
-  trolleyAnimator: {fileID: 0}
-  baseMoveMagnitude: 12
-  baseBrakeMagnitude: 6
-  baseTurnMagnitude: 6
+  trolleyAnimator: {fileID: 7712072815750772737}
+  baseMoveMagnitude: 9
+  baseBrakeMagnitude: 3
+  baseTurnMagnitude: 2.3
   turnMassNormaliser: 0.2
   angularVelocity: 0
   angularVelocityDecayRate: 4.5
@@ -1927,6 +1928,25 @@ MonoBehaviour:
   impactAnim: {fileID: 3145126877030937050, guid: 6540f88c136d94444a109c55d9b98627,
     type: 3}
   animRotation: {fileID: 7083549235138513734}
+--- !u!95 &7712072815750772737
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5464480308165375597}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d66949f514d560249b3b7a39d7730d22, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5464480308213801001
 GameObject:
   m_ObjectHideFlags: 0
@@ -2468,10 +2488,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5464480308165375596}
     m_Modifications:
-    - target: {fileID: 100072, guid: 1c4801a8a7bd1c84da070cb7488c8f1d, type: 3}
-      propertyPath: m_Name
-      value: onion_hair_character
-      objectReference: {fileID: 0}
     - target: {fileID: 400072, guid: 1c4801a8a7bd1c84da070cb7488c8f1d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2516,21 +2532,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100072, guid: 1c4801a8a7bd1c84da070cb7488c8f1d, type: 3}
+      propertyPath: m_Name
+      value: onion_hair_character
+      objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: 1c4801a8a7bd1c84da070cb7488c8f1d, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 3936f8c5b2af692498af4b1ba86f83b5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c4801a8a7bd1c84da070cb7488c8f1d, type: 3}
---- !u!4 &1117482060268246894 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400072, guid: 1c4801a8a7bd1c84da070cb7488c8f1d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1117482060268637606}
-  m_PrefabAsset: {fileID: 0}
 --- !u!95 &1117482060278134982 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 9500000, guid: 1c4801a8a7bd1c84da070cb7488c8f1d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1117482060268637606}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1117482060268246894 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400072, guid: 1c4801a8a7bd1c84da070cb7488c8f1d,
     type: 3}
   m_PrefabInstance: {fileID: 1117482060268637606}
   m_PrefabAsset: {fileID: 0}
@@ -2599,15 +2619,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ec7e03f0c71e404c9919df9914d1b14, type: 3}
---- !u!1 &8883940872306167177 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: 4ec7e03f0c71e404c9919df9914d1b14,
-    type: 3}
-  m_PrefabInstance: {fileID: 8883940872306264873}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8883940872306397609 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 4ec7e03f0c71e404c9919df9914d1b14,
+    type: 3}
+  m_PrefabInstance: {fileID: 8883940872306264873}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8883940872306167177 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 4ec7e03f0c71e404c9919df9914d1b14,
     type: 3}
   m_PrefabInstance: {fileID: 8883940872306264873}
   m_PrefabAsset: {fileID: 0}
