@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &788447490520871483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7891687653547974628}
+  m_Layer: 0
+  m_Name: PlayerHeadTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7891687653547974628
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788447490520871483}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.7640004, z: -1.1200002}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5464480308165375596}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &854490624748640568
 GameObject:
   m_ObjectHideFlags: 0
@@ -1675,6 +1705,7 @@ Transform:
   - {fileID: 1117482060268246894}
   - {fileID: 3336296875204718178}
   - {fileID: 6781997200346392265}
+  - {fileID: 7891687653547974628}
   m_Father: {fileID: 5464480306530425795}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1878,8 +1909,10 @@ MonoBehaviour:
   control: {fileID: 0}
   body: {fileID: 5464480308165375568}
   animator: {fileID: 1117482060278134982}
-  baseMoveMagnitude: 9
-  baseTurnMagnitude: 2.3
+  trolleyAnimator: {fileID: 0}
+  baseMoveMagnitude: 12
+  baseBrakeMagnitude: 6
+  baseTurnMagnitude: 6
   turnMassNormaliser: 0.2
   angularVelocity: 0
   angularVelocityDecayRate: 4.5
@@ -1938,11 +1971,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15af170c07e9ff346b9c212fc6c761b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetFollowTransform: {fileID: 5464480308419635783}
-  rb: {fileID: 0}
+  targetFollowTransform: {fileID: 7891687653547974628}
+  rb: {fileID: 5464480308165375568}
   cameraOffsetPos: {x: 0, y: 2, z: -4}
   smoothDampingTime: 0.3
-  rotSpeed: 1.2
+  rotSpeed: 2
 --- !u!1 &5464480308419635780
 GameObject:
   m_ObjectHideFlags: 0
@@ -2489,15 +2522,15 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 3936f8c5b2af692498af4b1ba86f83b5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c4801a8a7bd1c84da070cb7488c8f1d, type: 3}
---- !u!95 &1117482060278134982 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 9500000, guid: 1c4801a8a7bd1c84da070cb7488c8f1d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1117482060268637606}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1117482060268246894 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400072, guid: 1c4801a8a7bd1c84da070cb7488c8f1d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1117482060268637606}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1117482060278134982 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: 1c4801a8a7bd1c84da070cb7488c8f1d,
     type: 3}
   m_PrefabInstance: {fileID: 1117482060268637606}
   m_PrefabAsset: {fileID: 0}

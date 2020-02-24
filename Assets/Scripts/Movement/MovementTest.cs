@@ -10,9 +10,11 @@ public class MovementTest : MonoBehaviour
 
     public Rigidbody body;
     public Animator animator;
+    public Animator trolleyAnimator;
 
     //Variables related to turn movement
     public float baseMoveMagnitude = 12.0f;
+    public float baseBrakeMagnitude = 6.0f;
     public float baseTurnMagnitude = 1.0f;
     public float turnMassNormaliser = 0.2f;
     public float angularVelocity;
@@ -58,23 +60,23 @@ public class MovementTest : MonoBehaviour
 
         playerJoyX = Input.GetAxis("joy" + playerNumber + "x");
 
-        gameObject.transform.Rotate(Vector3.up, angularVelocity);
+        
     }
 
     void FixedUpdate()
     {
         Vector3 thrustForce = transform.forward * baseMoveMagnitude;
         Vector3 brakeForce = transform.forward * baseMoveMagnitude;
+        bool forward = ctrlA || wPress;
         
         if (ctrlA || wPress)
         {
-            body.AddForce(transform.forward * baseMoveMagnitude, ForceMode.Acceleration);
-            //if (!SoundManager.instance.IsSoundPlaying("Trolley Movement Rustle")) SoundManager.instance.PlaySound("Trolley Movement Rustle", false);
+            body.AddForce(thrustForce, ForceMode.Acceleration);
         }
 
         if (decelerate)
         {
-            body.AddForce(body.velocity.normalized * -baseMoveMagnitude, ForceMode.Acceleration);
+            body.AddForce(body.velocity.normalized * -baseBrakeMagnitude, ForceMode.Acceleration);
         }
 
         if (playerJoyX > deadZone && Mathf.Abs(angularVelocity) < angularVelocityMaxMagnitude)
@@ -103,15 +105,19 @@ public class MovementTest : MonoBehaviour
         {
             angularVelocity = Mathf.Lerp(angularVelocity, 0, angularVelocityDecayRate / (totalMass * turnMassNormaliser));
         }
-        
+
+        //gameObject.transform.Rotate(Vector3.up, angularVelocity);
+
+        body.angularVelocity = new Vector3(0, angularVelocity, 0);
+
         //Forward speed is equal to current speed, scaled to be between 0 and 1
-        animator.SetFloat("ForwardSpeed", body.velocity.normalized.z);
+        animator.SetFloat("ForwardSpeed", body.velocity.z);
+
+        trolleyAnimator.SetFloat("AngularVel", body.angularVelocity.y);
 
         //Turn value should be equal to how fast we are rotating per physics frame
-        animator.SetFloat("TurnValue", playerJoyX);
+        animator.SetFloat("TurnValue", body.angularVelocity.y);
     }
-
-
 
     /*private void OnCollisionEnter(Collision col)
     {
