@@ -1785,8 +1785,9 @@ MonoBehaviour:
   - {fileID: 0}
   currentHeld: []
   armour: 0
-  heldItem: 
   nameList: []
+  heldItem: 
+  heldItemList: []
   Spawn: {fileID: 2921921722602584128}
   allItemsCollected: 0
 --- !u!114 &757176462373419717

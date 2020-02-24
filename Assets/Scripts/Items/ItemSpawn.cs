@@ -12,11 +12,13 @@ public class ItemSpawn : MonoBehaviour
     public GameObject spawnable;
     public GameObject ProductParent;
     public List<string> allItems;
-
+    
     public bool spawntest;
     public Dictionary<string,Mesh> itemhashMesh = new Dictionary<string,Mesh>();
     public Dictionary<string,Material> itemhashMat = new Dictionary<string,Material>();
     public Material test;
+
+    public Texture[] spriteList = new Texture[8];
 
     public float onMeshThreshold;
     //int stoppedCount;

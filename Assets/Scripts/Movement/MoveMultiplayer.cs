@@ -65,9 +65,25 @@ public class MoveMultiplayer : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 force = transform.forward * thrust;
+        Vector3 jammyForce = transform.forward * speedSticky;
         bool moveForward = ctrlA || wPress;
+        if (jammy)
+        {
+            if (moveForward)
+            {
+                body.AddForce(jammyForce);
+            }
+        }
+        else
+        {
+            if (moveForward)
+            {
+                body.AddForce(force);
+            }
+        }
         
-        if (moveForward) { body.AddForce(force); }
+
+        
         
         float angVelPercent = body.angularVelocity.magnitude / body.maxAngularVelocity;
         
@@ -123,7 +139,7 @@ public class MoveMultiplayer : MonoBehaviour
                 if (ps.localItems[i] != "" && ps.localItems[i] != null)
                 {
                     //Debug.Log(item + " " + col.gameObject.GetComponent<ItemScript>().product);
-                    if ((item == col.gameObject.GetComponent<ItemScript>().product)&&(ps.heldItem == ""))
+                    /*if ((item == col.gameObject.GetComponent<ItemScript>().product)&&(ps.heldItem == ""))
                     {
                         
                        // basketList.Add(item);
@@ -135,8 +151,20 @@ public class MoveMultiplayer : MonoBehaviour
                         Destroy(col.gameObject);
                         break;
 
-                    }
+                    }*/
+                    if ((item == col.gameObject.GetComponent<ItemScript>().product))
+                    {
 
+                        // basketList.Add(item);
+                        ps.listText[ps.localItems.IndexOf(item)].text = "";
+                        ps.localItems[ps.localItems.IndexOf(item)] = "";
+                        ps.currentHeld.Add(item);
+                       // ps.heldItem = item;
+
+                        Destroy(col.gameObject);
+                        break;
+
+                    }
                 }
                 i++;
             }
@@ -145,11 +173,13 @@ public class MoveMultiplayer : MonoBehaviour
     }
     private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "checkout") { ps.heldItem = ""; Debug.Log("Checkout"); }
+      //  if (col.gameObject.tag == "checkout") { ps.heldItem = ""; Debug.Log("Checkout"); }
+      if(col.gameObject.tag == "checkout") { ps.currentHeld = new List<string> (); }
         if (col.gameObject.tag == "jam")
         {
            
-           // body.velocity = new Vector3(body.velocity.x/speedStop,body.velocity.y/speedStop,body.velocity.z/speedStop);
+           body.velocity = new Vector3(body.velocity.x/speedStop,body.velocity.y/speedStop,body.velocity.z/speedStop);
+           // body.velocity = new Vector3( speedStop, speedStop, speedStop);
             jammy = true;
         }
     }
