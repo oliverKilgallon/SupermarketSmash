@@ -68,8 +68,8 @@ public class Playerscript : MonoBehaviour
             {
                 IEnumerator cr = GetComponentInParent<powerupSlot>().current.execEffect(GetComponentInParent<powerupSlot>().current.effectDuration, GetComponent<MovementTest>().playerNumber);
                 StartCoroutine(cr);
-                GetComponentInParent<powerupSlot>().current = null;
-                GetComponentInParent<powerupSlot>().slot.texture = null;
+                GetComponentInParent<powerupSlot>().removeItem();
+
             }
         }
         int i = 0;
