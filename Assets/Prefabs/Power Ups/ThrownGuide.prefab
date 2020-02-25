@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6190755745952976731}
   - component: {fileID: 8827201411839617856}
-  - component: {fileID: 6963613744697616404}
+  - component: {fileID: 6690086294138151689}
   m_Layer: 0
   m_Name: ThrownGuide
   m_TagString: Untagged
@@ -53,6 +53,7 @@ MonoBehaviour:
   arcStep: 0
   step: 0.2
   itemChild: {fileID: 4170616169107700864}
+  emit: 0
   Emiters:
   - {fileID: 1858780199697145119}
   - {fileID: 8256936200339790301}
@@ -64,7 +65,7 @@ MonoBehaviour:
   weapon: 
   jam: {fileID: 8774906268202251069}
   floorY: 0
---- !u!114 &6963613744697616404
+--- !u!114 &6690086294138151689
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -73,11 +74,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1762353451717998125}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 311791c602b083e49aeb86e195f39f4a, type: 3}
+  m_Script: {fileID: 11500000, guid: 107239375300e0e4285056ff97cc2760, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 0
-  life: 20
+  lifeSpan: 20
 --- !u!1 &3268264406660912666
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,7 +230,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &5203123300610794673
+--- !u!65 &8758592444526608674
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -241,9 +241,9 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.4419274, y: 2.6113334, z: 0.25999945}
-  m_Center: {x: -0.021505356, y: 0.05473411, z: 0.011799108}
---- !u!114 &4449882498553086318
+  m_Size: {x: 3.3726618, y: 2.3891048, z: 0.34394896}
+  m_Center: {x: 0.027038781, y: 0.03296309, z: 0.15286358}
+--- !u!114 &4890725527634887783
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -257,6 +257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 0
   life: 5
+  emit: 0
 --- !u!1001 &3259304736398273450
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -387,15 +388,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2592948540899195844}
     m_Modifications:
-    - target: {fileID: 3894189230960251399, guid: 83122f6d11d378d4bbf91de25449a8e4,
-        type: 3}
-      propertyPath: m_Name
-      value: PE_Smoke
-      objectReference: {fileID: 0}
     - target: {fileID: 3216958310084131046, guid: 83122f6d11d378d4bbf91de25449a8e4,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3894189230960251399, guid: 83122f6d11d378d4bbf91de25449a8e4,
+        type: 3}
+      propertyPath: m_Name
+      value: PE_Smoke
       objectReference: {fileID: 0}
     - target: {fileID: 5186422245226282020, guid: 83122f6d11d378d4bbf91de25449a8e4,
         type: 3}
@@ -494,11 +495,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6190755745952976731}
     m_Modifications:
-    - target: {fileID: 701528647745146178, guid: 2b48f203436148946b4a4b7d7b00e86f,
-        type: 3}
-      propertyPath: m_Name
-      value: PE_Liquid splat
-      objectReference: {fileID: 0}
     - target: {fileID: 701528647745146191, guid: 2b48f203436148946b4a4b7d7b00e86f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -553,6 +549,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 701528647745146178, guid: 2b48f203436148946b4a4b7d7b00e86f,
+        type: 3}
+      propertyPath: m_Name
+      value: PE_Liquid splat
       objectReference: {fileID: 0}
     - target: {fileID: 701528647745146176, guid: 2b48f203436148946b4a4b7d7b00e86f,
         type: 3}
@@ -674,7 +675,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 58a0e4e9cad8bf740862b9a150ed0a9a, type: 2}
     - target: {fileID: 2300000, guid: c262c17dac4df464281bc9c3c244742c, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3300000, guid: c262c17dac4df464281bc9c3c244742c, type: 3}
       propertyPath: m_Mesh
