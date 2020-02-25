@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MovementTest : MonoBehaviour
@@ -14,6 +15,7 @@ public class MovementTest : MonoBehaviour
 
     //Variables related to turn movement
     public float baseMoveMagnitude = 12.0f;
+    public float baseJamMagnitude = 9.0f;
     public float baseBrakeMagnitude = 6.0f;
     public float baseTurnMagnitude = 1.0f;
     public float turnMassNormaliser = 0.2f;
@@ -39,9 +41,10 @@ public class MovementTest : MonoBehaviour
     public List<string> basketList = new List<string>();
     public GameObject impactAnim;
     public GameObject animRotation;
+    public GameObject[] wheelSmoke;
 
     void Start()
-    {
+    { 
         ps = GetComponent<Playerscript>();
         body = GetComponent<Rigidbody>();
         jammy = false;
@@ -51,8 +54,11 @@ public class MovementTest : MonoBehaviour
     void Update()
     {
         //if (Input.GetKeyDown("joy"+playerNumber+"Acc")) { ctrlA = true; }if (Input.GetKeyUp("joy"+playerNumber+"Acc")) { ctrlA = false; }
-        if (Input.GetAxis("joy" + playerNumber + "Acc") != 0) { ctrlA = true; }
-        if (Input.GetAxis("joy" + playerNumber + "Acc") == 0) { ctrlA = false; }
+        if (Input.GetAxis("joy" + playerNumber + "Acc") != 0) { ctrlA = true;foreach (GameObject Sm in wheelSmoke) { if (!Sm.GetComponent<ParticleSystem>().isPlaying) { Sm.GetComponent<ParticleSystem>().Play(); } } }
+        if (Input.GetAxis("joy" + playerNumber + "Acc") == 0) { ctrlA = false; foreach(GameObject Sm in wheelSmoke) { Sm.GetComponent<ParticleSystem>().Stop(); } }
+
+       // if (Input.GetAxis("joy" + playerNumber + "Acc") != 0) { ctrlA = true; foreach (GameObject Sm in wheelSmoke) { Sm.SetActive(true); } }
+        //if (Input.GetAxis("joy" + playerNumber + "Acc") == 0) { ctrlA = false; foreach (GameObject Sm in wheelSmoke) { Sm.SetActive(false); } }
         if (Input.GetAxis("joy" + playerNumber + "Dec") != 0) { decelerate = true; }
         if (Input.GetAxis("joy" + playerNumber + "Dec") == 0) { decelerate = false; }
         if (Input.GetKeyDown("w")) { wPress = true; }
@@ -65,14 +71,27 @@ public class MovementTest : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 thrustForce = transform.forward * baseMoveMagnitude;
+        if (!jammy)
+        {
+            Vector3 thrustForce = transform.forward * baseMoveMagnitude;
+            if (ctrlA || wPress)
+            {
+                body.AddForce(thrustForce, ForceMode.Acceleration);
+            }
+        }
+        else
+        {
+            Vector3 thrustForce = transform.forward * baseJamMagnitude;
+            if (ctrlA || wPress)
+            {
+                body.AddForce(thrustForce, ForceMode.Acceleration);
+            }
+        }
+        
         Vector3 brakeForce = transform.forward * baseMoveMagnitude;
         bool forward = ctrlA || wPress;
         
-        if (ctrlA || wPress)
-        {
-            body.AddForce(thrustForce, ForceMode.Acceleration);
-        }
+        
 
         if (decelerate)
         {
@@ -229,6 +248,7 @@ public class MovementTest : MonoBehaviour
             body.velocity = new Vector3(body.velocity.x / speedStop, body.velocity.y / speedStop, body.velocity.z / speedStop);
             // body.velocity = new Vector3( speedStop, speedStop, speedStop);
             jammy = true;
+            col.GetComponentInParent<Throw>().jammyPlayer = this.gameObject;
         }
     }
     private void OnTriggerExit(Collider col)
@@ -236,9 +256,29 @@ public class MovementTest : MonoBehaviour
         if (col.gameObject.tag == "jam")
         {
             jammy = false;
+            StartCoroutine(Timer(1,col.GetComponent<Renderer>().material.color));
         }
     }
+    IEnumerator Timer(float duration,Color jamColor)
+    {
+        Debug.Log("here");
+        foreach (TrailRenderer tr in GetComponentsInChildren<TrailRenderer>())
+        {
+            tr.emitting = true;
+             tr.startColor = jamColor;
+             tr.AddPosition(transform.position);
+        }
 
+        yield return new WaitForSeconds(duration);
+
+        Debug.Log("here + duration");
+        foreach (TrailRenderer tr in GetComponentsInChildren<TrailRenderer>())
+        {
+            tr.emitting = false;
+            //  tr.endColor = GetComponent<Renderer>().material.color;
+            // tr.AddPosition(trail.transform.position);
+        }
+    }
    
 
 }

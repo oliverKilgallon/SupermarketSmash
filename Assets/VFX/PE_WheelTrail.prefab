@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6657038823449852048}
   m_Layer: 0
-  m_Name: Trail (1)
+  m_Name: PE_WheelTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,6 +44,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2841687780574702974}
   - component: {fileID: 6146106292045653966}
+  - component: {fileID: 8298342068061162739}
   - component: {fileID: 3100203308944337080}
   m_Layer: 0
   m_Name: FLTrail
@@ -179,6 +180,19 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 0
+--- !u!114 &8298342068061162739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4625991493350948169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15565864f0b43b84695d5467a5dac59f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 3
 --- !u!65 &3100203308944337080
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -202,6 +216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1310509447253591648}
   - component: {fileID: 6147413692387713952}
+  - component: {fileID: 7185365763479677940}
   - component: {fileID: 2489456982075452120}
   m_Layer: 0
   m_Name: BRTrail
@@ -337,6 +352,19 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 0
+--- !u!114 &7185365763479677940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7040637785406609058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15565864f0b43b84695d5467a5dac59f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 3
 --- !u!65 &2489456982075452120
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -360,6 +388,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6920656087838401370}
   - component: {fileID: 1089083231671839976}
+  - component: {fileID: 5963672041040388998}
   - component: {fileID: 7670151280762744212}
   m_Layer: 0
   m_Name: FRTrail
@@ -495,6 +524,19 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 0
+--- !u!114 &5963672041040388998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7962966688495107274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15565864f0b43b84695d5467a5dac59f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 3
 --- !u!65 &7670151280762744212
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -518,6 +560,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6656369861297068362}
   - component: {fileID: 4365836248484382146}
+  - component: {fileID: 7323559173315054295}
   - component: {fileID: 1097262325102848737}
   m_Layer: 0
   m_Name: BLTrail
@@ -653,6 +696,19 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 0
+--- !u!114 &7323559173315054295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8772487921555658170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15565864f0b43b84695d5467a5dac59f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 3
 --- !u!65 &1097262325102848737
 BoxCollider:
   m_ObjectHideFlags: 0

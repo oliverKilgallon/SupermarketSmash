@@ -16,6 +16,9 @@ public class Throw : MonoBehaviour
     public GameObject jam;
     public float floorY;
     public bool reverse;
+    public GameObject jamModel;
+    public GameObject flourModel;
+    public GameObject jammyPlayer;
    
 
     // Start is called before the first frame update
@@ -59,7 +62,7 @@ public class Throw : MonoBehaviour
             //Destroy(itemChild);
             if (emit == false && weapon == "flour")
             {
-
+                Destroy(jamModel);Destroy(flourModel);
                 foreach (GameObject emit in Emiters)
                 {
                     emit.GetComponent<ParticleSystem>().Play();
@@ -70,6 +73,7 @@ public class Throw : MonoBehaviour
             }
             if (emit == false && weapon == "jam")
             {
+                Destroy(jamModel); Destroy(flourModel);
                 foreach (GameObject emit in JamEmiters)
                 {
                     emit.GetComponent<ParticleSystem>().Play();

@@ -8,6 +8,7 @@ public class LifeSpan : MonoBehaviour
     public int life;
     public bool emit;
     public GameObject parent;
+    public GameObject trail;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +21,21 @@ public class LifeSpan : MonoBehaviour
     {
         timer += Time.deltaTime;
         if (timer >= life) {
-            if (this.GetComponent<BoxCollider>()) { this.GetComponent<BoxCollider>().enabled = false; }
+            
+            //if (this.GetComponent<BoxCollider>()) { this.GetComponent<BoxCollider>().enabled = false; }
             gameObject.transform.localScale += new Vector3(-0.07f,-0.07f,0);
-            if ((gameObject.transform.localScale.x <= 0) && (gameObject.transform.localScale.y <= 0)) { Destroy(parent); }
+            
+            if ((gameObject.transform.localScale.x <= 0) && (gameObject.transform.localScale.y <= 0))
+            {
+                if (parent.GetComponent<Throw>().jammyPlayer)
+                {
+                    parent.GetComponent<Throw>().jammyPlayer.GetComponent<MovementTest>().jammy = false;
+                }
+
+               // GetComponent<TrailDuration>().stopTrail(GetComponent<TrailDuration>().player);
+                Destroy(parent);
+
+            }
         }
         
     }
