@@ -132,7 +132,7 @@ public class MovementTest : MonoBehaviour
             perlin *= perlinScale * perlinStrength;
             value -= perlin*Mathf.Sign(value);
         }
-        
+
         //Turn value should be equal to how fast we are rotating per physics frame
         trolleyAnimator.SetFloat("AngularVel", value);
         animator.SetFloat("TurnValue", value);
@@ -145,6 +145,7 @@ public class MovementTest : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
+        if (col.GetContact(0).thisCollider.CompareTag("Wheels")) SoundManager.instance.PlaySound("Trolley Break " + Random.Range(1, 3));
 
         if (col.gameObject.tag != ("floor") && col.gameObject.tag != ("item") && col.gameObject.tag != ("box"))
         {
@@ -162,6 +163,7 @@ public class MovementTest : MonoBehaviour
                 }
             }
         }
+
         if (col.gameObject.tag == "item")
         {
             int i = 0;
