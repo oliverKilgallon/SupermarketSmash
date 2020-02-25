@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3833568412728001649}
   - component: {fileID: 3833568412728001648}
   - component: {fileID: 3833568412728001654}
+  - component: {fileID: 1534963256948147102}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -47,36 +48,36 @@ MonoBehaviour:
   sounds:
   - name: Main Theme
     clip: {fileID: 8300000, guid: d41bb229600fb494e8ab7a8e652c21b7, type: 3}
-    volume: 0.2
-    pitch: 0
+    volume: 1
+    pitch: 1
     source: {fileID: 0}
     loop: 0
     audioMixerGroup: {fileID: 24300002, guid: 7039e9bf00bcf3e4abcb8257dc7fb228, type: 2}
-  - name: Normal Throw
+  - name: Normal Throw 1
     clip: {fileID: 8300000, guid: 3cc7ac95c363eb04f8fcd5899be39db8, type: 3}
-    volume: 0.2
-    pitch: 0
+    volume: 1
+    pitch: 1
     source: {fileID: 0}
     loop: 0
     audioMixerGroup: {fileID: 24300002, guid: 7039e9bf00bcf3e4abcb8257dc7fb228, type: 2}
   - name: Trolley Bash 1
     clip: {fileID: 8300000, guid: 181d79ea3f5f96c4c93eb83a2eef772e, type: 3}
-    volume: 0.2
-    pitch: 0
+    volume: 1
+    pitch: 1
     source: {fileID: 0}
     loop: 0
     audioMixerGroup: {fileID: 24300002, guid: 7039e9bf00bcf3e4abcb8257dc7fb228, type: 2}
   - name: Trolley Bash 2
     clip: {fileID: 8300000, guid: c5ff4333e4e894a429d7f5b0f56da339, type: 3}
-    volume: 0.2
-    pitch: 0
+    volume: 1
+    pitch: 1
     source: {fileID: 0}
     loop: 0
     audioMixerGroup: {fileID: 24300002, guid: 7039e9bf00bcf3e4abcb8257dc7fb228, type: 2}
   - name: Trolley Bash 3
     clip: {fileID: 8300000, guid: 4bb10e6cf22802d4c86b7e83413f7fe2, type: 3}
-    volume: 0.2
-    pitch: 0
+    volume: 1
+    pitch: 1
     source: {fileID: 0}
     loop: 0
     audioMixerGroup: {fileID: 24300002, guid: 7039e9bf00bcf3e4abcb8257dc7fb228, type: 2}
@@ -84,6 +85,13 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: a8326d8c8f938d04fa5112b62cf49040, type: 3}
     volume: 1
     pitch: 0
+    source: {fileID: 0}
+    loop: 0
+    audioMixerGroup: {fileID: 24300002, guid: 7039e9bf00bcf3e4abcb8257dc7fb228, type: 2}
+  - name: Normal Throw 2
+    clip: {fileID: 8300000, guid: adc2c9df752ca814b9d3a06483aa0372, type: 3}
+    volume: 1
+    pitch: 1
     source: {fileID: 0}
     loop: 0
     audioMixerGroup: {fileID: 24300002, guid: 7039e9bf00bcf3e4abcb8257dc7fb228, type: 2}
@@ -95,3 +103,16 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3833568412728001651}
   m_Enabled: 1
+--- !u!114 &1534963256948147102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3833568412728001651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c264be4c32904f541ad989079f6047c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainLevelName: L_JakeNewLevel-OliverCopy

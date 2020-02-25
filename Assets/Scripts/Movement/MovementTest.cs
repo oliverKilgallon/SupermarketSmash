@@ -23,12 +23,22 @@ public class MovementTest : MonoBehaviour
     public float totalMass = 250.0f;
     public float deadZone = 0.4f;
     public float angularCorrectValue = 2.0f;
-    private float rotationDelta;
-    
+    public float perlinFreq = 1;
+    public float perlinScale = 0.1f;
+    public float perlinThreshold = 0.75f;
+
+    public float smoothValue = 0.15f;
+    float smoothVelocity;
+    float velocityDir;
+    float perlinXVal;
+
     private bool wPress;
     private bool ctrlA;
     private bool decelerate;
     private float playerJoyX;
+
+    public float soundCooldown = 0.5f;
+    private float timeSoundPlayed;
 
     Playerscript ps;
 
@@ -39,6 +49,7 @@ public class MovementTest : MonoBehaviour
     public List<string> basketList = new List<string>();
     public GameObject impactAnim;
     public GameObject animRotation;
+    public AnimationCurve tiltCurve;
 
     void Start()
     {
@@ -50,7 +61,6 @@ public class MovementTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKeyDown("joy"+playerNumber+"Acc")) { ctrlA = true; }if (Input.GetKeyUp("joy"+playerNumber+"Acc")) { ctrlA = false; }
         if (Input.GetAxis("joy" + playerNumber + "Acc") != 0) { ctrlA = true; }
         if (Input.GetAxis("joy" + playerNumber + "Acc") == 0) { ctrlA = false; }
         if (Input.GetAxis("joy" + playerNumber + "Dec") != 0) { decelerate = true; }
@@ -59,8 +69,6 @@ public class MovementTest : MonoBehaviour
         if (Input.GetKeyUp("w")) { wPress = false; }
 
         playerJoyX = Input.GetAxis("joy" + playerNumber + "x");
-
-        
     }
 
     void FixedUpdate()
@@ -73,6 +81,7 @@ public class MovementTest : MonoBehaviour
         if (ctrlA || wPress)
         {
             body.AddForce(thrustForce, ForceMode.Acceleration);
+            
         }
 
         if (decelerate)
@@ -82,116 +91,76 @@ public class MovementTest : MonoBehaviour
 
         if (playerJoyX > deadZone && Mathf.Abs(angularVelocity) < angularVelocityMaxMagnitude)
         {
+            angularVelocity += (baseTurnMagnitude / (totalMass * turnMassNormaliser)) * Mathf.Abs(playerJoyX);
+
             if (angularVelocity < 0)
             {
-                angularVelocity += (baseTurnMagnitude / (totalMass * turnMassNormaliser)) * angularCorrectValue * Mathf.Abs(playerJoyX);
-            }
-            else
-            {
-                angularVelocity += (baseTurnMagnitude / (totalMass * turnMassNormaliser)) * Mathf.Abs(playerJoyX);
+                angularVelocity *= angularCorrectValue;
             }
         }
         else if (playerJoyX < -deadZone && Mathf.Abs(angularVelocity) < angularVelocityMaxMagnitude)
         {
+            angularVelocity -= (baseTurnMagnitude / (totalMass * turnMassNormaliser)) * Mathf.Abs(playerJoyX);
+
             if (angularVelocity > 0)
             {
-                angularVelocity -= (baseTurnMagnitude / (totalMass * turnMassNormaliser)) * angularCorrectValue * Mathf.Abs(playerJoyX);
+                angularVelocity *= angularCorrectValue;
             }
-            else
-            {
-                angularVelocity -= (baseTurnMagnitude / (totalMass * turnMassNormaliser)) * Mathf.Abs(playerJoyX);
-            }
-        }
-        else
-        {
-            angularVelocity = Mathf.Lerp(angularVelocity, 0, angularVelocityDecayRate / (totalMass * turnMassNormaliser));
         }
 
-        //gameObject.transform.Rotate(Vector3.up, angularVelocity);
+        angularVelocity *= angularVelocityDecayRate;// Mathf.Lerp(angularVelocity, 0, angularVelocityDecayRate / (totalMass * turnMassNormaliser));
 
         bodyVel = new Vector2(body.velocity.x, body.velocity.z);
+
         body.angularVelocity = new Vector3(0, angularVelocity, 0);
-        //Vector3 velocityDir = transform.worldToLocalMatrix.MultiplyVector(new Vector3(bodyVel.x, 0, bodyVel.y));
-        float velocityDir = Vector3.Dot(body.velocity, body.transform.forward);
-        Debug.Log(velocityDir);
-        /*
-        float velocityDir = Vector2.Dot(new Vector2(transform.forward.x, transform.forward.z), bodyVel);
-        if (velocityDir > 0)
-        {
-            animator.SetFloat("ForwardSpeed", velocityDir);
-        }
-        else
-        {*/
-            animator.SetFloat("ForwardSpeed", velocityDir);
-        //}
-        //Forward speed is equal to current speed, scaled to be between 0 and 1
+
+        velocityDir = Mathf.SmoothDamp(velocityDir, Vector3.Dot(body.velocity, body.transform.forward), ref smoothVelocity, smoothValue);
+        animator.SetFloat("ForwardSpeed", velocityDir);
+        
         
 
-        trolleyAnimator.SetFloat("AngularVel", body.angularVelocity.y);
+        float value = tiltCurve.Evaluate(Mathf.Abs(body.angularVelocity.y));
 
+        value *= Mathf.Sign(body.angularVelocity.y);
+
+        perlinXVal += perlinFreq * Time.fixedDeltaTime;
+        float perlin = Mathf.PerlinNoise(perlinXVal, 0);
+        
+        if (Mathf.Abs(value) > perlinThreshold)
+        {
+            float perlinStrength = Mathf.InverseLerp(perlinThreshold, 1, Mathf.Abs(value));
+            perlin *= perlinScale * perlinStrength;
+            value -= perlin*Mathf.Sign(value);
+        }
+        
         //Turn value should be equal to how fast we are rotating per physics frame
-        animator.SetFloat("TurnValue", body.angularVelocity.y);
+        trolleyAnimator.SetFloat("AngularVel", value);
+        animator.SetFloat("TurnValue", value);
     }
-
-    /*private void OnCollisionEnter(Collision col)
-    {
-        if (!col.gameObject.CompareTag("item"))
-        {
-            return;
-        }
-
-        foreach (string item in ps.localItems)
-        {
-            if (!string.IsNullOrEmpty(item))
-            {
-                //Debug.Log(item + " " + col.gameObject.GetComponent<ItemScript>().product);
-                if ((item == col.gameObject.GetComponent<ItemScript>().product) && (ps.heldItem == ""))
-                {
-
-                    // basketList.Add(item);
-                    ps.listText[ps.localItems.IndexOf(item)].text = "";
-                    ps.localItems[ps.localItems.IndexOf(item)] = "";
-                    ps.currentHeld.Add(item);
-                    ps.heldItem = item;
-
-                    Destroy(col.gameObject);
-                    break;
-
-                }
-            }
-        }
-    }
-
-    private void OnTriggerEnter(Collider col)
-    {
-        if (col.gameObject.tag == "checkout") { ps.heldItem = ""; Debug.Log("Checkout"); }
-        if (col.gameObject.tag == "jam")
-        {
-
-            // body.velocity = new Vector3(body.velocity.x/speedStop,body.velocity.y/speedStop,body.velocity.z/speedStop);
-            jammy = true;
-        }
-    }
-    private void OnTriggerExit(Collider col)
-    {
-        if (col.gameObject.tag == "jam")
-        {
-            jammy = false;
-        }
-    }*/
 
     private bool IsSameSign(float num1, float num2)
     {
         return num1 >= 0 && num2 >= 0 || num1 < 0 && num2 < 0;
     }
+
     private void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag != ("floor")&& col.gameObject.tag != ("item")&& col.gameObject.tag != ("box"))
+
+        if (col.gameObject.tag != ("floor") && col.gameObject.tag != ("item") && col.gameObject.tag != ("box"))
         {
             //float rot = Vector3.Angle(animRotation.transform.position,col.GetContact(0).point);
-            Debug.DrawRay(col.GetContact(0).point, col.GetContact(0).normal, Color.black, 5, true);
             var rot = Quaternion.LookRotation(col.GetContact(0).normal);
             Instantiate(impactAnim, col.GetContact(0).point, rot);
+
+            //Play a random trolley bash sound out of the amount we have
+            if (Time.time > (timeSoundPlayed + soundCooldown))
+            {
+                if (col.relativeVelocity.magnitude > 6.0f)
+                {
+                    SoundManager.instance.PlaySound("Trolley Bash " + Random.Range(1, 3), false);
+                    timeSoundPlayed = Time.time;
+                }
+            }
         }
         if (col.gameObject.tag == "item")
         {
@@ -200,20 +169,6 @@ public class MovementTest : MonoBehaviour
             {
                 if (ps.localItems[i] != "" && ps.localItems[i] != null)
                 {
-                    //Debug.Log(item + " " + col.gameObject.GetComponent<ItemScript>().product);
-                    /*if ((item == col.gameObject.GetComponent<ItemScript>().product)&&(ps.heldItem == ""))
-                    {
-                        
-                       // basketList.Add(item);
-                        ps.listText[ps.localItems.IndexOf(item)].text = "";
-                        ps.localItems[ps.localItems.IndexOf(item)] = "";
-                        ps.currentHeld.Add(item);
-                        ps.heldItem = item;
-                       
-                        Destroy(col.gameObject);
-                        break;
-
-                    }*/
                     if ((item == col.gameObject.GetComponent<ItemScript>().product))
                     {
 

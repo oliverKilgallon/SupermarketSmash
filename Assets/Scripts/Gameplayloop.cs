@@ -79,7 +79,6 @@ public class Gameplayloop : MonoBehaviour
                 
                 if (donePlayers < noOfPlayers)
                 {
-                    Debug.Log("playerListLength: " + playerList.Count);
 
                     List<string> thisPlayerList = player.GetComponent<Playerscript>().localItems;
                     thisPlayerList.AddRange(playerList);

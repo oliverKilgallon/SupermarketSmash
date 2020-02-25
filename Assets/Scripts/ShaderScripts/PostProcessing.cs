@@ -3,18 +3,17 @@
 public class PostProcessing : MonoBehaviour
 {
     [SerializeField]
-    private Material postProcessMaterial;
+    private Material postProcessMaterial = null;
 
     private Camera cam;
 
     public enum Shaders
     {
         None,
-        DepthWave,
-        DepthNormals,
         Outline,
         Blur
     }
+
     public Shaders shader;
 
     private void Start()

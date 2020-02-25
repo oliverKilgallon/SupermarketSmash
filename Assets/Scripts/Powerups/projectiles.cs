@@ -116,6 +116,7 @@ public class projectiles : MonoBehaviour
                 Pointer.GetComponent<MeshRenderer>().enabled = false;
                 currentWeapon = null;
 
+                SoundManager.instance.PlaySound("Normal Throw " + Random.Range(1, 2), false);
                 // Pointer.transform.rotation = pointerTransform;
             }
         }
