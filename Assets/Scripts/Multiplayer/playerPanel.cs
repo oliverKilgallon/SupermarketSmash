@@ -7,10 +7,8 @@ public class playerPanel : MonoBehaviour
 {
     public int playerJoystickNumber;
 
-    public string playerName;
-    public Material playerColour;
+    public string playerName; 
     public Mesh mesh;
-
     public Text playerNumber;
 
     private void Awake()

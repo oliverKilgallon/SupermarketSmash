@@ -5,7 +5,6 @@ using UnityEngine;
 public class playerModelChanger : MonoBehaviour
 {
     public Mesh playerMesh;
-    public Color modelColour;
     public GameObject characterModel;
 
     // Start is called before the first frame update
@@ -14,12 +13,9 @@ public class playerModelChanger : MonoBehaviour
         playerModelExport pme = GameObject.FindGameObjectWithTag("playerModelExport").GetComponent<playerModelExport>();
         GameObject[] playerModelInfo = pme.playerPanels;
         GameObject player = playerModelInfo[GetComponentInChildren<MoveMultiplayer>().playerNumber - 1];
-        modelColour = player.GetComponent<playerPanel>().playerColour.color;
         playerMesh = player.GetComponent<playerPanel>().mesh;
         Destroy(player.gameObject);
 
-
-        GetComponentInChildren<Renderer>().material.color = modelColour;
         characterModel.GetComponent<MeshFilter>().mesh = playerMesh;
     }
 }

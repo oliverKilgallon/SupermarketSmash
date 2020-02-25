@@ -10,6 +10,7 @@ public class controllerDetection : MonoBehaviour
     public Canvas canvas;
 
     public int NoOfPlayers;
+    public int HostController;
 
     public Object nextScene;
     public Object lastScene;
@@ -24,7 +25,8 @@ public class controllerDetection : MonoBehaviour
     }
     void Update()
     {
-        //Debug.Log(joystickList());
+        getHostController();
+        //joystickList();
         int i = 0;
         NoOfPlayers = getPlayers();
         //Debug.Log(NoOfPlayers);
@@ -69,6 +71,7 @@ public class controllerDetection : MonoBehaviour
                 NoOfPlayers++;
             }
         }
+        //Debug.Log(NoOfPlayers);
         return NoOfPlayers;
     }
 
@@ -80,10 +83,23 @@ public class controllerDetection : MonoBehaviour
         {
             list += js + ", ";
         }
-
+        Debug.Log(list);
         return list;
     }
+    int getHostController()
+    {
+        for (int i = 0; i < Input.GetJoystickNames().Length; i++)
+        {
+            if (!string.IsNullOrEmpty( Input.GetJoystickNames()[i]))
+            {
+                HostController = i;
+                break;
+            }else{}
+        }
+        Debug.Log(HostController);
 
+        return HostController;
+    }
 
 
     public void Continue()
