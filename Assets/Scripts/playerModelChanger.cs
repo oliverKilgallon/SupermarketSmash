@@ -17,5 +17,6 @@ public class playerModelChanger : MonoBehaviour
         Destroy(player.gameObject);
 
         characterModel.GetComponent<MeshFilter>().mesh = playerMesh;
+        //characterModel.GetComponent<SkinnedMeshRenderer>().sharedMesh = playerMesh;
     }
 }

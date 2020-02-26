@@ -110,8 +110,10 @@ public class controllerDetection : MonoBehaviour
     }
     public void back()
     {
+        Destroy(canvas.gameObject);
+        Destroy(GameObject.Find("playerModelExport"));
         PlayerPrefs.SetInt("NoOfPlayers", 0);
-
         SceneManager.LoadScene(lastScene.name);
+        
     }
 }
