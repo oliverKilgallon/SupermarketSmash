@@ -1239,7 +1239,7 @@ GameObject:
   - component: {fileID: 674186440}
   - component: {fileID: 674186439}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Cube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1562,7 +1562,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 8400000, guid: ae0dab148ba9a2a4c97c7e21c94784fc, type: 2}
+  m_Texture: {fileID: 8400000, guid: e5bbd0694196f4c45acaaf058c7fc670, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -2538,7 +2538,7 @@ GameObject:
   - component: {fileID: 1064696985}
   - component: {fileID: 1064696984}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Cube3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2759,7 +2759,7 @@ GameObject:
   - component: {fileID: 1173346927}
   - component: {fileID: 1173346926}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Cube2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3565,7 +3565,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 8400000, guid: ae0dab148ba9a2a4c97c7e21c94784fc, type: 2}
+  m_Texture: {fileID: 8400000, guid: f2112573cec3a424995aa13565e8023d, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -3723,7 +3723,7 @@ GameObject:
   - component: {fileID: 1526525526}
   - component: {fileID: 1526525525}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Cube4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4530,7 +4530,7 @@ MonoBehaviour:
   canvas: {fileID: 2032340855}
   NoOfPlayers: 0
   HostController: 0
-  nextScene: {fileID: 102900000, guid: 2f7be6bbbc523954d92d22868677115a, type: 3}
+  nextScene: {fileID: 102900000, guid: c1e2e45e9c819af41b4889a68f7ca391, type: 3}
   lastScene: {fileID: 102900000, guid: b8757fe46b6cc2741ae737f6edbb4e9d, type: 3}
 --- !u!4 &1987953221
 Transform:

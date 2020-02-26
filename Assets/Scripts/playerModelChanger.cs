@@ -12,11 +12,11 @@ public class playerModelChanger : MonoBehaviour
     {
         playerModelExport pme = GameObject.FindGameObjectWithTag("playerModelExport").GetComponent<playerModelExport>();
         GameObject[] playerModelInfo = pme.playerPanels;
-        GameObject player = playerModelInfo[GetComponentInChildren<MoveMultiplayer>().playerNumber - 1];
+        GameObject player = playerModelInfo[GetComponentInChildren<MovementTest>().playerNumber - 1];
         playerMesh = player.GetComponent<playerPanel>().mesh;
         Destroy(player.gameObject);
 
-        characterModel.GetComponent<MeshFilter>().mesh = playerMesh;
-        //characterModel.GetComponent<SkinnedMeshRenderer>().sharedMesh = playerMesh;
+        //characterModel.GetComponent<MeshFilter>().mesh = playerMesh;
+        characterModel.GetComponent<SkinnedMeshRenderer>().sharedMesh = playerMesh;
     }
 }
