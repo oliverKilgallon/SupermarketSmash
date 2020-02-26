@@ -34,7 +34,6 @@ public class Playerscript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
         int p = 0;
         if(heldItem == "") { spawnMeshR.enabled = false; }
         if(heldItem != null && heldItem!= "")
@@ -65,7 +64,6 @@ public class Playerscript : MonoBehaviour
                 GetComponentInParent<powerupSlot>().slot.texture = null;
             }
         }
-        */
         int i = 0;
         int left = 8;
         foreach (Text t in listText)

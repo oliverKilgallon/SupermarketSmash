@@ -15469,7 +15469,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 0}
-  modelColour: {r: 1, g: 0, b: 0, a: 0}
   characterModel: {fileID: 1573451868}
 --- !u!1001 &879977896
 PrefabInstance:
@@ -18209,7 +18208,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 0}
-  modelColour: {r: 0, g: 0.21557426, b: 1, a: 0}
   characterModel: {fileID: 1792031029}
 --- !u!1001 &1059322612
 PrefabInstance:
@@ -18830,7 +18828,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 0}
-  modelColour: {r: 0.161767, g: 1, b: 0, a: 0}
   characterModel: {fileID: 955095798}
 --- !u!1 &1135924025
 GameObject:
@@ -27661,7 +27658,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 0}
-  modelColour: {r: 1, g: 0.89088523, b: 0, a: 0}
   characterModel: {fileID: 927641763}
 --- !u!1001 &1776388035
 PrefabInstance:
