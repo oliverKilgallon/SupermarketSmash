@@ -22,10 +22,8 @@ public class MoveMultiplayer : MonoBehaviour
     private float turnInput;
     private Vector3 rotationPivot;
     private float rotationDelta;
-
-    private bool qPress;
+    
     private bool wPress;
-    private bool ePress;
     private bool ctrlA;
     private float playerJoyX;
     
@@ -51,9 +49,7 @@ public class MoveMultiplayer : MonoBehaviour
         //if (Input.GetKeyDown("joy"+playerNumber+"Acc")) { ctrlA = true; }if (Input.GetKeyUp("joy"+playerNumber+"Acc")) { ctrlA = false; }
         if (Input.GetAxis("joy" + playerNumber + "Acc")!=0) { ctrlA = true; }
         if (Input.GetAxis("joy" + playerNumber + "Acc")==0) { ctrlA = false; }
-        if (Input.GetKeyDown("q")) { qPress = true; }if (Input.GetKeyUp("q")) { qPress = false; }
         if (Input.GetKeyDown("w")) { wPress = true; }if (Input.GetKeyUp("w")) { wPress = false; }
-        if (Input.GetKeyDown("e")) { ePress = true; }if (Input.GetKeyUp("e")) { ePress = false; }
         
         playerJoyX = Input.GetAxis("joy" + playerNumber + "x");
 

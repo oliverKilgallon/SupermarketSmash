@@ -61,6 +61,6 @@ public class ChangePlayerMovement : MonoBehaviour
 
     public void ChangeCameraRotSpeed()
     {
-        playerCamera.rotSpeed = float.Parse(cameraRotSpeed.text);
+        playerCamera.smoothDampingTime = float.Parse(cameraRotSpeed.text);
     }
 }
