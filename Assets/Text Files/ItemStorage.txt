@@ -1,8 +1,8 @@
 Milk
-EnergyDrink
+Cola
 Cereal
 Pizza
-TinCan
-Pineapple
+Beans
+Noodles
 Bread
-Watermelon
+Butter

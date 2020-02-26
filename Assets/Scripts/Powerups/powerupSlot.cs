@@ -10,7 +10,7 @@ public class powerupSlot : MonoBehaviour
 
     private void Start()
     {
-        current = null;
+        removeItem();
     }
 
 
@@ -18,17 +18,18 @@ public class powerupSlot : MonoBehaviour
     {
         current = newItem;
         slot.texture = newItem.icon.texture;
+        if (slot.texture == null) { this.slot.color = new Color(1, 1, 1, 0); }
+        else { this.slot.color = new Color(1, 1, 1, 1); }
         if (newItem.throwable)
         {
-            StartCoroutine(newItem.execEffect(1, GetComponentInChildren<MoveMultiplayer>().playerNumber)); 
+            StartCoroutine(newItem.execEffect(1, GetComponentInChildren<MovementTest>().playerNumber)); 
         }
     }
 
     public void removeItem()
     {
         this.current = null;
-        this.slot.texture = null;
-        Debug.Log("removing item");
+        this.slot.color = new Color(1,1,1,0);
     }
 
 

@@ -13,29 +13,37 @@ public class Playerscript : MonoBehaviour
     ItemSpawn iS;
 
     public int armour;
-    public string heldItem;
     public List<string> nameList;
-    public GameObject Spawn;
-    MeshRenderer spawnMeshR;
-    MeshFilter spawnMeshF;
+
+    public string heldItem;//currently held item (For multiple collection, this will stay as the most recent)
+    public List<string> heldItemList;
+
+    public GameObject Spawn;//the object in the trolley to give the mesh and mat of the currently held object
+    MeshRenderer spawnMeshR;//the mesh filter (model) component of /\
+    MeshFilter spawnMeshF;//the mesh renderer (meterial) component of /\/\
 
     public bool allItemsCollected = false;
+    public RawImage[] listIcons = new RawImage[8];
+    public string[] NamesList = {"Milk","Cola","Cereal","Pizza","Beans","Noodles","Bread","Butter"};
 
     // Start is called before the first frame update
     void Start()
     {
-        //spawnMeshF = Spawn.GetComponent<MeshFilter>();
-        //spawnMeshR = Spawn.GetComponent<MeshRenderer>();
+        //set Spawn's mesh components
+        spawnMeshF = Spawn.GetComponent<MeshFilter>();
+        spawnMeshR = Spawn.GetComponent<MeshRenderer>();
+
+    
         nameList = GameObject.FindGameObjectWithTag("GameController").GetComponent<Gameplayloop>().allItems;
         iS = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemSpawn>();
-        playerNumber = GetComponent<MoveMultiplayer>().playerNumber;
+        playerNumber = GetComponent<MovementTest>().playerNumber;
     }
 
     // Update is called once per frame
     void Update()
     {
-        int p = 0;
-        if(heldItem == "") { spawnMeshR.enabled = false; }
+        /*int p = 0;
+        if(heldItem == "") { spawnMeshR.enabled = false; }//if we have no product, 
         if(heldItem != null && heldItem!= "")
         {
             foreach(string name in nameList)
@@ -53,15 +61,15 @@ public class Playerscript : MonoBehaviour
                 p++;  
             }
 
-        }
+        }*/
         if (Input.GetButtonDown("joy" + playerNumber + "Throw"))
         {
             if (GetComponentInParent<powerupSlot>().current != null)
             {
-                IEnumerator cr = GetComponentInParent<powerupSlot>().current.execEffect(GetComponentInParent<powerupSlot>().current.effectDuration, GetComponent<MoveMultiplayer>().playerNumber);
+                IEnumerator cr = GetComponentInParent<powerupSlot>().current.execEffect(GetComponentInParent<powerupSlot>().current.effectDuration, GetComponent<MovementTest>().playerNumber);
                 StartCoroutine(cr);
-                GetComponentInParent<powerupSlot>().current = null;
-                GetComponentInParent<powerupSlot>().slot.texture = null;
+                GetComponentInParent<powerupSlot>().removeItem();
+
             }
         }
         int i = 0;
@@ -70,12 +78,23 @@ public class Playerscript : MonoBehaviour
         {
             if(localItems[i]== "" || localItems[i] == null)
             {
+                listIcons[i].texture = null;
                 t.text = "";
                 left--;
             }
             else
             {
                 t.text = localItems[i];
+                //listIcons[i].texture = iS.spriteList[i];
+                int j = 0;
+                foreach(Texture texture in iS.spriteList)
+                {
+                    if (localItems[i] == NamesList[j])
+                    {
+                        listIcons[i].texture = texture;
+                    }
+                    j++;
+                }
             }
 
 
@@ -97,6 +116,7 @@ public class Playerscript : MonoBehaviour
         {
             if (GetComponent<Rigidbody>().velocity.magnitude > col.gameObject.GetComponent<Rigidbody>().velocity.magnitude)
             {
+
                 if (currentHeld.Count > 0)
                 {
                     int index = Random.Range(0, currentHeld.Count - 1);
@@ -112,7 +132,6 @@ public class Playerscript : MonoBehaviour
                             StartCoroutine(temp.GetComponent<ItemScript>().enableColliders(temp, .3f));
                             temp.GetComponent<Rigidbody>().AddForce((new Vector3(1, 1, 1) + col.relativeVelocity) * 50);
                             currentHeld.RemoveAt(index);
-                            heldItem = "";
                             break;
                         }
                     }

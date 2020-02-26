@@ -39,20 +39,48 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void PlaySound(string name, bool isPitchVariable)
+    public void PlaySound(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
 
         if (s == null)
             return;
 
+        s.source.Play();
+    }
+
+    public void PlaySound(string name, bool loopSound)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+
+        if (s == null)
+            return;
+
+        if (loopSound)
+        {
+            s.source.loop = loopSound;
+        }
+
+        s.source.Play();
+    }
+
+    public void PlaySound(string name, bool loopSound, bool isPitchVariable)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+
+        if (s == null)
+            return;
+
+        if (loopSound)
+        {
+            s.source.loop = loopSound;
+        }
+
         if (isPitchVariable)
         {
             float pitch = UnityEngine.Random.Range(.1f, 3f);
             s.source.pitch = pitch;
         }
-
-        s.source.Play();
     }
 
     public void PauseSound(string name)
