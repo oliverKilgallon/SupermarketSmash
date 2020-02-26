@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2439ecf0457c44c4ba85a07db4e3a28c
+guid: 22eda928f44c751458b8958c7d5f4f6c
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -11,8 +11,7 @@ TrueTypeFontImporter:
   fontName: Neucha
   fontNames:
   - Neucha
-  fallbackFontReferences:
-  - {fileID: 12800000, guid: 22eda928f44c751458b8958c7d5f4f6c, type: 3}
+  fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

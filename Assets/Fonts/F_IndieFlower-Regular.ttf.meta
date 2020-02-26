@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5a493eaf2221cdf428fe79536d99711e
+guid: 24f54d5a0383bb543b5cfb413c2ee0be
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -11,8 +11,7 @@ TrueTypeFontImporter:
   fontName: Indie Flower
   fontNames:
   - Indie Flower
-  fallbackFontReferences:
-  - {fileID: 12800000, guid: 24f54d5a0383bb543b5cfb413c2ee0be, type: 3}
+  fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

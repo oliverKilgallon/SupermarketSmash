@@ -16,7 +16,7 @@ public class ItemScript : MonoBehaviour
     {
       //  product = "EMPTY";
         inWall = false;
-       // product = Random.Range(0, 15);
+        // product = Random.Range(0, 15);
     }
 
     // Update is called once per frame
@@ -32,11 +32,12 @@ public class ItemScript : MonoBehaviour
             inWall = true;
         }
     }
-    /*void OnTriggerStay(Collider collision)
+    public IEnumerator enableColliders(GameObject item, float duration)
     {
-        if (collision.gameObject.tag == "wall")
+        yield return new WaitForSeconds(duration);
+        foreach (Collider c in item.GetComponents<Collider>())
         {
-            inWall = true;
+            c.enabled = true;
         }
-    }*/
+    }
 }

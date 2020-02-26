@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/L_JakeNewLevel-AlexCopy.unity
+    guid: 243df9ad0a8ef814caa8bd5c075b5b8c
   m_configObjects: {}

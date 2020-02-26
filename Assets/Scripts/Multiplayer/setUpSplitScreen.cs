@@ -14,35 +14,58 @@ public class setUpSplitScreen : MonoBehaviour
     public Vector2[] ListPosP3;
     public Vector2[] ListPosP4;
 
+    public Text[] list1Text;
+    public Text[] list2Text;
+    public Text[] list3Text;
+    public Text[] list4Text;
+
+
+
     private void Awake()
     {
-        //numberOfPlayers = PlayerPrefs.GetInt("NoOfPlayers");
+        //numberOfPlayers = PlayerPrefs.GetInt("NumberOfPlayers");
         for (int i = 0; i < numberOfPlayers; i++)
         {
             players[i].SetActive(true);
+        }
+        for (int i = 0; i < list1Text.Length; i++)
+        {
+            list1Text[i].rectTransform.anchoredPosition = new Vector3(0f, (53f - (12.5f * i)), 0f);
+        }
+        for (int i = 0; i < list2Text.Length; i++)
+        {
+            list2Text[i].rectTransform.anchoredPosition = new Vector3(0f, (53f - (12.5f * i)), 0f);
+        }
+        for (int i = 0; i < list3Text.Length; i++)
+        {
+            list3Text[i].rectTransform.anchoredPosition = new Vector3(0f, (53f - (12.5f * i)), 0f);
+        }
+        for (int i = 0; i < list4Text.Length; i++)
+        {
+            list4Text[i].rectTransform.anchoredPosition = new Vector3(0f, (53f - (12.5f * i)), 0f);
         }
         //Player list UI position arrays
         //Each vector corresponds to one list
 
         ListPosP2 = new Vector2[]
         {
-            new Vector2( -375, 171 ),
-            new Vector2(-375, -171 ),
+            new Vector2( -360, 155 ),
+            new Vector2(-360, -170 ),
         };
 
         ListPosP3 = new Vector2[]
         {
-            new Vector2( -375, 171 ),
-            new Vector2( 375, 171 ),
-            new Vector2( -375, -171 ),
+            new Vector2( -360, 155 ),
+            new Vector2( 360, 155 ),
+            new Vector2( -360, -170 ),
         };
 
         ListPosP4 = new Vector2[]
         {
-            new Vector2( -375, 171 ),
-            new Vector2( 375, 171 ),
-            new Vector2( -375, -171 ),
-            new Vector2( 375, -171 ),
+            new Vector2( -360, 155 ),
+            new Vector2( 360, 155 ),
+            new Vector2( -360, -170 ),
+            new Vector2( 360, -170 ),
         };
 
         switch (numberOfPlayers)
@@ -69,7 +92,7 @@ public class setUpSplitScreen : MonoBehaviour
                     if (i < 2)
                     {
                         c.enabled = true;
-                        c.rect = new Rect(0+(.5f * i), .5f, .5f, .5f);
+                        c.rect = new Rect(0 + (.5f * i), .5f, .5f, .5f);
                         l.gameObject.SetActive(true);
                         l.GetComponent<RawImage>().rectTransform.anchoredPosition = ListPosP3[i];
                     }
@@ -97,21 +120,18 @@ public class setUpSplitScreen : MonoBehaviour
                     else
                     {
                         c.enabled = true;
-                        c.rect = new Rect(0 + (.5f * (i-2)), 0, .5f, .5f);
+                        c.rect = new Rect(0 + (.5f * (i - 2)), 0, .5f, .5f);
                         l.gameObject.SetActive(true);
                         l.GetComponent<RawImage>().rectTransform.anchoredPosition = ListPosP4[i];
                     }
                 }
                 break;
             default:
-                
+
                 break;
         }
 
     }
-
-
-
-
-
 }
+
+

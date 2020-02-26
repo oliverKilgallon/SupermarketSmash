@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9657e4df806697a468b3f324da0a53cf
+guid: 2d99421f207ed334f9a5e7a6bce9b9c5
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -11,8 +11,7 @@ TrueTypeFontImporter:
   fontName: NumbBunny
   fontNames:
   - NumbBunny
-  fallbackFontReferences:
-  - {fileID: 12800000, guid: 2d99421f207ed334f9a5e7a6bce9b9c5, type: 3}
+  fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

@@ -4,9 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - item
   - floor
+  - checkout
+  - item
+  - box
   - jam
+  - Wheels
   layers:
   - Default
   - TransparentFX

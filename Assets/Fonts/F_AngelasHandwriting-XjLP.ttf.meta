@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5c072c0ce6ac11f41ad8cb8d4a00c726
+guid: 20a2f1371e32e9940b43e3d34a81798e
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -11,8 +11,7 @@ TrueTypeFontImporter:
   fontName: Angela's Handwriting
   fontNames:
   - Angela's Handwriting
-  fallbackFontReferences:
-  - {fileID: 12800000, guid: 20a2f1371e32e9940b43e3d34a81798e, type: 3}
+  fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

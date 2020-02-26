@@ -12,11 +12,13 @@ public class ItemSpawn : MonoBehaviour
     public GameObject spawnable;
     public GameObject ProductParent;
     public List<string> allItems;
-
+    
     public bool spawntest;
     public Dictionary<string,Mesh> itemhashMesh = new Dictionary<string,Mesh>();
     public Dictionary<string,Material> itemhashMat = new Dictionary<string,Material>();
     public Material test;
+
+    public Texture[] spriteList = new Texture[8];
 
     public float onMeshThreshold;
     //int stoppedCount;
@@ -111,7 +113,8 @@ public class ItemSpawn : MonoBehaviour
             else
             {
                 Debug.DrawRay(new Vector3(spawnLocation.x, spawnLocation.y + 10, spawnLocation.z), Vector3.down * hit.distance, Color.white, 5.0f);
-                createItem(spawnLocation, randAngle, item);
+                GameObject newItem = createItem(spawnLocation, randAngle, item);
+                StartCoroutine(newItem.GetComponent<ItemScript>().enableColliders(newItem, .1f));
             }
         }
         else

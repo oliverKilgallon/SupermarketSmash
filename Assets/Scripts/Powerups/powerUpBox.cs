@@ -14,6 +14,7 @@ public class powerUpBox : MonoBehaviour
             if (!GameObject.Find("PowerUpManager").GetComponent<powerUpManager>().CR_running)
             {
                 collision.gameObject.GetComponentInParent<powerupSlot>().updateCurrentItem(randomItem);
+                GameObject.Find("Power Ups").GetComponent<PowerBoxSpawn>().currentCubes--;
                 Destroy(gameObject);
             }
             

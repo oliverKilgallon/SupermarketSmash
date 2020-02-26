@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6bd6c28069b708e42b15e0815eaa5e7a
+guid: ac545fae31f39e74cba8c8621ef8911e
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -11,8 +11,7 @@ TrueTypeFontImporter:
   fontName: Kalam
   fontNames:
   - Kalam
-  fallbackFontReferences:
-  - {fileID: 12800000, guid: ac545fae31f39e74cba8c8621ef8911e, type: 3}
+  fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
