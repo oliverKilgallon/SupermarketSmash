@@ -17,12 +17,15 @@ public class TrailDuration : MonoBehaviour
         {
             Debug.Log("here");
             player = other.gameObject;
-            StartCoroutine(trail(duration, other.gameObject));
+           // StartCoroutine(trail(duration, other.gameObject));
         }
     }
-   
+    private void Start()
+    {
+        Debug.Log("i'm attaced to"+this.gameObject);
+    }
 
-    IEnumerator trail(float duration, GameObject trail)
+    /*IEnumerator trail(float duration, GameObject trail)
     {
         off = false;
         /* foreach(TrailRenderer tr in trail.GetComponentsInChildren<TrailRenderer>())
@@ -37,16 +40,17 @@ public class TrailDuration : MonoBehaviour
             tr.emitting = false;
             tr.endColor = GetComponent<Renderer>().material.color;
             tr.AddPosition(trail.transform.position);
-        }*/
+        }*
         yield return new WaitForSeconds(duration);
     }
+    */
     public void stopTrail(GameObject trail)
     {
         foreach (TrailRenderer tr in trail.GetComponentsInChildren<TrailRenderer>())
         {
             tr.emitting = false;
             tr.endColor = GetComponent<Renderer>().material.color;
-            tr.AddPosition(trail.transform.position);
+            //tr.AddPosition(trail.transform.position);
         }
     }
 }

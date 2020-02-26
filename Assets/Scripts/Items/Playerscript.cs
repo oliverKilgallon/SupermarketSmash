@@ -114,7 +114,7 @@ public class Playerscript : MonoBehaviour
     {
         if (col.transform.tag == "Player")
         {
-            if (GetComponent<Rigidbody>().velocity.magnitude > col.gameObject.GetComponent<Rigidbody>().velocity.magnitude)
+            if (GetComponent<Rigidbody>().velocity.magnitude < col.gameObject.GetComponent<Rigidbody>().velocity.magnitude)
             {
 
                 if (currentHeld.Count > 0)

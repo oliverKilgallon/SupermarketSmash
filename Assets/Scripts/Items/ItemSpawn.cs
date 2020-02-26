@@ -26,6 +26,7 @@ public class ItemSpawn : MonoBehaviour
     public List<GameObject> items = new List<GameObject>();
     //int itemArrayCount;
 
+    public float[] scales;
 
     // Start is called before the first frame update
     void Start()
@@ -55,6 +56,8 @@ public class ItemSpawn : MonoBehaviour
                 {
                     if (item == point.gameObject.GetComponent<PointList>().acceptedItems[count])
                     {
+                        
+
                         SpawnRandom(new Vector3(point.transform.position.x,2,point.transform.position.z), pointCount, item);
 
 
@@ -70,17 +73,17 @@ public class ItemSpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int randPoint;
-        Vector3 randLocation;
-        for(int i = 0;i<10 ;i++ )
-        if (Input.GetKeyDown("o")&&spawntest) {
-            randPoint = Random.Range(0,pointArray.Length);
-            randLocation = new Vector3(pointArray[randPoint].transform.position.x,2, pointArray[randPoint].transform.position.z);
-                SpawnRandom(randLocation,randPoint,"test");
-                //Instantiate(spawnable, randLocation, Quaternion.Euler(new Vector3(0, randAngle, 0)));
-               
-        }
-        
+        /* int randPoint;
+         Vector3 randLocation;
+         for(int i = 0;i<10 ;i++ )
+         if (Input.GetKeyDown("o")&&spawntest) {
+             randPoint = Random.Range(0,pointArray.Length);
+             randLocation = new Vector3(pointArray[randPoint].transform.position.x,2, pointArray[randPoint].transform.position.z);
+                 SpawnRandom(randLocation,randPoint,"test",1);
+                 //Instantiate(spawnable, randLocation, Quaternion.Euler(new Vector3(0, randAngle, 0)));
+
+         }
+         */
     }
     public void SpawnRandom(Vector3 spawnLocation,int point,string item)
     {
@@ -129,8 +132,16 @@ public class ItemSpawn : MonoBehaviour
 
     public GameObject createItem(Vector3 spawnLoc, float randAngle, string item)
     {
+        int j = 0;
+        int scaleno = 0;
+        foreach (string name in allItems)
+        {
+            if (item == allItems[j]) { scaleno = j; }
+            j++;
+        }
         GameObject thisProduct;
         thisProduct = (GameObject)Instantiate(spawnable, spawnLoc, Quaternion.Euler(new Vector3(0, randAngle, 0)));
+        thisProduct.gameObject.transform.localScale = new Vector3(scales[scaleno], scales[scaleno], scales[scaleno]);
         thisProduct.gameObject.GetComponent<ItemScript>().product = item;
         thisProduct.gameObject.GetComponent<ItemScript>().itemMat = itemhashMat[item];
         thisProduct.gameObject.GetComponent<ItemScript>().itemMesh = itemhashMesh[item];
