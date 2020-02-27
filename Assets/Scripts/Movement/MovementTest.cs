@@ -9,6 +9,8 @@ public class MovementTest : MonoBehaviour
     [HideInInspector]
     public GameObject control;
 
+    public bool debug = false;
+
     public Rigidbody body;
     public Animator animator;
     public Animator trolleyAnimator;
@@ -30,6 +32,7 @@ public class MovementTest : MonoBehaviour
     public float perlinThreshold = 0.75f;
 
     public float smoothValue = 0.15f;
+    public float turnAnimInputScale = 4.0f;
     float smoothVelocity;
     float velocityDir;
     float perlinXVal;
@@ -158,10 +161,10 @@ public class MovementTest : MonoBehaviour
             perlin *= perlinScale * perlinStrength;
             value -= perlin*Mathf.Sign(value);
         }
-
         //Turn value should be equal to how fast we are rotating per physics frame
+        animator.SetFloat("ForwardSpeed", velocityDir);
         trolleyAnimator.SetFloat("AngularVel", value);
-        animator.SetFloat("TurnValue", value);
+        animator.SetFloat("TurnValue", (angularVelocity / angularVelocityMaxMagnitude) * turnAnimInputScale);
     }
 
     private bool IsSameSign(float num1, float num2)
@@ -170,7 +173,10 @@ public class MovementTest : MonoBehaviour
     }
     private void OnCollisionEnter(Collision col)
     {
-        //if (col.GetContact(0).thisCollider.CompareTag("Wheels")) SoundManager.instance.PlaySound("Trolley Break " + Random.Range(1, 3));
+        if (col.GetContact(0).thisCollider.CompareTag("Wheels") && col.GetContact(0).otherCollider.CompareTag("floor") && Time.timeSinceLevelLoad > 1f && col.impulse.y > 8f)
+        {
+            SoundManager.instance.PlaySound("Trolley Bash " + Random.Range(1, 3));
+        }
 
         if (col.gameObject.tag != ("floor") && col.gameObject.tag != ("item") && col.gameObject.tag != ("box"))
         {
@@ -197,16 +203,12 @@ public class MovementTest : MonoBehaviour
                 {
                     if ((item == col.gameObject.GetComponent<ItemScript>().product))
                     {
-
-                        // basketList.Add(item);
                         ps.listText[ps.localItems.IndexOf(item)].text = "";
                         ps.localItems[ps.localItems.IndexOf(item)] = "";
                         ps.currentHeld.Add(item);
-                        // ps.heldItem = item;
-
                         Destroy(col.gameObject);
+                        SoundManager.instance.PlaySound("Item Collection");
                         break;
-
                     }
                 }
                 i++;

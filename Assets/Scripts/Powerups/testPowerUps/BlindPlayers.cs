@@ -19,6 +19,8 @@ public class BlindPlayers : Powerup
                 manager.playerPowerUpCanvas[i-1].gameObject.SetActive(true);
             } 
         }
+        SoundManager.instance.PlaySound("Splat");
+
         yield return new WaitForSeconds(duration);
         Debug.Log("effect ended");
         for (int i = 0; i < 4; i++)
