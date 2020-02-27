@@ -20,6 +20,7 @@ public class powerUpBox : MonoBehaviour
             }
             else
             {
+                GameObject.Find("Power Ups").GetComponent<PowerBoxSpawn>().currentCubes--;
                 Destroy(gameObject);
             }
             

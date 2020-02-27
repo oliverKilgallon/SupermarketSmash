@@ -4530,7 +4530,7 @@ MonoBehaviour:
   canvas: {fileID: 2032340855}
   NoOfPlayers: 0
   HostController: 0
-  nextScene: {fileID: 102900000, guid: c1e2e45e9c819af41b4889a68f7ca391, type: 3}
+  nextScene: {fileID: 102900000, guid: 243df9ad0a8ef814caa8bd5c075b5b8c, type: 3}
   lastScene: {fileID: 102900000, guid: b8757fe46b6cc2741ae737f6edbb4e9d, type: 3}
 --- !u!4 &1987953221
 Transform:
