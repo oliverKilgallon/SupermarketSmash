@@ -21,7 +21,11 @@ public class setUpSplitScreen : MonoBehaviour
 
     public RawImage[] powerupSlots;
 
+    public float Xpos, Ypos, PowerupSlotPosAbove, PowerupSlotPosBelow;
 
+    public float FourPlayersCouponX, FourPlayersCouponY;
+    public RawImage Coupon1, Coupon2, Coupon3, Coupon4;
+    
     
 
     private void Awake()
@@ -52,23 +56,23 @@ public class setUpSplitScreen : MonoBehaviour
 
         ListPosP2 = new Vector2[]
         {
-            new Vector2( -360, 155 ),
-            new Vector2(-360, -170 ),
+            new Vector2( -Xpos, Ypos ),
+            new Vector2(-Xpos, -Ypos),
         };
 
         ListPosP3 = new Vector2[]
         {
-            new Vector2( -360, 155 ),
-            new Vector2( 360, 155 ),
-            new Vector2( -360, -170 ),
+            new Vector2( -Xpos, Ypos ),
+            new Vector2( Xpos, Ypos ),
+            new Vector2( -Xpos, -Ypos ),
         };
 
         ListPosP4 = new Vector2[]
         {
-            new Vector2( -360, 155 ),
-            new Vector2( 360, 155 ),
-            new Vector2( -360, -170 ),
-            new Vector2( 360, -170 ),
+            new Vector2( -Xpos, Ypos ),
+            new Vector2( Xpos, Ypos ),
+            new Vector2( -Xpos, -Ypos ),
+            new Vector2( Xpos, -Ypos ),
         };
 
         switch (numberOfPlayers)
@@ -89,8 +93,12 @@ public class setUpSplitScreen : MonoBehaviour
                         
                     }
                 }
-                powerupSlots[0].rectTransform.anchoredPosition = new Vector2(0, -75);
-                powerupSlots[1].rectTransform.anchoredPosition = new Vector2(0, 95);
+                powerupSlots[0].rectTransform.anchoredPosition = new Vector2(0, PowerupSlotPosAbove);
+                powerupSlots[1].rectTransform.anchoredPosition = new Vector2(0, PowerupSlotPosBelow);
+
+                Coupon1.rectTransform.anchoredPosition = new Vector3(0, FourPlayersCouponY,0);
+                Coupon2.rectTransform.anchoredPosition = new Vector3(0, -FourPlayersCouponY,0);
+
                 break;
             case 3:
                 for (int i = 0; i < 4; i++)
@@ -116,9 +124,14 @@ public class setUpSplitScreen : MonoBehaviour
                         l.GetComponent<RawImage>().rectTransform.anchoredPosition = ListPosP3[i];
                     }
                 }
-                powerupSlots[0].rectTransform.anchoredPosition = new Vector2(0, 95);
-                powerupSlots[1].rectTransform.anchoredPosition = new Vector2(0, 95);
-                powerupSlots[2].rectTransform.anchoredPosition = new Vector2(0, -75);
+                powerupSlots[0].rectTransform.anchoredPosition = new Vector2(0, PowerupSlotPosBelow);
+                powerupSlots[1].rectTransform.anchoredPosition = new Vector2(0, PowerupSlotPosBelow);
+                powerupSlots[2].rectTransform.anchoredPosition = new Vector2(0, PowerupSlotPosAbove);
+
+                Coupon1.rectTransform.anchoredPosition = new Vector3(-FourPlayersCouponX, FourPlayersCouponY, 0);
+                Coupon2.rectTransform.anchoredPosition = new Vector3(FourPlayersCouponX, FourPlayersCouponY, 0);
+                Coupon3.rectTransform.anchoredPosition = new Vector3(0, -FourPlayersCouponY, 0);
+                
                 break;
             case 4:
                 for (int i = 0; i < 4; i++)
@@ -146,10 +159,16 @@ public class setUpSplitScreen : MonoBehaviour
 
                     }
                 }
-                powerupSlots[0].rectTransform.anchoredPosition = new Vector2(0, 95);
-                powerupSlots[1].rectTransform.anchoredPosition = new Vector2(0, 95);
-                powerupSlots[2].rectTransform.anchoredPosition = new Vector2(0, -75);
-                powerupSlots[3].rectTransform.anchoredPosition = new Vector2(0, -75);
+                powerupSlots[0].rectTransform.anchoredPosition = new Vector2(0, PowerupSlotPosBelow);
+                powerupSlots[1].rectTransform.anchoredPosition = new Vector2(0, PowerupSlotPosBelow);
+                powerupSlots[2].rectTransform.anchoredPosition = new Vector2(0, PowerupSlotPosAbove);
+                powerupSlots[3].rectTransform.anchoredPosition = new Vector2(0, PowerupSlotPosAbove);
+
+                Coupon1.rectTransform.anchoredPosition = new Vector3(-FourPlayersCouponX, FourPlayersCouponY, 0);
+                Coupon2.rectTransform.anchoredPosition = new Vector3(FourPlayersCouponX, FourPlayersCouponY, 0);
+                Coupon3.rectTransform.anchoredPosition = new Vector3(-FourPlayersCouponX, -FourPlayersCouponY, 0);
+                Coupon4.rectTransform.anchoredPosition = new Vector3(FourPlayersCouponX, -FourPlayersCouponY, 0);
+
                 break;
             default:
                 

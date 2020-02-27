@@ -5,9 +5,14 @@ using UnityEngine;
 public class LifeSpan : MonoBehaviour
 {
     public float timer;
+    public int life;
+    public bool emit;
+    public GameObject parent;
+    public GameObject trail;
     // Start is called before the first frame update
     void Start()
     {
+        emit = true;
         timer = 0;
     }
 
@@ -15,9 +20,22 @@ public class LifeSpan : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer >= 20) {
-            gameObject.transform.localScale += new Vector3(-0.01f, 0,-0.01f);
-            if ((gameObject.transform.localScale.x <= 0) && (gameObject.transform.localScale.z <= 0)) { Destroy(this.gameObject); }
+        if (timer >= life) {
+            
+            //if (this.GetComponent<BoxCollider>()) { this.GetComponent<BoxCollider>().enabled = false; }
+            gameObject.transform.localScale += new Vector3(-0.07f,-0.07f,0);
+            
+            if ((gameObject.transform.localScale.x <= 0) && (gameObject.transform.localScale.y <= 0))
+            {
+                if (parent.GetComponent<Throw>().jammyPlayer)
+                {
+                    parent.GetComponent<Throw>().jammyPlayer.GetComponent<MovementTest>().jammy = false;
+                }
+
+               // GetComponent<TrailDuration>().stopTrail(GetComponent<TrailDuration>().player);
+                Destroy(parent);
+
+            }
         }
         
     }

@@ -168,8 +168,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 7.66
-      minScalar: 5.98
+      scalar: 10.71
+      minScalar: 8.45
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -302,8 +302,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 4.47
-      minScalar: 1.1
+      scalar: 4.95
+      minScalar: 1.43
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4820,7 +4820,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6250861638991980352}
   m_Layer: 0
-  m_Name: Smoke
+  m_Name: PE_Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5010,8 +5010,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 4.05
-      minScalar: 3.2
+      scalar: 8.46
+      minScalar: 5.48
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5126,8 +5126,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2.7
-      minScalar: 1.4
+      scalar: 4.44
+      minScalar: 3.04
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5817,7 +5817,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 223.8
+        scalar: 405.15
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -7413,7 +7413,7 @@ ParticleSystem:
     magnitude:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.79
+      scalar: 7.6
       minScalar: 1
       maxCurve:
         serializedVersion: 2

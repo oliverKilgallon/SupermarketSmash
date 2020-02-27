@@ -6,14 +6,15 @@ using UnityEngine;
 public class controllerDetection : MonoBehaviour
 {
     public GameObject[] playerPanelGameobjects;
+    public LevelLoader levelLoader;
 
     public Canvas canvas;
 
     public int NoOfPlayers;
     public int HostController;
 
-    public Object nextScene;
-    public Object lastScene;
+    public string nextScene;
+    public string lastScene;
 
     void Start()
     {
@@ -106,14 +107,13 @@ public class controllerDetection : MonoBehaviour
     {
         PlayerPrefs.SetInt("NoOfPlayers", NoOfPlayers);
         canvas.GetComponent<Canvas>().enabled = false;
-        SceneManager.LoadScene(nextScene.name);
+        levelLoader.LoadNextLevel(nextScene.name);
     }
     public void back()
     {
         Destroy(canvas.gameObject);
         Destroy(GameObject.Find("playerModelExport"));
         PlayerPrefs.SetInt("NoOfPlayers", 0);
-        SceneManager.LoadScene(lastScene.name);
-        
+        levelLoader.LoadLastLevel(lastScene.name);
     }
 }
