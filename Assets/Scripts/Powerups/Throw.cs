@@ -64,7 +64,8 @@ public class Throw : MonoBehaviour
                 }
                 
                 emit = true;
-                
+                SoundManager.instance.PlaySound("Flour Hitting Floor " + Random.Range(1, 2));
+
             }
             if (emit == false && weapon == "jam")
             {
@@ -78,6 +79,7 @@ public class Throw : MonoBehaviour
                 
 
                 emit = true;
+                SoundManager.instance.PlaySound("Jam Jar Smash");
  
 
             }
