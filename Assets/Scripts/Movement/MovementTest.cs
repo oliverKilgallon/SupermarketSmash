@@ -223,7 +223,7 @@ public class MovementTest : MonoBehaviour
         if (col.gameObject.tag == "jam")
         {
             
-            body.velocity = new Vector3(body.velocity.x / speedStop, body.velocity.y / speedStop, body.velocity.z / speedStop);
+            body.velocity = new Vector3(body.velocity.x / speedStop, 0, body.velocity.z / speedStop);
             // body.velocity = new Vector3( speedStop, speedStop, speedStop);
             jammy = true;
             col.GetComponentInParent<Throw>().jammyPlayer = this.gameObject;
