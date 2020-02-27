@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraCompensation : MonoBehaviour
 {
@@ -12,7 +10,6 @@ public class CameraCompensation : MonoBehaviour
     private void Start()
     {
         originalPos = cameraObj.localPosition;
-        Debug.Log(originalPos);
     }
 
     // Update is called once per frame
