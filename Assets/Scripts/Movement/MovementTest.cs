@@ -16,12 +16,12 @@ public class MovementTest : MonoBehaviour
     //Variables related to turn movement
     public float baseMoveMagnitude = 12.0f;
     public float baseJamMagnitude = 9.0f;
-    public float baseBrakeMagnitude = 6.0f;
-    public float baseTurnMagnitude = 1.0f;
+    public float baseBrakeMagnitude = 3.0f;
+    public float baseTurnMagnitude = 4.0f;
     public float turnMassNormaliser = 0.2f;
     public float angularVelocity;
-    public float angularVelocityDecayRate = 3.0f;
-    public float angularVelocityMaxMagnitude = 3.0f;
+    public float angularVelocityDecayRate = 0.985f;
+    public float angularVelocityMaxMagnitude = 5.0f;
     public float totalMass = 250.0f;
     public float deadZone = 0.4f;
     public float angularCorrectValue = 2.0f;
@@ -65,7 +65,16 @@ public class MovementTest : MonoBehaviour
     void Update()
     {
         //if (Input.GetKeyDown("joy"+playerNumber+"Acc")) { ctrlA = true; }if (Input.GetKeyUp("joy"+playerNumber+"Acc")) { ctrlA = false; }
-        if (Input.GetAxis("joy" + playerNumber + "Acc") != 0) { ctrlA = true;foreach (GameObject Sm in wheelSmoke) { if (!Sm.GetComponent<ParticleSystem>().isPlaying) { Sm.GetComponent<ParticleSystem>().Play(); } } }
+        if (Input.GetAxis("joy" + playerNumber + "Acc") != 0)
+        { ctrlA = true;
+            foreach (GameObject Sm in wheelSmoke)
+            {
+                if (!Sm.GetComponent<ParticleSystem>().isPlaying)
+                {
+                    Sm.GetComponent<ParticleSystem>().Play();
+                }
+            }
+        }
         if (Input.GetAxis("joy" + playerNumber + "Acc") == 0) { ctrlA = false; foreach(GameObject Sm in wheelSmoke) { Sm.GetComponent<ParticleSystem>().Stop(); } }
 
        // if (Input.GetAxis("joy" + playerNumber + "Acc") != 0) { ctrlA = true; foreach (GameObject Sm in wheelSmoke) { Sm.SetActive(true); } }
@@ -136,13 +145,10 @@ public class MovementTest : MonoBehaviour
 
         velocityDir = Mathf.SmoothDamp(velocityDir, Vector3.Dot(body.velocity, body.transform.forward), ref smoothVelocity, smoothValue);
         animator.SetFloat("ForwardSpeed", velocityDir);
-        
-        
 
         float value = tiltCurve.Evaluate(Mathf.Abs(body.angularVelocity.y));
 
         value *= Mathf.Sign(body.angularVelocity.y);
-
         perlinXVal += perlinFreq * Time.fixedDeltaTime;
         float perlin = Mathf.PerlinNoise(perlinXVal, 0);
         
@@ -164,7 +170,7 @@ public class MovementTest : MonoBehaviour
     }
     private void OnCollisionEnter(Collision col)
     {
-        if (col.GetContact(0).thisCollider.CompareTag("Wheels")) SoundManager.instance.PlaySound("Trolley Break " + Random.Range(1, 3));
+        //if (col.GetContact(0).thisCollider.CompareTag("Wheels")) SoundManager.instance.PlaySound("Trolley Break " + Random.Range(1, 3));
 
         if (col.gameObject.tag != ("floor") && col.gameObject.tag != ("item") && col.gameObject.tag != ("box"))
         {
