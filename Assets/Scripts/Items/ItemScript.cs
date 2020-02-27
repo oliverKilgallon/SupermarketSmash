@@ -6,7 +6,8 @@ public class ItemScript : MonoBehaviour
 {
     public string product;
     public Mesh itemMesh;
-    public Material itemMat; 
+    public Material itemMat;
+    public GameObject highlight;
    
         
     public bool inWall;

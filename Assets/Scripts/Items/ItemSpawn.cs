@@ -141,7 +141,11 @@ public class ItemSpawn : MonoBehaviour
         }
         GameObject thisProduct;
         thisProduct = (GameObject)Instantiate(spawnable, spawnLoc, Quaternion.Euler(new Vector3(0, randAngle, 0)));
+
         thisProduct.gameObject.transform.localScale = new Vector3(scales[scaleno], scales[scaleno], scales[scaleno]);
+
+        thisProduct.GetComponent<ItemScript>().highlight.transform.localScale = new Vector3(5/ scales[scaleno], 5/ scales[scaleno], 5/ scales[scaleno]);
+
         thisProduct.gameObject.GetComponent<ItemScript>().product = item;
         thisProduct.gameObject.GetComponent<ItemScript>().itemMat = itemhashMat[item];
         thisProduct.gameObject.GetComponent<ItemScript>().itemMesh = itemhashMesh[item];
