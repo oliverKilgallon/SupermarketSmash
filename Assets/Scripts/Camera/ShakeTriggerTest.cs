@@ -11,9 +11,9 @@ public class ShakeTriggerTest : MonoBehaviour
     
     private void OnCollisionEnter(Collision collision)
     {
-        /*if (collision.relativeVelocity.magnitude > shakeThreshold)
+        if (collision.relativeVelocity.magnitude > shakeThreshold)
         {
             StartCoroutine(cameraShake.Shake(shakeDuration, collision.relativeVelocity.magnitude * shakeMagnitude));
-        }*/
+        }
     }
 }
