@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class playerModelExport : MonoBehaviour
 {
-    enum playerModel
+    public GameObject[] playerPanels;
+    public int noOfPlayers;
+
+
+    private void Awake()
     {
-        Color,
-        Mesh
+        DontDestroyOnLoad(gameObject);
     }
-    playerModel[] playerModels = new playerModel[4];
 }
