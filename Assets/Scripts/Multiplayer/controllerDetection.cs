@@ -7,14 +7,17 @@ public class controllerDetection : MonoBehaviour
 {
     public GameObject[] playerPanelGameobjects;
 
+    public Canvas canvas;
+
     public int NoOfPlayers;
+    public int HostController;
 
     public Object nextScene;
     public Object lastScene;
 
     void Start()
     {
-        Debug.Log("Controllers: " + Input.GetJoystickNames().Length);
+        //Debug.Log("Controllers: " + Input.GetJoystickNames().Length);
         foreach (GameObject panel in playerPanelGameobjects)
         {
             panel.SetActive(false);
@@ -22,14 +25,30 @@ public class controllerDetection : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(joystickList());
+        getHostController();
+        //joystickList();
         int i = 0;
         NoOfPlayers = getPlayers();
+        //Debug.Log(NoOfPlayers);
+        if (NoOfPlayers < 2)
+        {
+            PlayerPrefs.SetInt("NumberOfPlayers", 2);
+            NoOfPlayers = 2;
+        }
+        else
+        {
+            PlayerPrefs.SetInt("NumberOfPlayers", NoOfPlayers);
+        }
+        //Debug.Log(PlayerPrefs.GetInt("NumberOfPlayers"));
         foreach (GameObject pp in playerPanelGameobjects)
         {
             if (i < NoOfPlayers)
             {
-                pp.SetActive(true);  
+                pp.SetActive(true);
+                if (pp.GetComponent<playerPanel>().playerJoystickNumber == -1)
+                {
+                    pp.GetComponent<playerPanel>().playerJoystickNumber = (i + 1);
+                }
             }
             else 
             {
@@ -52,6 +71,7 @@ public class controllerDetection : MonoBehaviour
                 NoOfPlayers++;
             }
         }
+        //Debug.Log(NoOfPlayers);
         return NoOfPlayers;
     }
 
@@ -63,22 +83,37 @@ public class controllerDetection : MonoBehaviour
         {
             list += js + ", ";
         }
-
+        Debug.Log(list);
         return list;
     }
+    int getHostController()
+    {
+        for (int i = 0; i < Input.GetJoystickNames().Length; i++)
+        {
+            if (!string.IsNullOrEmpty( Input.GetJoystickNames()[i]))
+            {
+                HostController = i;
+                break;
+            }else{}
+        }
+        Debug.Log(HostController);
 
+        return HostController;
+    }
 
 
     public void Continue()
     {
         PlayerPrefs.SetInt("NoOfPlayers", NoOfPlayers);
-
+        canvas.GetComponent<Canvas>().enabled = false;
         SceneManager.LoadScene(nextScene.name);
     }
     public void back()
     {
+        Destroy(canvas.gameObject);
+        Destroy(GameObject.Find("playerModelExport"));
         PlayerPrefs.SetInt("NoOfPlayers", 0);
-
         SceneManager.LoadScene(lastScene.name);
+        
     }
 }
