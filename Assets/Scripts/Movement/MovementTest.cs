@@ -29,6 +29,7 @@ public class MovementTest : MonoBehaviour
 
     public float smoothValue = 0.15f;
     float smoothVelocity;
+    
     float velocityDir;
     float perlinXVal;
 
