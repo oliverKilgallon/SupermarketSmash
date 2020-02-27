@@ -19,6 +19,9 @@ public class setUpSplitScreen : MonoBehaviour
     public Text[] list3Text;
     public Text[] list4Text;
 
+    public RawImage[] powerupSlots;
+
+
     
 
     private void Awake()
@@ -79,10 +82,15 @@ public class setUpSplitScreen : MonoBehaviour
                     {
                         c.enabled = true;
                         c.rect = new Rect(0, .5f - (.5f * i), 1, .5f);
+                        c.fieldOfView = 120;
+                        c.fieldOfView = 60;
                         l.gameObject.SetActive(true);
                         l.GetComponent<RawImage>().rectTransform.anchoredPosition = ListPosP2[i];
+                        
                     }
                 }
+                powerupSlots[0].rectTransform.anchoredPosition = new Vector2(0, -75);
+                powerupSlots[1].rectTransform.anchoredPosition = new Vector2(0, 95);
                 break;
             case 3:
                 for (int i = 0; i < 4; i++)
@@ -93,17 +101,24 @@ public class setUpSplitScreen : MonoBehaviour
                     {
                         c.enabled = true;
                         c.rect = new Rect(0+(.5f * i), .5f, .5f, .5f);
+                        c.fieldOfView = 120;
+                        c.fieldOfView = 60;
                         l.gameObject.SetActive(true);
-                        l.GetComponent<RawImage>().rectTransform.anchoredPosition = ListPosP3[i];
+                        l.GetComponent<RawImage>().rectTransform.anchoredPosition = ListPosP3[i];       
                     }
                     else if (i < 3)
                     {
                         c.enabled = true;
                         c.rect = new Rect(.25f, 0, .5f, .5f);
+                        c.fieldOfView = 120;
+                        c.fieldOfView = 60;
                         l.gameObject.SetActive(true);
                         l.GetComponent<RawImage>().rectTransform.anchoredPosition = ListPosP3[i];
                     }
                 }
+                powerupSlots[0].rectTransform.anchoredPosition = new Vector2(0, 95);
+                powerupSlots[1].rectTransform.anchoredPosition = new Vector2(0, 95);
+                powerupSlots[2].rectTransform.anchoredPosition = new Vector2(0, -75);
                 break;
             case 4:
                 for (int i = 0; i < 4; i++)
@@ -114,17 +129,27 @@ public class setUpSplitScreen : MonoBehaviour
                     {
                         c.enabled = true;
                         c.rect = new Rect(0 + (.5f * i), .5f, .5f, .5f);
+                        c.fieldOfView = 120;
+                        c.fieldOfView = 60;
                         l.gameObject.SetActive(true);
                         l.GetComponent<RawImage>().rectTransform.anchoredPosition = ListPosP4[i];
+
                     }
                     else
                     {
                         c.enabled = true;
                         c.rect = new Rect(0 + (.5f * (i-2)), 0, .5f, .5f);
+                        c.fieldOfView = 120;
+                        c.fieldOfView = 60;
                         l.gameObject.SetActive(true);
                         l.GetComponent<RawImage>().rectTransform.anchoredPosition = ListPosP4[i];
+
                     }
                 }
+                powerupSlots[0].rectTransform.anchoredPosition = new Vector2(0, 95);
+                powerupSlots[1].rectTransform.anchoredPosition = new Vector2(0, 95);
+                powerupSlots[2].rectTransform.anchoredPosition = new Vector2(0, -75);
+                powerupSlots[3].rectTransform.anchoredPosition = new Vector2(0, -75);
                 break;
             default:
                 
