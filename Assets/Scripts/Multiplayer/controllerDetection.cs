@@ -13,8 +13,8 @@ public class controllerDetection : MonoBehaviour
     public int NoOfPlayers;
     public int HostController;
 
-    public string nextScene;
-    public string lastScene;
+    public Object nextScene;
+    public Object lastScene;
 
     void Start()
     {
