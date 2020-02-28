@@ -22,7 +22,7 @@ public class Gameplayloop : MonoBehaviour
     void Awake()
     {
         roundTime *= 60;
-        door.SetActive(true);
+       // door.SetActive(true);
         winArea.SetActive(false);
         noOfPlayers = splitscreen.gameObject.GetComponent<setUpSplitScreen>().numberOfPlayers;
        // Debug.Log("test2");
@@ -114,7 +114,7 @@ public class Gameplayloop : MonoBehaviour
         roundTime -= Time.deltaTime;
         if (roundTime <= 0)
         {
-            door.SetActive(false);
+           // door.SetActive(false);
             winArea.SetActive(true);
         }
         else
@@ -123,13 +123,13 @@ public class Gameplayloop : MonoBehaviour
             {
                 if (player.GetComponent<Playerscript>().allItemsCollected)
                 {
-                    door.SetActive(false);
+                   // door.SetActive(false);
                     winArea.SetActive(true);
                     break;
                 }
                 else
                 {
-                    door.SetActive(true);
+                   // door.SetActive(true);
                     winArea.SetActive(false);
                 }
             }
