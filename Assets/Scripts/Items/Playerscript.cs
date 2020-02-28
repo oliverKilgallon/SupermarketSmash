@@ -7,9 +7,11 @@ public class Playerscript : MonoBehaviour
 {
     public int playerNumber;
     public List<string> localItems = new List<string>();
+    public List<string> AlllocalItems = new List<string>();//copy of local items at start which won't change to be a reference when things dissapeear from the origional
     public Text[] listText = new Text[8];
 
     public List<string> currentHeld = new List<string>();
+    public string[] currentHeldWithPos = new string[8];
     ItemSpawn iS;
 
     public int armour;
@@ -39,6 +41,8 @@ public class Playerscript : MonoBehaviour
         nameList = GameObject.FindGameObjectWithTag("GameController").GetComponent<Gameplayloop>().allItems;
         iS = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemSpawn>();
         playerNumber = GetComponent<MovementTest>().playerNumber;
+       
+        foreach (string str in localItems) { AlllocalItems.Add(str); }
         foreach(RawImage basketIcon in basketListIcons)
         {
             basketIcon.texture = null;
@@ -79,21 +83,70 @@ public class Playerscript : MonoBehaviour
 
             }
         }
+        /*
         int k = 0;
-        foreach (string held in heldItemList)
+        foreach (string held in currentHeld)
         {
             int l = 0;
             foreach(string St in localItems)
             {
-                if (string.IsNullOrEmpty(localItems[l]))
+                if (AlllocalItems[l] == held&& string.IsNullOrEmpty(St))
                 {
-                    basketListIcons[l].color = Color.clear;
+
+
+                    /* if (string.IsNullOrEmpty(localItems[l]))
+                     {
+                         if (basketListIcons[l].color == Color.clear)
+                         {
+                             //Debug.Log("AHHHHHHHHHHHHHHHHHHHHHHH");
+                             basketListIcons[l].color = Color.white;
+                             foreach (Texture sprite in basketSpriteList)
+                             {
+                                 if (sprite.name == held) { basketListIcons[l].texture = sprite; }
+                             }
+                             l = 0;
+
+                         }
+                         break;
+                     }
+                     else { basketListIcons[l].color = Color.clear; }
+                     l++;
+                     
                 }
-                l++;
+
             }
 
             k++;      
-        } 
+        } //*/
+
+        
+        /*
+        int l = 0;
+        int m = 0;
+        foreach (RawImage basketIcon in basketListIcons)
+        {
+            //basketIcon.texture = null;
+            //basketIcon.color = Color.clear;
+        }
+        foreach (string St in localItems)
+        {
+            if (string.IsNullOrEmpty(localItems[l]))
+            {
+                if (basketListIcons[l].color == Color.clear)
+                {
+                    foreach (Texture sprite in basketSpriteList)
+                    {
+                        if (sprite.name == currentHeld[m]) { basketListIcons[l].color = Color.white; basketListIcons[l].texture = sprite; }
+                    }
+                    //l = 0;
+
+                    m++;
+                }
+            }
+            else { basketListIcons[l].color = Color.clear; }
+            l++;
+        }//*/
+
 
         int i = 0;
         int left = 8;
@@ -141,7 +194,7 @@ public class Playerscript : MonoBehaviour
     {
         if (col.transform.tag == "Player")
         {
-            if (GetComponent<Rigidbody>().velocity.magnitude < col.gameObject.GetComponent<Rigidbody>().velocity.magnitude)
+            if (GetComponent<Rigidbody>().velocity.magnitude > col.gameObject.GetComponent<Rigidbody>().velocity.magnitude)
             {
 
                 if (currentHeld.Count > 0)
@@ -154,7 +207,18 @@ public class Playerscript : MonoBehaviour
                     {
                         if (string.IsNullOrEmpty(localItems[i]))
                         {
-                            localItems[i] = currentHeld[index];
+                            int j = 0;
+                            foreach(string held in AlllocalItems)
+                            {
+                                if (AlllocalItems[j] == droppedItem)
+                                {
+                                    break;
+                                }
+                                j++;
+                            }
+                            basketListIcons[j].texture = null;
+                            basketListIcons[j].color = Color.clear;
+                            localItems[j] = currentHeld[index];
                             GameObject temp = iS.createItem(new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), transform.rotation.y, currentHeld[index]);
                             StartCoroutine(temp.GetComponent<ItemScript>().enableColliders(temp, .3f));
                             temp.GetComponent<Rigidbody>().AddForce((new Vector3(1, 1, 1) + col.relativeVelocity) * 50);
@@ -168,6 +232,34 @@ public class Playerscript : MonoBehaviour
         }
     }
 
+    public void ShoppingCartIcon(string held)
+    {
+        // basketListIcons[i].texture =
+        //int m = 0;
+       
+        int j = 0;
+        foreach(string heldAll in AlllocalItems)
+        {
+            if (held == heldAll&& basketListIcons[j].color == Color.clear)
+            {
+                foreach (Texture sprite in basketSpriteList)
+                {
+                    if (sprite.name == held)
+                    {
+                        basketListIcons[j].color = Color.white;
+                        basketListIcons[j].texture = sprite;
+                    }
+                }
+                break;
+
+            } 
+
+            j++;
+        }
+            
+          
+        
+    }
     
 
 
