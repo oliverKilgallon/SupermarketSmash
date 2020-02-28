@@ -5,13 +5,21 @@ using UnityEngine;
 
 public class playerPanel : MonoBehaviour
 {
-    public bool controllerConnected;
+    public int playerJoystickNumber;
 
-    public string testName;
+    public string playerName; 
+    public Mesh mesh;
+    public Text playerNumber;
 
-    public string ControllerName;
-    public string playerName;
-    public Material playerColour;
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+        playerJoystickNumber = -1;
+    }
+    private void Update()
+    {
+        playerNumber.text = "" + playerJoystickNumber;
+        mesh = GetComponentInChildren<modelPicker>().TEST.GetComponent<MeshFilter>().mesh;
+    }
 
-    public RawImage panel;
 }

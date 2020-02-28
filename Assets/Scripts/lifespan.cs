@@ -5,6 +5,7 @@ using UnityEngine;
 public class lifespan : MonoBehaviour
 {
     public float lifeSpan; 
+
     void FixedUpdate()
     {
         if (lifeSpan <= 0)

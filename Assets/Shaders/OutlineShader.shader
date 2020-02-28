@@ -1,12 +1,4 @@
-﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-Shader "Unlit/OutlineShader"
+﻿Shader "Unlit/OutlineShader"
 {
 	Properties
 	{
@@ -80,9 +72,12 @@ Shader "Unlit/OutlineShader"
 					neighbourDepth = neighbourDepth * _ProjectionParams.z;
 
 					float depthDifference = baseDepth - neighbourDepth;
-					float3 normalDifference = baseNormal - neighbourNormal;
-					normalOutline = normalOutline + normalDifference;
 					depthOutline = depthOutline + depthDifference;
+
+					float3 normalDifference = baseNormal - neighbourNormal;
+					normalDifference = normalDifference.r + normalDifference.g + normalDifference.b;
+					normalOutline = normalOutline + normalDifference;
+					
 				}
 
 				//Fragment shader
@@ -99,14 +94,14 @@ Shader "Unlit/OutlineShader"
 					float depthDifference = 0;
 					float normalDifference = 0;
 
-					Compare(depthDifference, normalDifference, depth, normal, i.uv, float2(-1, 1));
-					Compare(depthDifference, normalDifference, depth, normal, i.uv, float2(1, 1));
+					//Compare(depthDifference, normalDifference, depth, normal, i.uv, float2(-1, 1));
+					//Compare(depthDifference, normalDifference, depth, normal, i.uv, float2(1, 1));
 					Compare(depthDifference, normalDifference, depth, normal, i.uv, float2(1, 0));
 					Compare(depthDifference, normalDifference, depth, normal, i.uv, float2(0, 1));
 					Compare(depthDifference, normalDifference, depth, normal, i.uv, float2(-1, 0));
 					Compare(depthDifference, normalDifference, depth, normal, i.uv, float2(0, -1));
-					Compare(depthDifference, normalDifference, depth, normal, i.uv, float2(-1, -1));
-					Compare(depthDifference, normalDifference, depth, normal, i.uv, float2(1, -1));
+					//Compare(depthDifference, normalDifference, depth, normal, i.uv, float2(-1, -1));
+					//Compare(depthDifference, normalDifference, depth, normal, i.uv, float2(1, -1));
 
 					depthDifference = depthDifference * _DepthMult;
 					depthDifference = saturate(depthDifference);
@@ -119,7 +114,7 @@ Shader "Unlit/OutlineShader"
 					//Blur this dependant on the distance from the camera
 					float outline = depthDifference + normalDifference;
 
-					float fwidthOutline = fwidth(outline);
+					//float fwidthOutline = fwidth(outline);
 
 
 					float4 sourceColor = tex2D(_MainTex, i.uv);
@@ -129,6 +124,7 @@ Shader "Unlit/OutlineShader"
 				}
 				ENDCG
 			}
+			/*
 			//Horizontal Blur pass
 			Pass
 			{
@@ -228,5 +224,6 @@ Shader "Unlit/OutlineShader"
 				}
 				ENDCG
 			}
+			*/
 		}
 }

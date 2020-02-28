@@ -78,7 +78,7 @@ public class Playerscript : MonoBehaviour
         {
             if(localItems[i]== "" || localItems[i] == null)
             {
-                listIcons[i].texture = null;
+                listIcons[i].color = new Color(1,1,1,0);
                 t.text = "";
                 left--;
             }
@@ -91,6 +91,7 @@ public class Playerscript : MonoBehaviour
                 {
                     if (localItems[i] == NamesList[j])
                     {
+                        listIcons[i].color = new Color(1, 1, 1, 1);
                         listIcons[i].texture = texture;
                     }
                     j++;
@@ -114,7 +115,7 @@ public class Playerscript : MonoBehaviour
     {
         if (col.transform.tag == "Player")
         {
-            if (GetComponent<Rigidbody>().velocity.magnitude > col.gameObject.GetComponent<Rigidbody>().velocity.magnitude)
+            if (GetComponent<Rigidbody>().velocity.magnitude < col.gameObject.GetComponent<Rigidbody>().velocity.magnitude)
             {
 
                 if (currentHeld.Count > 0)

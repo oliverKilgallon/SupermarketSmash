@@ -100,7 +100,8 @@ public class projectiles : MonoBehaviour
 
 
                 // 
-
+                if(currentWeapon == "jam") { thisThrow.GetComponent<Throw>().jamModel.SetActive(true); thisThrow.GetComponent<Throw>().flourModel.SetActive(false); }
+                if(currentWeapon == "flour") { thisThrow.GetComponent<Throw>().flourModel.SetActive(true); thisThrow.GetComponent<Throw>().jamModel.SetActive(false); }
                 thisThrow.GetComponent<Throw>().localArc = arc;
                 //arc.CopyTo(thisThrow.GetComponent<Throw>().localArc, 0);
                 thisThrow.GetComponent<Throw>().weapon = currentWeapon;
