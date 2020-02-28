@@ -24,6 +24,8 @@ public class Playerscript : MonoBehaviour
 
     public bool allItemsCollected = false;
     public RawImage[] listIcons = new RawImage[8];
+    public RawImage[] basketListIcons = new RawImage[8];
+    public Texture[] basketSpriteList = new Texture[8];
     public string[] NamesList = {"Milk","Cola","Cereal","Pizza","Beans","Noodles","Bread","Butter"};
 
     // Start is called before the first frame update
@@ -37,6 +39,11 @@ public class Playerscript : MonoBehaviour
         nameList = GameObject.FindGameObjectWithTag("GameController").GetComponent<Gameplayloop>().allItems;
         iS = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemSpawn>();
         playerNumber = GetComponent<MovementTest>().playerNumber;
+        foreach(RawImage basketIcon in basketListIcons)
+        {
+            basketIcon.texture = null;
+            basketIcon.color = Color.clear;
+        }
     }
 
     // Update is called once per frame
@@ -72,13 +79,31 @@ public class Playerscript : MonoBehaviour
 
             }
         }
+        int k = 0;
+        foreach (string held in heldItemList)
+        {
+            int l = 0;
+            foreach(string St in localItems)
+            {
+                if (string.IsNullOrEmpty(localItems[l]))
+                {
+                    basketListIcons[l].color = Color.clear;
+                }
+                l++;
+            }
+
+            k++;      
+        } 
+
         int i = 0;
         int left = 8;
+        
         foreach (Text t in listText)
         {
+            
             if(localItems[i]== "" || localItems[i] == null)
             {
-                listIcons[i].color = new Color(1,1,1,0);
+                listIcons[i].color = Color.clear; ;
                 t.text = "";
                 left--;
             }
@@ -91,8 +116,9 @@ public class Playerscript : MonoBehaviour
                 {
                     if (localItems[i] == NamesList[j])
                     {
-                        listIcons[i].color = new Color(1, 1, 1, 1);
+                        listIcons[i].color = Color.white;
                         listIcons[i].texture = texture;
+                        
                     }
                     j++;
                 }

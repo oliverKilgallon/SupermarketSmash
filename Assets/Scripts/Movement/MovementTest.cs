@@ -206,6 +206,8 @@ public class MovementTest : MonoBehaviour
                     {
                         ps.listText[ps.localItems.IndexOf(item)].text = "";
                         ps.localItems[ps.localItems.IndexOf(item)] = "";
+                      //  ps.basketListIcons[i].color = Color.white;
+                        //ps.basketListIcons[i].texture = ps.basketSpriteList[i];
                         ps.currentHeld.Add(item);
                         Destroy(col.gameObject);
                         SoundManager.instance.PlaySound("Item Collection");

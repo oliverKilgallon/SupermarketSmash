@@ -107,13 +107,13 @@ public class controllerDetection : MonoBehaviour
     {
         PlayerPrefs.SetInt("NoOfPlayers", NoOfPlayers);
         canvas.GetComponent<Canvas>().enabled = false;
-        levelLoader.LoadNextLevel(nextScene.name);
+        levelLoader.LoadNextLevel(nextScene);
     }
     public void back()
     {
         Destroy(canvas.gameObject);
         Destroy(GameObject.Find("playerModelExport"));
         PlayerPrefs.SetInt("NoOfPlayers", 0);
-        levelLoader.LoadLastLevel(lastScene.name);
+        levelLoader.LoadLastLevel(lastScene);
     }
 }

@@ -140,7 +140,7 @@ public class ItemSpawn : MonoBehaviour
             j++;
         }
         GameObject thisProduct;
-        thisProduct = (GameObject)Instantiate(spawnable, spawnLoc, Quaternion.Euler(new Vector3(0, randAngle, 0)));
+        thisProduct = (GameObject)Instantiate(spawnable, spawnLoc, Quaternion.Euler(new Vector3(-10, randAngle, 20)));
 
         thisProduct.gameObject.transform.localScale = new Vector3(scales[scaleno], scales[scaleno], scales[scaleno]);
 
