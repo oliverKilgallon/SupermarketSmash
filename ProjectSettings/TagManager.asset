@@ -11,6 +11,10 @@ TagManager:
   - jam
   - Trail
   - Wheels
+  - playerModelExport
+  - exitGame
+  - playGame
+  - HTP
   layers:
   - Default
   - TransparentFX
