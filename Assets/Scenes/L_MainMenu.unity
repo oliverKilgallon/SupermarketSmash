@@ -733,8 +733,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d4d2c39147400541bb0c0ce1d72a67c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: {fileID: 102900000, guid: 7422baf638db2ed4985be8bf81430508, type: 3}
-  optionsScene: {fileID: 0}
+  nextScene: L_ReadyUp
+  optionsScene: 
 --- !u!1 &1127560463
 GameObject:
   m_ObjectHideFlags: 0
