@@ -5,13 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/L_MainMenu.unity
     guid: b8757fe46b6cc2741ae737f6edbb4e9d
   - enabled: 1
     path: Assets/Scenes/L_ReadyUp.unity
     guid: 7422baf638db2ed4985be8bf81430508
   - enabled: 1
-    path: Assets/Scenes/L_JakeNewLevel-AlexCopy.unity
-    guid: 243df9ad0a8ef814caa8bd5c075b5b8c
+    path: Assets/Scenes/L_Main_Game_Level.unity
+    guid: 71511bfd88167a0479fe6a3a4f2296bc
   m_configObjects: {}
