@@ -6,15 +6,22 @@ using UnityEngine;
 public class mainMenuManager : MonoBehaviour
 {
     public string nextScene;
-    public string optionsScene;
+    public Canvas howToPlay;
+    public GameObject sign;
 
     public void playGame()
     {
         SceneManager.LoadScene(nextScene);
     }
-    public void options()
+    public void HowToPlay()
     {
-
+        howToPlay.gameObject.SetActive(true);
+        sign.SetActive(false);
+    }
+    public void CloseHowToPlay()
+    {
+        howToPlay.gameObject.SetActive(false);
+        sign.SetActive(true);
     }
     public void quit()
     {
@@ -34,9 +41,9 @@ public class mainMenuManager : MonoBehaviour
                 {
                     playGame();
                 }
-                if (hit.transform.gameObject.tag == "options")
+                if (hit.transform.gameObject.tag == "HTP")
                 {
-
+                    HowToPlay();
                 }
                 if (hit.transform.gameObject.tag == "exitGame")
                 {
