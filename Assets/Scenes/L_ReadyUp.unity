@@ -1155,12 +1155,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 540130299}
   m_CullTransparentMesh: 0
---- !u!224 &562147034 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5765334261259917083, guid: 8b882b626aa477e47b7a1b0190bb7f9c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1069462762}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &578474015
 GameObject:
   m_ObjectHideFlags: 0
@@ -2253,7 +2247,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 363494389}
-  - {fileID: 562147034}
+  - {fileID: 1069462763}
   m_Father: {fileID: 1770182329}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2866,11 +2860,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 854873641}
     m_Modifications:
-    - target: {fileID: 5765334261259917060, guid: 8b882b626aa477e47b7a1b0190bb7f9c,
-        type: 3}
-      propertyPath: m_Name
-      value: Image
-      objectReference: {fileID: 0}
     - target: {fileID: 5765334261259917083, guid: 8b882b626aa477e47b7a1b0190bb7f9c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2976,6 +2965,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5765334261259917060, guid: 8b882b626aa477e47b7a1b0190bb7f9c,
+        type: 3}
+      propertyPath: m_Name
+      value: Image
+      objectReference: {fileID: 0}
     - target: {fileID: 5765334261259917081, guid: 8b882b626aa477e47b7a1b0190bb7f9c,
         type: 3}
       propertyPath: m_Enabled
@@ -2983,6 +2977,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b882b626aa477e47b7a1b0190bb7f9c, type: 3}
+--- !u!4 &1069462763 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 1069462762}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1095888828
 GameObject:
   m_ObjectHideFlags: 0
@@ -5116,7 +5115,7 @@ MonoBehaviour:
   canvas: {fileID: 2032340855}
   NoOfPlayers: 0
   HostController: 0
-  nextScene: L_JakeNewLevel-AlexCopy
+  nextScene: L_Main_Game_Level
   lastScene: L_MainMenu
 --- !u!4 &1987953221
 Transform:
