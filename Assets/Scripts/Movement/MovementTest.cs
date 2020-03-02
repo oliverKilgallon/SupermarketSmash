@@ -201,7 +201,7 @@ public class MovementTest : MonoBehaviour
             int i = 0;
             foreach (string item in ps.localItems)
             {
-                if (ps.localItems[i] != "" && ps.localItems[i] != null)
+                if (string.IsNullOrEmpty(ps.localItems[i]))
                 {
                     if ((item == col.gameObject.GetComponent<ItemScript>().product))
                     {
@@ -254,17 +254,15 @@ public class MovementTest : MonoBehaviour
     }
     IEnumerator Timer(float duration,Color jamColor)
     {
-        Debug.Log("here");
         foreach (TrailRenderer tr in GetComponentsInChildren<TrailRenderer>())
         {
-            tr.emitting = true;
+             tr.emitting = true;
              tr.startColor = jamColor;
              tr.AddPosition(transform.position);
         }
 
         yield return new WaitForSeconds(duration);
-
-        Debug.Log("here + duration");
+        
         foreach (TrailRenderer tr in GetComponentsInChildren<TrailRenderer>())
         {
             tr.emitting = false;
