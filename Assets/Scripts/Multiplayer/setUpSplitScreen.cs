@@ -30,7 +30,7 @@ public class setUpSplitScreen : MonoBehaviour
 
     private void Awake()
     {
-        numberOfPlayers = PlayerPrefs.GetInt("NumberOfPlayers");
+        //numberOfPlayers = PlayerPrefs.GetInt("NumberOfPlayers");
         for (int i = 0; i < numberOfPlayers; i++)
         {
             players[i].SetActive(true);

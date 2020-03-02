@@ -723,8 +723,6 @@ GameObject:
   - component: {fileID: 5464480307896908877}
   - component: {fileID: 5464480307896908875}
   - component: {fileID: 6676876610221922734}
-  - component: {fileID: 5765876302499718445}
-  - component: {fileID: 6122113059021954469}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: Untagged
@@ -816,10 +814,10 @@ MonoBehaviour:
   volumeTrigger: {fileID: 5464480307896908872}
   volumeLayer:
     serializedVersion: 2
-    m_Bits: 54
+    m_Bits: 4150
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 0
-  antialiasingMode: 1
+  antialiasingMode: 2
   temporalAntialiasing:
     jitterSpread: 0.1
     sharpness: 0.25
@@ -859,39 +857,10 @@ MonoBehaviour:
   m_ShowCustomSorter: 1
   breakBeforeColorGrading: 0
   m_BeforeTransparentBundles: []
-  m_BeforeStackBundles: []
+  m_BeforeStackBundles:
+  - assemblyQualifiedName: PostProcessOutline, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   m_AfterStackBundles: []
---- !u!114 &5765876302499718445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5464480307896908873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 0}
-  isGlobal: 1
-  blendDistance: 0
-  weight: 1
-  priority: 0
---- !u!114 &6122113059021954469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5464480307896908873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c43211eadb253cf4aa084c93097e2817, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  postProcessMaterial: {fileID: 2100000, guid: 0cb7e00bb35a77942affaa9f91fc5f31, type: 2}
-  shader: 1
 --- !u!1 &5464480308165375597
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,6 +996,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNumber: 0
   localItems: []
+  AlllocalItems: []
   listText:
   - {fileID: 0}
   - {fileID: 0}
@@ -1037,6 +1007,15 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   currentHeld: []
+  currentHeldWithPos:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   armour: 0
   nameList: []
   heldItem: 
@@ -1052,6 +1031,24 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  basketListIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  basketSpriteList:
+  - {fileID: 2800000, guid: f780924cf9d84694482bef0e45232843, type: 3}
+  - {fileID: 2800000, guid: 7e22827abcb596f4c953dd45ef4df024, type: 3}
+  - {fileID: 2800000, guid: a45d61b269c5da145ae8b30bdf85f2a7, type: 3}
+  - {fileID: 2800000, guid: f85aadbd482c0964f9f3e29c57375e90, type: 3}
+  - {fileID: 2800000, guid: 071e3e9f95804ff4c9a77fd8993137a8, type: 3}
+  - {fileID: 2800000, guid: 1b6b472f7e4690140b54d056fc03561d, type: 3}
+  - {fileID: 2800000, guid: 344b695742cc8ff418bb55a356817a56, type: 3}
+  - {fileID: 2800000, guid: bf5be600329085a4d9b88b54eb6d883e, type: 3}
   NamesList:
   - Milk
   - Cola
@@ -1338,6 +1335,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ac2304c340f78428d7cefac744f5f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraObj: {fileID: 5464480307896908872}
+  cameraRayDistance: 3
 --- !u!1 &5877618218665364260
 GameObject:
   m_ObjectHideFlags: 0
@@ -3058,9 +3057,9 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8575349106696984054}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2696428804099810310 stripped
+--- !u!1 &2696428804309195498 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 5938665857686385136, guid: 42f27bc2d0f71e741885f2f013a1d645,
+  m_CorrespondingSourceObject: {fileID: 5938665857354305308, guid: 42f27bc2d0f71e741885f2f013a1d645,
     type: 3}
   m_PrefabInstance: {fileID: 8575349106696984054}
   m_PrefabAsset: {fileID: 0}
@@ -3070,9 +3069,9 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8575349106696984054}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2696428804309195498 stripped
+--- !u!1 &2696428804099810310 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 5938665857354305308, guid: 42f27bc2d0f71e741885f2f013a1d645,
+  m_CorrespondingSourceObject: {fileID: 5938665857686385136, guid: 42f27bc2d0f71e741885f2f013a1d645,
     type: 3}
   m_PrefabInstance: {fileID: 8575349106696984054}
   m_PrefabAsset: {fileID: 0}

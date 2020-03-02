@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class MovementTest : MonoBehaviour
@@ -206,7 +207,11 @@ public class MovementTest : MonoBehaviour
                     {
                         ps.listText[ps.localItems.IndexOf(item)].text = "";
                         ps.localItems[ps.localItems.IndexOf(item)] = "";
+                      //  ps.basketListIcons[i].color = Color.white;
+                        //ps.basketListIcons[i].texture = ps.basketSpriteList[i];
                         ps.currentHeld.Add(item);
+                        // ps.currentHeld[ps.localItems.IndexOf(item)] = item;
+                        ps.ShoppingCartIcon(item);
                         Destroy(col.gameObject);
                         SoundManager.instance.PlaySound("Item Collection");
                         break;
@@ -220,7 +225,16 @@ public class MovementTest : MonoBehaviour
     private void OnTriggerEnter(Collider col)
     {
         //  if (col.gameObject.tag == "checkout") { ps.heldItem = ""; Debug.Log("Checkout"); }
-        if (col.gameObject.tag == "checkout") { ps.currentHeld = new List<string>(); }
+        if (col.gameObject.tag == "checkout")
+        {
+            ps.currentHeld = new List<string>();
+            ps.currentHeldWithPos = new string[8];
+            foreach (RawImage basketIcon in ps.basketListIcons)
+            {
+                basketIcon.texture = null;
+                basketIcon.color = Color.clear;
+            }
+        }
         if (col.gameObject.tag == "jam")
         {
             
