@@ -11,11 +11,9 @@ public class TrailDuration : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("here");
 
         if (other.gameObject.tag == "Trail")
         {
-            Debug.Log("here");
             player = other.gameObject;
            // StartCoroutine(trail(duration, other.gameObject));
         }

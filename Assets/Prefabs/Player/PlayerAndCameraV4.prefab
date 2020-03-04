@@ -1102,7 +1102,7 @@ MonoBehaviour:
   timer: 0
   ThrowCountdown: 3
   floor: {fileID: 0}
-  floorY: -2.730331
+  floorY: 0
   currentlyUsable: 0
   timeLock: 0
   aimStart: {x: 0, y: 0, z: 0}
@@ -2713,6 +2713,11 @@ PrefabInstance:
       propertyPath: m_Parameters.colorGradient.key1.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1089083231671839976, guid: 9841c45c5e7874640b10e3bbc9d791ea,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 33bc8d07d0f289d469b50f9ae76b426c, type: 2}
     - target: {fileID: 4365836248484382146, guid: 9841c45c5e7874640b10e3bbc9d791ea,
         type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
@@ -2753,6 +2758,11 @@ PrefabInstance:
       propertyPath: m_Parameters.colorGradient.key1.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4365836248484382146, guid: 9841c45c5e7874640b10e3bbc9d791ea,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 33bc8d07d0f289d469b50f9ae76b426c, type: 2}
     - target: {fileID: 6146106292045653966, guid: 9841c45c5e7874640b10e3bbc9d791ea,
         type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
@@ -2793,6 +2803,11 @@ PrefabInstance:
       propertyPath: m_Parameters.colorGradient.key1.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6146106292045653966, guid: 9841c45c5e7874640b10e3bbc9d791ea,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 33bc8d07d0f289d469b50f9ae76b426c, type: 2}
     - target: {fileID: 6147413692387713952, guid: 9841c45c5e7874640b10e3bbc9d791ea,
         type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
@@ -2833,6 +2848,11 @@ PrefabInstance:
       propertyPath: m_Parameters.colorGradient.key1.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6147413692387713952, guid: 9841c45c5e7874640b10e3bbc9d791ea,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 33bc8d07d0f289d469b50f9ae76b426c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9841c45c5e7874640b10e3bbc9d791ea, type: 3}
 --- !u!4 &4811272786371028459 stripped

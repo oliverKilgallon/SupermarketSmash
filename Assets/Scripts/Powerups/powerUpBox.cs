@@ -15,12 +15,12 @@ public class powerUpBox : MonoBehaviour
             if (collision.gameObject.GetComponentInParent<powerupSlot>().current == null)
             {
                 collision.gameObject.GetComponentInParent<powerupSlot>().updateCurrentItem(randomItem);
-                GameObject.Find("Power Ups").GetComponent<PowerBoxSpawn>().currentCubes--;
+                GameObject.Find("Power Up SpawnPoints").GetComponent<PowerBoxSpawn>().currentCubes--;
                 Destroy(gameObject);
             }
             else
             {
-                GameObject.Find("Power Ups").GetComponent<PowerBoxSpawn>().currentCubes--;
+                GameObject.Find("Power Up SpawnPoints").GetComponent<PowerBoxSpawn>().currentCubes--;
                 Destroy(gameObject);
             }
             
