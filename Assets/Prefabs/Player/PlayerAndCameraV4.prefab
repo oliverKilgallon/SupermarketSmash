@@ -1126,7 +1126,7 @@ MonoBehaviour:
   timer: 0
   ThrowCountdown: 3
   floor: {fileID: 0}
-  floorY: 0
+  floorY: -0.562
   currentlyUsable: 0
   timeLock: 0
   aimStart: {x: 0, y: 0, z: 0}
@@ -3458,7 +3458,7 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: 6853268f6f05a734daa9bdaeb6fe9934, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: d00a56190d0cf2847a52ab42ae90c912, type: 2}
+      objectReference: {fileID: 2100000, guid: 8ffec7b6588847f41bdd4e716b2d9607, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6853268f6f05a734daa9bdaeb6fe9934, type: 3}
 --- !u!4 &9055702723792311152 stripped

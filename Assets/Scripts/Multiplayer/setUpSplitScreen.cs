@@ -93,8 +93,8 @@ public class setUpSplitScreen : MonoBehaviour
                         
                     }
                 }
-                powerupSlots[0].rectTransform.anchoredPosition = new Vector2(0, PowerupSlotPosAbove);
-                powerupSlots[1].rectTransform.anchoredPosition = new Vector2(0, PowerupSlotPosBelow);
+                powerupSlots[0].rectTransform.anchoredPosition = new Vector2(0, PowerupSlotPosBelow);
+                powerupSlots[1].rectTransform.anchoredPosition = new Vector2(0, PowerupSlotPosAbove);
 
                 Coupon1.rectTransform.anchoredPosition = new Vector3(0, FourPlayersCouponY,0);
                 Coupon2.rectTransform.anchoredPosition = new Vector3(0, -FourPlayersCouponY,0);
