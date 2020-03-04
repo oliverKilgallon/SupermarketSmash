@@ -60,7 +60,7 @@ public class MovementTest : MonoBehaviour
     public GameObject[] wheelSmoke;
     private LayerMaskChange cameraMaskChanger;
 
-    public string tesKey;
+    
 
     void Start()
     { 
