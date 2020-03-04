@@ -58,6 +58,7 @@ public class MovementTest : MonoBehaviour
     public GameObject animRotation;
     public AnimationCurve tiltCurve;
     public GameObject[] wheelSmoke;
+    private LayerMaskChange cameraMaskChanger;
 
     public string tesKey;
 
@@ -65,6 +66,7 @@ public class MovementTest : MonoBehaviour
     { 
         ps = GetComponent<Playerscript>();
         body = GetComponent<Rigidbody>();
+        cameraMaskChanger = GetComponent<LayerMaskChange>();
         jammy = false;
     }
 
@@ -209,12 +211,10 @@ public class MovementTest : MonoBehaviour
                     {
                         ps.listText[ps.localItems.IndexOf(item)].text = "";
                         ps.localItems[ps.localItems.IndexOf(item)] = "";
-                      //  ps.basketListIcons[i].color = Color.white;
-                        //ps.basketListIcons[i].texture = ps.basketSpriteList[i];
                         ps.currentHeld.Add(item);
-                        // ps.currentHeld[ps.localItems.IndexOf(item)] = item;
                         ps.ShoppingCartIcon(item);
                         Destroy(col.gameObject);
+                        cameraMaskChanger.UpdateLayerMask(item);
                         SoundManager.instance.PlaySound("Item Collection");
                         break;
                     }
