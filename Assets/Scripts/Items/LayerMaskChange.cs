@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class LayerMaskChange : MonoBehaviour
@@ -11,14 +10,7 @@ public class LayerMaskChange : MonoBehaviour
 
     private void Awake()
     {
-        string line;
-        int index = 1;
-        System.IO.StreamReader file =
-           new System.IO.StreamReader("Assets/Text Files/ItemStorage.txt");
-        while ((line = file.ReadLine()) != null)
-        {
-            origItemList[index] = line;
-        }
+        origItemList = GetComponent<Playerscript>().NamesList;
     }
     // Start is called before the first frame update
     void Start()
