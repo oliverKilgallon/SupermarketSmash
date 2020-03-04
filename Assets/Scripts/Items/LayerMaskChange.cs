@@ -4,26 +4,24 @@ using UnityEngine;
 public class LayerMaskChange : MonoBehaviour
 {
     public Camera playerCamera;
-    private int origCullingMask;
-    private string[] origItemList;
-    private List<string> localItems;
+    public string[] origItemList;
+    public List<string> localItems;
 
     private void Awake()
     {
         origItemList = GetComponent<Playerscript>().NamesList;
+        localItems = GetComponent<Playerscript>().localItems;
     }
     // Start is called before the first frame update
     void Start()
     {
-        origCullingMask = playerCamera.cullingMask;
-        localItems = GetComponent<Playerscript>().localItems;
         for (int i = 0; i < origItemList.Length; i++)
         {
             for (int j = 0; j < localItems.Count; j++)
             {
-                if (localItems[j].Equals(origItemList[i]))
+                if (origItemList[i].Equals(localItems[j]))
                 {
-                    ShowLayer(origItemList[i]);
+                    ShowLayer(localItems[j]);
                 }
             }
         }
@@ -44,15 +42,15 @@ public class LayerMaskChange : MonoBehaviour
 
     public void ShowLayer(string layerName)
     {
-        if (!(playerCamera.cullingMask == (playerCamera.cullingMask | LayerMask.NameToLayer(layerName))))
+        if (!(playerCamera.cullingMask == (playerCamera.cullingMask | (1 << LayerMask.NameToLayer(layerName)))) )
         {
             playerCamera.cullingMask |= 1 << LayerMask.NameToLayer(layerName);
         }
     }
 
-    public void UpdateLayerMask(string[] itemList)
+    public void UpdateLayerMask(List<string> itemList)
     {
-        for (int i = 0; i < itemList.Length; i++)
+        for (int i = 0; i < itemList.Count; i++)
         {
             if (!itemList[i].Equals(""))
             {

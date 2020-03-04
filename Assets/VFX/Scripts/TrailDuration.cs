@@ -20,7 +20,7 @@ public class TrailDuration : MonoBehaviour
     }
     private void Start()
     {
-        Debug.Log("i'm attaced to"+this.gameObject);
+        //Debug.Log("i'm attaced to"+this.gameObject);
     }
 
     /*IEnumerator trail(float duration, GameObject trail)
