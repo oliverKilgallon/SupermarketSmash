@@ -34,9 +34,10 @@ public class LayerMaskChange : MonoBehaviour
 
     public void HideLayer(string layerName)
     {
-        if (playerCamera.cullingMask == (playerCamera.cullingMask | LayerMask.NameToLayer(layerName)))
+        if (playerCamera.cullingMask == (playerCamera.cullingMask | (1 << LayerMask.NameToLayer(layerName))))
         {
-            playerCamera.cullingMask ^= ~(1 << LayerMask.NameToLayer(layerName));
+            Debug.Log(layerName);
+            playerCamera.cullingMask &= ~(1 << LayerMask.NameToLayer(layerName));
         }
     }
 
@@ -52,14 +53,32 @@ public class LayerMaskChange : MonoBehaviour
     {
         for (int i = 0; i < itemList.Count; i++)
         {
-            if (!itemList[i].Equals(""))
+            int count = 0;
+            for (int j = 0; j < origItemList.Length; j++)
             {
-                HideLayer(itemList[i]);
+                if (itemList[i].Equals(origItemList[j])) count++;
             }
-            else
+
+            if (count == 0)
+            {
+                Debug.Log("Hiding layer: " + origItemList[i]);
+                HideLayer(origItemList[i]);
+            }
+            else if (count > 0)
             {
                 ShowLayer(itemList[i]);
             }
         }
+    }
+
+    public void UpdateLayerMask(string item)
+    {
+        int itemCount = 0;
+        for (int i = 0; i < localItems.Count; i++)
+        {
+            if (item.Equals(localItems[i])) itemCount++;
+        }
+        if (itemCount == 0) HideLayer(item);
+        else if (itemCount > 0) ShowLayer(item);
     }
 }

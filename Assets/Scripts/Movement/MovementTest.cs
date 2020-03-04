@@ -212,7 +212,7 @@ public class MovementTest : MonoBehaviour
                         ps.currentHeld.Add(item);
                         ps.ShoppingCartIcon(item);
                         Destroy(col.gameObject);
-                        //cameraMaskChanger.UpdateLayerMask(ps.localItems);
+                        cameraMaskChanger.UpdateLayerMask(item);
                         SoundManager.instance.PlaySound("Item Collection");
                         break;
                     }
