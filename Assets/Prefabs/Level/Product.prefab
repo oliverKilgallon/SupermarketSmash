@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4070313967540640634}
   - component: {fileID: 4803563909787748260}
   - component: {fileID: 7530768749666866964}
+  - component: {fileID: 162751192941570742}
   m_Layer: 0
   m_Name: Product
   m_TagString: item
@@ -142,6 +143,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &162751192941570742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2315862224862465406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d63f72c0792b0845ad194a0e364f6a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemHighlight: {fileID: 1754986007882796675}
 --- !u!1001 &8851784311366602902
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -280,6 +294,12 @@ GameObject:
 --- !u!4 &1087189517138043467 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8485243448824918749, guid: 1c9c529e67d4d2b4bad10da04e6e62da,
+    type: 3}
+  m_PrefabInstance: {fileID: 8851784311366602902}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1754986007882796675 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7101381216141794837, guid: 1c9c529e67d4d2b4bad10da04e6e62da,
     type: 3}
   m_PrefabInstance: {fileID: 8851784311366602902}
   m_PrefabAsset: {fileID: 0}
