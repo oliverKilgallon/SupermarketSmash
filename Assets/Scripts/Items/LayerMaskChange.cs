@@ -36,7 +36,6 @@ public class LayerMaskChange : MonoBehaviour
     {
         if (playerCamera.cullingMask == (playerCamera.cullingMask | (1 << LayerMask.NameToLayer(layerName))))
         {
-            Debug.Log(layerName);
             playerCamera.cullingMask &= ~(1 << LayerMask.NameToLayer(layerName));
         }
     }

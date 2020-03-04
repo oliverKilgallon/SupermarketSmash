@@ -219,6 +219,7 @@ public class Playerscript : MonoBehaviour
                             basketListIcons[j].texture = null;
                             basketListIcons[j].color = Color.clear;
                             localItems[j] = currentHeld[index];
+                            GetComponent<LayerMaskChange>().UpdateLayerMask(droppedItem);
                             GameObject temp = iS.createItem(new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), transform.rotation.y, currentHeld[index]);
                             StartCoroutine(temp.GetComponent<ItemScript>().enableColliders(temp, .3f));
                             temp.GetComponent<Rigidbody>().AddForce((new Vector3(1, 1, 1) + col.relativeVelocity) * 50);
