@@ -9,6 +9,7 @@ public class PlayerBasket : MonoBehaviour
     Playerscript playerScript;
     MoveMultiplayer moveScript;
     public bool[] basketBools;
+
     public GameObject[] basketPoints;
     public GameObject[] basket;
 
@@ -27,11 +28,11 @@ public class PlayerBasket : MonoBehaviour
         if (fixedMode == true)
         {
             ResetBools();
-            for (int i = 0; i < moveScript.basketList.Count; i++)
+            for (int i = 0; i < playerScript.currentHeld.Count; i++)
             {
                 for (int j = 0; j < basketItems.Length; j++)
                 {
-                    if (basketItems[j].name == moveScript.basketList[i])
+                    if (basketItems[j].name == playerScript.currentHeld[i])
                     {
                         basketBools[j] = true;
                     }

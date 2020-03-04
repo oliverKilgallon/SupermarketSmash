@@ -59,6 +59,8 @@ public class MovementTest : MonoBehaviour
     public AnimationCurve tiltCurve;
     public GameObject[] wheelSmoke;
 
+    public string tesKey;
+
     void Start()
     { 
         ps = GetComponent<Playerscript>();

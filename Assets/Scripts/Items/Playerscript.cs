@@ -194,7 +194,7 @@ public class Playerscript : MonoBehaviour
     {
         if (col.transform.tag == "Player")
         {
-            if (GetComponent<Rigidbody>().velocity.magnitude > col.gameObject.GetComponent<Rigidbody>().velocity.magnitude)
+            if (GetComponent<Rigidbody>().velocity.magnitude < col.gameObject.GetComponent<Rigidbody>().velocity.magnitude)
             {
 
                 if (currentHeld.Count > 0)
@@ -221,7 +221,7 @@ public class Playerscript : MonoBehaviour
                             localItems[j] = currentHeld[index];
                             GameObject temp = iS.createItem(new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), transform.rotation.y, currentHeld[index]);
                             StartCoroutine(temp.GetComponent<ItemScript>().enableColliders(temp, .3f));
-                            temp.GetComponent<Rigidbody>().AddForce((new Vector3(1, 1, 1) + col.relativeVelocity) * 50);
+                            temp.GetComponent<Rigidbody>().AddForce((new Vector3(10, 1, 0) + col.relativeVelocity) * 50);
                             currentHeld.RemoveAt(index);
                             break;
                         }
