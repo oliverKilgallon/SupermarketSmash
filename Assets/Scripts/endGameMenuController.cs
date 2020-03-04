@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class endGameMenuController : MonoBehaviour
 {
-    public Object mainMenuScene;
+    public string mainMenuScene;
 
 
     public void restartGame()
@@ -14,6 +14,6 @@ public class endGameMenuController : MonoBehaviour
     }
     public void mainMenu()
     {
-        SceneManager.LoadScene(mainMenuScene.name);
+        SceneManager.LoadScene(mainMenuScene);
     }
 }
