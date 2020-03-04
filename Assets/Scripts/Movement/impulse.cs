@@ -35,7 +35,6 @@ public class impulse : MonoBehaviour
         //GetComponent<Rigidbody>().isKinematic = true;
         foreach (GameObject cb in cereal)
         {
-            Debug.Log("BOOM");
             cb.GetComponent<Rigidbody>().AddExplosionForce(Random.Range(explosionForce-30, explosionForce+30), explosionPoint.transform.position, 200);
         }
         freeze = freezeObjects(waitTime);
