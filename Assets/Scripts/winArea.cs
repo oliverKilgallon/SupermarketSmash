@@ -81,10 +81,8 @@ public class winArea : MonoBehaviour
         playerScores.Sort();
         Debug.Log(listToString(playerScores));
 
-        //for (int i = 0; i < 4; i++)
-        //{
         moveToPodium(0, playerScores[0].playerNumber);
-        //}
+        
 
         foreach (GameObject list in lists)
         {

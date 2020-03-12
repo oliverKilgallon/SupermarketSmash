@@ -72,7 +72,6 @@ public class controllerDetection : MonoBehaviour
                 NoOfPlayers++;
             }
         }
-        //Debug.Log(NoOfPlayers);
         return NoOfPlayers;
     }
 
@@ -84,7 +83,6 @@ public class controllerDetection : MonoBehaviour
         {
             list += js + ", ";
         }
-        Debug.Log(list);
         return list;
     }
     int getHostController()
@@ -97,7 +95,6 @@ public class controllerDetection : MonoBehaviour
                 break;
             }else{}
         }
-        Debug.Log(HostController);
 
         return HostController;
     }

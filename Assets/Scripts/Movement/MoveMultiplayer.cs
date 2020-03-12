@@ -33,6 +33,7 @@ public class MoveMultiplayer : MonoBehaviour
     public bool jammy;
     public float speedSticky;
     public float speedStop;
+    public string testKey;
     public List<string> basketList = new List<string>();
     // Start is called before the first frame update
     void Start()
@@ -49,7 +50,7 @@ public class MoveMultiplayer : MonoBehaviour
         //if (Input.GetKeyDown("joy"+playerNumber+"Acc")) { ctrlA = true; }if (Input.GetKeyUp("joy"+playerNumber+"Acc")) { ctrlA = false; }
         if (Input.GetAxis("joy" + playerNumber + "Acc")!=0) { ctrlA = true; }
         if (Input.GetAxis("joy" + playerNumber + "Acc")==0) { ctrlA = false; }
-        if (Input.GetKeyDown("w")) { wPress = true; }if (Input.GetKeyUp("w")) { wPress = false; }
+        if (Input.GetKeyDown(testKey)) { wPress = true; }if (Input.GetKeyUp(testKey)) { wPress = false; }
         
         playerJoyX = Input.GetAxis("joy" + playerNumber + "x");
 
