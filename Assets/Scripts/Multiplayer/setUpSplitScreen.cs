@@ -25,11 +25,17 @@ public class setUpSplitScreen : MonoBehaviour
 
     public float FourPlayersCouponX, FourPlayersCouponY;
     public RawImage Coupon1, Coupon2, Coupon3, Coupon4;
+    public GameObject bottomBorder;
+    public GameObject topBorder;
     
     
 
     private void Awake()
     {
+        foreach (GameObject p in players)
+        {
+            p.SetActive(false);
+        }
         numberOfPlayers = PlayerPrefs.GetInt("NumberOfPlayers");
         for (int i = 0; i < numberOfPlayers; i++)
         {
@@ -127,7 +133,7 @@ public class setUpSplitScreen : MonoBehaviour
                 powerupSlots[0].rectTransform.anchoredPosition = new Vector2(0, PowerupSlotPosBelow);
                 powerupSlots[1].rectTransform.anchoredPosition = new Vector2(0, PowerupSlotPosBelow);
                 powerupSlots[2].rectTransform.anchoredPosition = new Vector2(0, PowerupSlotPosAbove);
-
+                topBorder.SetActive(true);
                 Coupon1.rectTransform.anchoredPosition = new Vector3(-FourPlayersCouponX, FourPlayersCouponY, 0);
                 Coupon2.rectTransform.anchoredPosition = new Vector3(FourPlayersCouponX, FourPlayersCouponY, 0);
                 Coupon3.rectTransform.anchoredPosition = new Vector3(0, -FourPlayersCouponY, 0);
@@ -163,7 +169,8 @@ public class setUpSplitScreen : MonoBehaviour
                 powerupSlots[1].rectTransform.anchoredPosition = new Vector2(0, PowerupSlotPosBelow);
                 powerupSlots[2].rectTransform.anchoredPosition = new Vector2(0, PowerupSlotPosAbove);
                 powerupSlots[3].rectTransform.anchoredPosition = new Vector2(0, PowerupSlotPosAbove);
-
+                topBorder.SetActive(true);
+                bottomBorder.SetActive(true);
                 Coupon1.rectTransform.anchoredPosition = new Vector3(-FourPlayersCouponX, FourPlayersCouponY, 0);
                 Coupon2.rectTransform.anchoredPosition = new Vector3(FourPlayersCouponX, FourPlayersCouponY, 0);
                 Coupon3.rectTransform.anchoredPosition = new Vector3(-FourPlayersCouponX, -FourPlayersCouponY, 0);
