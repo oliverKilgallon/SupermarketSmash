@@ -28,7 +28,7 @@ public class playerModelChanger : MonoBehaviour
         GameObject[] playerModelInfo = pme.playerPanels;
         GameObject player = playerModelInfo[GetComponentInChildren<MovementTest>().playerNumber - 1];
 
-        newCharModel = Instantiate(player.GetComponent<playerPanel>().playerModel, pos, rot, this.gameObject.transform.GetChild(1));
+        newCharModel = Instantiate(player.GetComponent<playerPanel>().playerModel, pos, Quaternion.identity, this.gameObject.transform.GetChild(1));
         Animator charAnim = newCharModel.GetComponent<Animator>();
         charAnim.runtimeAnimatorController = anim;
         GetComponentInChildren<MovementTest>().animator = charAnim;
