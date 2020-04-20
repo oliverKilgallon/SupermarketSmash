@@ -19,7 +19,7 @@ public class playerPanel : MonoBehaviour
     private void Update()
     {
         playerNumber.text = "" + playerJoystickNumber;
-        mesh = GetComponentInChildren<modelPicker>().TEST.GetComponent<MeshFilter>().mesh;
+        mesh = GetComponentInChildren<modelPicker>().Display.GetComponent<MeshFilter>().mesh;
     }
 
 }

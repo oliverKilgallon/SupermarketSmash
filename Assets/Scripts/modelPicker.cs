@@ -9,37 +9,65 @@ public class modelPicker : MonoBehaviour
     public Button forward;
     public Button Backward;
     public RawImage background;
-    public GameObject TEST;
+    public GameObject Display;
 
-    private int index = 0;
+    public List<Material> materials = new List<Material>();
+
+    private int meshIndex = 0;
+    private int matIndex = 0;
 
     private void Update()
     {
-        TEST.GetComponent<MeshFilter>().mesh = meshes[index];
+        Display.GetComponent<MeshFilter>().mesh = meshes[meshIndex];
     }
 
     public void nextMesh()
     {
-        if (index < meshes.Count - 1)
+        if (meshIndex < meshes.Count - 1)
         {
-            index++;
+            meshIndex++;
         }
         else
         {
-            index = 0;
+            meshIndex = 0;
         }
     }
 
     public void previousMesh()
     {
-        if (index > 0)
+        if (meshIndex > 0)
         {
-            index--;
+            meshIndex--;
         }
         else
         {
-            index = meshes.Count - 1;
+            meshIndex = meshes.Count - 1;
         }
     }
+
+    public void nextMaterial()
+    {
+        if (matIndex < materials.Count - 1)
+        {
+            matIndex++;
+        }
+        else
+        {
+            matIndex = 0;
+        }
+    }
+
+    public void previousMaterial()
+    {
+        if (matIndex > 0)
+        {
+            matIndex--;
+        }
+        else
+        {
+            matIndex = materials.Count - 1;
+        }
+    }
+
 
 }
