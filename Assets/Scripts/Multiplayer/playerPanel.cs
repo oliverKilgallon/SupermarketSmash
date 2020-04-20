@@ -7,8 +7,8 @@ public class playerPanel : MonoBehaviour
 {
     public int playerJoystickNumber;
 
-    public string playerName; 
-    public Mesh mesh;
+    public string playerName;
+    public GameObject playerModel;
     public Text playerNumber;
 
     private void Awake()
@@ -19,7 +19,7 @@ public class playerPanel : MonoBehaviour
     private void Update()
     {
         playerNumber.text = "" + playerJoystickNumber;
-        mesh = GetComponentInChildren<modelPicker>().Display.GetComponent<MeshFilter>().mesh;
+        playerModel = GetComponentInChildren<modelPicker>().Display;
     }
 
 }
